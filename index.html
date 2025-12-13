@@ -4,289 +4,394 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sophie Kruszynski – Kunst & Portfolio</title>
-  <meta name="description" content="Sophie Kruszynski – Portfolio, Galerie und Anfragen. Verkauf auf Anfrage." />
+  <meta name="description" content="Sophie Kruszynski – Ölmalerei, abstrakte Bildräume und Landschaften. Portfolio & Anfragen. Verkauf auf Anfrage." />
 
   <style>
     :root{
-      /* Wasser / Blau Theme */
-      --bg:#070c14;
-      --bg2:#061426;
-      --card: rgba(10,18,28,.68);
-      --text:#f4f8ff;
-      --muted:#a8b7c9;
-      --line: rgba(120,180,255,.18);
-      --accent:#5cc8ff;
-      --accent2:#2e6bff;
-      --radius:18px;
-      --max:1100px;
+      --bg: #f6fbff;
+      --paper: #ffffff;
+      --ink: #0c1b2a;
+      --muted: #4a657a;
+      --line: rgba(12,27,42,.12);
+
+      --a1: #9ed3ff;  /* Pastell-Blau */
+      --a2: #7db9ff;  /* Wasser-Blau */
+      --a3: #bfe8ff;  /* sehr hell */
+      --a4: #d6f3ff;  /* fast weiß */
+
+      --radius: 18px;
+      --max: 1100px;
+
+      --serif: ui-serif, Georgia, "Times New Roman", serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
     body{
       margin:0;
-      color:var(--text);
-      line-height:1.65;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
       background:
-        radial-gradient(1000px 650px at 18% 10%, rgba(92,200,255,.22), transparent 55%),
-        radial-gradient(900px 600px at 80% 15%, rgba(46,107,255,.18), transparent 60%),
-        radial-gradient(900px 700px at 40% 85%, rgba(0,180,255,.10), transparent 55%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
-      overflow-x:hidden;
+        radial-gradient(900px 600px at 20% 10%, rgba(158,211,255,.45), transparent 60%),
+        radial-gradient(900px 600px at 85% 20%, rgba(191,232,255,.55), transparent 60%),
+        linear-gradient(180deg, var(--bg), #ffffff 60%);
+      font-family: var(--sans);
+      line-height:1.6;
     }
 
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
 
+    /* Topbar */
     header{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter: blur(12px);
-      background: rgba(5,10,18,.55);
+      position: sticky; top: 0; z-index: 30;
+      backdrop-filter: blur(10px);
+      background: rgba(246,251,255,.72);
       border-bottom: 1px solid var(--line);
     }
     .nav{
       max-width:var(--max); margin:0 auto;
-      display:flex; gap:14px; align-items:center; justify-content:space-between;
-      padding:14px 24px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:14px 22px;
     }
-    .brand{font-weight:850; letter-spacing:.2px}
-    .links{display:flex; gap:10px; flex-wrap:wrap}
+    .brand{
+      font-family: var(--serif);
+      letter-spacing:.45em;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: rgba(12,27,42,.78);
+      white-space: nowrap;
+    }
+    .links{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
     .links a{
       text-decoration:none;
-      color:var(--muted);
+      font-size: 13px;
       padding:8px 10px;
-      border-radius:12px;
+      border-radius:999px;
       border:1px solid transparent;
+      color: rgba(12,27,42,.72);
+      background: rgba(255,255,255,.35);
     }
-    .links a:hover{
-      color:var(--text);
-      border-color: rgba(92,200,255,.28);
-      background: rgba(92,200,255,.06);
-    }
+    .links a:hover{border-color: rgba(125,185,255,.55); background: rgba(255,255,255,.7)}
 
-    .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 10px; border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(8,16,26,.45);
-      color:var(--muted);
-      font-size:14px;
+    /* Hero */
+    .hero{
+      padding: 18px 0 8px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 16px;
+      align-items: stretch;
     }
 
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:22px;
-      box-shadow: 0 14px 38px rgba(0,0,0,.28);
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 40px rgba(12,27,42,.08);
+      overflow:hidden;
     }
 
-    /* HERO */
-    .hero{
-      padding:32px 0 12px;
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    h1{
-      margin:10px 0 10px;
-      font-size: clamp(28px, 4vw, 46px);
-      line-height:1.12;
-      letter-spacing:.2px;
-    }
-    p{margin:0 0 12px; color:var(--muted)}
-
-    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(8,16,26,.35);
-      text-decoration:none;
-    }
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(92,200,255,.95), rgba(46,107,255,.75));
-      border-color: rgba(92,200,255,.45);
-      color:#041018;
-      font-weight:700;
-    }
-    .btn:hover{transform: translateY(-1px)}
-
-    section{padding:22px 0}
-    .sec-title{
+    .hero-media{
+      position: relative;
+      min-height: 420px;
       display:flex;
-      align-items:baseline;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:10px
+      align-items:flex-end;
+      justify-content:flex-start;
+      background: #e8f5ff;
     }
-    .sec-title h2{margin:0; font-size:22px}
-    .sec-title span{color:var(--muted); font-size:14px}
+    .hero-media img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit: cover;
+      filter: saturate(.95) contrast(.98);
+      transform: scale(1.02);
+    }
+    .hero-media::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(246,251,255,.10), rgba(246,251,255,.85) 72%);
+    }
+    .hero-caption{
+      position: relative;
+      padding: 26px 24px;
+    }
+    .hero-caption h1{
+      margin:0 0 10px;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(28px, 4.6vw, 46px);
+      line-height: 1.12;
+      letter-spacing: .02em;
+      color: rgba(12,27,42,.92);
+    }
+    .hero-caption p{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 46ch;
+    }
 
-    /* GALLERY GRID */
+    .pill{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(125,185,255,.45);
+      background: rgba(214,243,255,.45);
+      color: rgba(12,27,42,.72);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .cta{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top: 6px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(12,27,42,.14);
+      background: rgba(255,255,255,.7);
+      text-decoration:none;
+      font-size: 14px;
+      color: rgba(12,27,42,.86);
+      transition: transform .15s ease, background .15s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.95)}
+    .btn.primary{
+      border-color: rgba(125,185,255,.65);
+      background: linear-gradient(135deg, rgba(158,211,255,.85), rgba(125,185,255,.65));
+    }
+
+    .info{
+      padding: 18px 18px 18px;
+    }
+    .info h2{
+      margin: 2px 0 12px;
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing:.06em;
+    }
+    .info p{margin:0 0 10px; color: var(--muted); font-size: 14px}
+    .info .row{display:flex; justify-content:space-between; gap:10px; margin-top:10px}
+    .info .chip{
+      width:100%;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(12,27,42,.10);
+      background: rgba(255,255,255,.62);
+      color: rgba(12,27,42,.78);
+      font-size: 14px;
+    }
+
+    section{padding: 18px 0}
+    .section-title{
+      text-align:center;
+      padding: 10px 0 6px;
+    }
+    .section-title h2{
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 34px;
+      letter-spacing:.08em;
+      color: rgba(12,27,42,.84);
+    }
+    .section-title p{
+      margin: 10px auto 0;
+      color: var(--muted);
+      max-width: 68ch;
+      font-size: 14.5px;
+    }
+    .divider{
+      width: 120px;
+      height: 1px;
+      background: rgba(12,27,42,.18);
+      margin: 14px auto 0;
+    }
+
+    /* Gallery */
     .grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:12px;
+      gap: 12px;
+      margin-top: 16px;
     }
     figure{
       margin:0;
-      border-radius:16px;
+      border-radius: 18px;
       overflow:hidden;
-      border:1px solid var(--line);
-      background: rgba(8,16,26,.45);
+      border:1px solid rgba(12,27,42,.10);
+      background: rgba(255,255,255,.72);
       cursor:pointer;
-      position:relative;
+      box-shadow: 0 10px 30px rgba(12,27,42,.06);
     }
     figure img{
       width:100%;
-      height:280px;
-      object-fit:cover;
+      height: 280px;
+      object-fit: cover;
       display:block;
       transition: transform .25s ease;
-      filter:saturate(1.05) contrast(1.03);
     }
     figure:hover img{transform: scale(1.03)}
     figcaption{
-      padding:10px 12px;
-      color:var(--muted);
-      font-size:14px;
+      padding: 10px 12px 12px;
+      color: rgba(12,27,42,.78);
+      font-size: 14px;
       display:flex;
-      align-items:center;
       justify-content:space-between;
       gap:10px;
-      border-top: 1px solid rgba(120,180,255,.12);
-      background: rgba(5,10,18,.25);
     }
-    .tag{
-      font-size:12px;
-      color:rgba(244,248,255,.88);
-      background: rgba(92,200,255,.12);
-      border:1px solid rgba(92,200,255,.22);
-      padding:6px 10px;
-      border-radius:999px;
-      white-space:nowrap;
-    }
+    figcaption span{color: var(--muted); font-size: 13px}
 
-    /* TWO COL */
-    .two{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
-
-    footer{padding:26px 0 44px; color:var(--muted); font-size:14px}
-    .fine{display:flex; gap:14px; flex-wrap:wrap}
-    .fine a{color:var(--muted); text-decoration:none}
-    .fine a:hover{color:var(--text)}
-
-    .notice{
-      border-left:3px solid rgba(92,200,255,.75);
-      padding-left:12px;
-      color:var(--muted);
-      margin-top:12px;
-    }
-
-    /* ABOUT PHOTO MOSAIC */
-    .about-photos{
-      margin-top:14px;
+    /* About collage (sympathisch + ruhig) */
+    .about{
       display:grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap:10px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+      align-items:start;
     }
-    .about-photos a{
-      display:block;
-      border-radius:14px;
+    .about .text{
+      padding: 18px;
+    }
+    .about .text h3{
+      margin: 6px 0 12px;
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing:.05em;
+      font-size: 22px;
+    }
+    .about .text p{margin:0 0 12px; color: var(--muted); font-size: 15px}
+    .note{
+      border-left: 3px solid rgba(125,185,255,.85);
+      padding-left: 12px;
+      margin-top: 14px;
+      color: rgba(12,27,42,.72);
+      font-size: 14px;
+    }
+
+    .mosaic{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 150px;
+      gap: 10px;
+      padding: 12px;
+    }
+    .tile{
+      border-radius: 16px;
       overflow:hidden;
-      border:1px solid var(--line);
-      background: rgba(8,16,26,.45);
-      cursor:pointer;
+      border:1px solid rgba(12,27,42,.10);
+      background: rgba(255,255,255,.75);
       position:relative;
     }
-    .about-photos img{
-      width:100%;
-      height:100%;
+    .tile img{
+      width:100%; height:100%;
+      object-fit: cover;
       display:block;
-      object-fit:cover;
-      filter: saturate(1.02) contrast(1.03);
-      transition: transform .25s ease;
+      filter: contrast(.98) saturate(.95);
     }
-    .about-photos a:hover img{transform: scale(1.03)}
-    .about-photos .big{grid-column: span 4; aspect-ratio: 16/10;}
-    .about-photos .small{grid-column: span 2; aspect-ratio: 1/1;}
-    .about-photos .wide{grid-column: span 6; aspect-ratio: 21/9;}
-    .about-photos .label{
+    .tile.big{grid-row: span 2}
+    .tile.wide{grid-column: span 2}
+    .tag{
       position:absolute;
-      left:10px; bottom:10px;
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:12px;
-      color:rgba(244,248,255,.92);
-      background: rgba(5,10,18,.55);
-      border:1px solid rgba(120,180,255,.18);
-      backdrop-filter: blur(8px);
+      left: 10px; bottom: 10px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(12,27,42,.10);
+      color: rgba(12,27,42,.82);
+      font-size: 12.5px;
     }
 
-    /* MODAL */
+    /* Contact block */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+      align-items:stretch;
+    }
+    .contact .card-inner{padding:18px}
+    .contact h3{
+      margin: 6px 0 10px;
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing:.05em;
+      font-size: 22px;
+    }
+    .contact p{margin:0 0 12px; color: var(--muted)}
+
+    footer{
+      padding: 24px 0 52px;
+      color: rgba(12,27,42,.70);
+      font-size: 14px;
+      text-align:center;
+    }
+    .fine{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-bottom: 12px}
+    .fine a{color: rgba(12,27,42,.62); text-decoration:none}
+    .fine a:hover{text-decoration:underline}
+
+    /* Modal */
     .modal{
-      position:fixed; inset:0;
+      position: fixed; inset:0;
       display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      background: rgba(0,0,0,.82);
-      z-index:50;
+      align-items:center; justify-content:center;
+      padding: 18px;
+      background: rgba(12,27,42,.72);
+      z-index: 60;
     }
     .modal.open{display:flex}
     .modal-content{
-      max-width:980px;
-      width:100%;
-      border-radius:18px;
+      width: min(980px, 100%);
+      background: rgba(255,255,255,.92);
+      border-radius: 18px;
       overflow:hidden;
-      border:1px solid rgba(120,180,255,.22);
-      background: rgba(8,16,26,.92);
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 22px 60px rgba(0,0,0,.25);
     }
     .modal-bar{
       display:flex;
-      justify-content:space-between;
       align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      border-bottom:1px solid rgba(120,180,255,.18);
-      color:var(--muted);
+      justify-content:space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(12,27,42,.10);
+      color: rgba(12,27,42,.70);
+      background: rgba(246,251,255,.75);
     }
     .close{
       cursor:pointer;
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid rgba(120,180,255,.18);
-      background: rgba(5,10,18,.25);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(12,27,42,.12);
+      background: rgba(255,255,255,.7);
     }
-    .close:hover{
-      border-color: rgba(92,200,255,.35);
-      color: var(--text);
-    }
+    .close:hover{background: rgba(255,255,255,.95)}
     .modal-img{
       width:100%;
-      height:min(75vh, 760px);
-      object-fit:contain;
+      height: min(72vh, 760px);
+      object-fit: contain;
       display:block;
-      background: radial-gradient(900px 600px at 50% 30%, rgba(92,200,255,.10), transparent 60%),
-                  #050a12;
+      background: linear-gradient(180deg, rgba(214,243,255,.35), rgba(255,255,255,1));
     }
 
     @media (max-width: 920px){
-      .hero{grid-template-columns:1fr}
+      .hero{grid-template-columns: 1fr}
+      .hero-media{min-height: 360px}
       .grid{grid-template-columns: repeat(2, 1fr)}
-      figure img{height:240px}
-      .two{grid-template-columns:1fr}
-      .about-photos{grid-template-columns: repeat(2, 1fr);}
-      .about-photos .big,
-      .about-photos .small,
-      .about-photos .wide{grid-column: span 2;}
+      figure img{height: 240px}
+      .about{grid-template-columns: 1fr}
+      .contact{grid-template-columns: 1fr}
+      .brand{letter-spacing:.25em}
     }
     @media (max-width: 520px){
       .grid{grid-template-columns: 1fr}
-      figure img{height:260px}
+      figure img{height: 260px}
+      .hero-caption p{max-width: none}
     }
   </style>
 </head>
@@ -306,205 +411,229 @@
   </header>
 
   <main class="wrap">
+
+    <!-- HERO (wie Referenz – großes Bild + ruhiger Text) -->
     <section class="hero">
-      <div class="card">
-        <div class="pill">🌊 Kunst • Portfolio • Verkauf auf Anfrage</div>
-
-        <h1>
-          Willkommen auf meiner Seite.
-          <span style="color:var(--text)">Ich bin Sophie Kruszynski</span>
-          — hier findest du eine Auswahl meiner Werke.
-        </h1>
-
-        <p>
-          Einblicke in Prozesse, Stimmungen und Bildräume, die mich in der letzten Zeit begleitet haben.
-          Nimm dir Zeit, schau dich in Ruhe um und sammle erste Eindrücke.
-          Danke, dass du hier bist und meine Kunst begleitest.
-        </p>
-
-        <div class="notice">
-          <strong style="color:var(--text)">Kauf & Preise:</strong>
-          Bitte per E-Mail oder Instagram anfragen (kein Online-Shop / keine Bezahlfunktion).
-        </div>
-
-        <div class="cta">
-          <a class="btn primary" href="#galerie">Zur Galerie</a>
-          <a class="btn" href="mailto:sophie.kruszynskki@gmail.com?subject=Kunst%20Anfrage">E-Mail Anfrage</a>
-          <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">DM auf Instagram</a>
+      <div class="card hero-media">
+        <!-- HERO-BILD: hier dein Wasser/Ölwerk (kannst du später tauschen) -->
+        <img src="FB09CD55-5D46-46DB-A7F5-2A7D88065B4F.jpeg" alt="Ölmalerei – Wasser & Stimmung">
+        <div class="hero-caption">
+          <div class="pill">🌊 Kunst in Pastell & Wasserstimmung • Verkauf auf Anfrage</div>
+          <h1>Kunst, inspiriert von Natur, Licht & Wasser.</h1>
+          <p>
+            Hier findest du eine Auswahl meiner Arbeiten – ruhige Momente, abstrakte Bildräume
+            und Landschaften, die bleiben. Nimm dir Zeit, schau dich um und sammle erste Eindrücke.
+            Danke, dass du hier bist.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#galerie">Zur Galerie</a>
+            <a class="btn" href="#ueber">Über mich</a>
+            <a class="btn" href="#anfrage">Anfrage</a>
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <h2 style="margin:0 0 10px;">Infos</h2>
-        <p style="margin:0 0 10px;">Ort: <em>(eintragen)</em> • Aufträge: auf Anfrage</p>
-
-        <div class="pill" style="width:100%; justify-content:space-between;">
-          <span>🖼️ Werke</span><span>Originale / Prints</span>
+      <div class="card info">
+        <h2>Infos</h2>
+        <p><strong>Originale & Prints:</strong> Verkauf nur nach Absprache (kein Shop / keine Bezahlfunktion).</p>
+        <div class="row">
+          <div class="chip"><span>🎨 Fokus</span><span>Landschaften & abstrakte Räume</span></div>
         </div>
-        <div class="pill" style="width:100%; justify-content:space-between; margin-top:10px;">
-          <span>✉️ Kontakt</span><span>Mail / Instagram</span>
+        <div class="row">
+          <div class="chip"><span>🖌️ Medium</span><span>Öl (am liebsten) • Gouache • Aquarell • Acryl</span></div>
         </div>
-        <div class="pill" style="width:100%; justify-content:space-between; margin-top:10px;">
-          <span>🔗 Social</span><span>Insta / TikTok</span>
+        <div class="row">
+          <div class="chip"><span>✉️ Kontakt</span><span>E-Mail / Instagram</span></div>
+        </div>
+        <div class="row">
+          <div class="chip"><span>📍 Ort</span><span>(eintragen)</span></div>
+        </div>
+        <div class="cta" style="margin-top:14px;">
+          <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Kunst%20Anfrage">E-Mail öffnen</a>
+          <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">DM auf Instagram</a>
         </div>
       </div>
     </section>
 
     <!-- GALERIE -->
     <section id="galerie">
-      <div class="sec-title">
+      <div class="section-title">
         <h2>Galerie</h2>
-        <span>Klick auf ein Bild für groß</span>
+        <div class="divider"></div>
+        <p>Klick auf ein Bild, um es groß zu sehen. Preise und Verfügbarkeit gerne per Nachricht anfragen.</p>
       </div>
 
       <div class="grid">
         <figure data-title="Werk 01 – Preis auf Anfrage">
-          <img src="IMG_2863.jpeg" alt="Ohne Titel, 2024" loading="lazy">
-          <figcaption><span>Preis auf Anfrage</span><span class="tag">Öl • Meer</span></figcaption>
+          <img src="IMG_2863.jpeg" alt="Ohne Titel, 2024">
+          <figcaption><strong>Werk 01</strong><span>Preis auf Anfrage</span></figcaption>
         </figure>
 
         <figure data-title="Werk 02 – Preis auf Anfrage">
-          <img src="FB09CD55-5D46-46DB-A7F5-2A7D88065B4F.jpeg" alt="Abstrakte Meereslandschaft" loading="lazy">
-          <figcaption><span>Preis auf Anfrage</span><span class="tag">Öl • Blau</span></figcaption>
+          <img src="FB09CD55-5D46-46DB-A7F5-2A7D88065B4F.jpeg" alt="Abstrakte Meereslandschaft">
+          <figcaption><strong>Werk 02</strong><span>Preis auf Anfrage</span></figcaption>
         </figure>
 
-        <!-- Platzhalter (ersetzen, wenn du weitere echte Werke hochgeladen hast) -->
+        <!-- Platzhalter: tausche später gegen dein nächstes Werk -->
         <figure data-title="Werk 03 – Preis auf Anfrage">
-          <img src="https://images.unsplash.com/photo-1456081445129-830eb8d4bfc6?auto=format&fit=crop&w=1200&q=70" alt="Werk 03" loading="lazy">
-          <figcaption><span>Preis auf Anfrage</span><span class="tag">Platzhalter</span></figcaption>
+          <img src="IMG_2257.jpeg" alt="Stimmung & Natur (Foto)">
+          <figcaption><strong>Werk 03</strong><span>Preis auf Anfrage</span></figcaption>
         </figure>
 
         <figure data-title="Werk 04 – Preis auf Anfrage">
-          <img src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1200&q=70" alt="Werk 04" loading="lazy">
-          <figcaption><span>Preis auf Anfrage</span><span class="tag">Platzhalter</span></figcaption>
+          <img src="IMG_8327.jpeg" alt="Portrait – Studio-Mood">
+          <figcaption><strong>Werk 04</strong><span>Preis auf Anfrage</span></figcaption>
         </figure>
 
         <figure data-title="Werk 05 – Preis auf Anfrage">
-          <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=70" alt="Werk 05" loading="lazy">
-          <figcaption><span>Preis auf Anfrage</span><span class="tag">Platzhalter</span></figcaption>
+          <img src="IMG_2457.jpeg" alt="Schwarzweiß – Natur & Ruhe">
+          <figcaption><strong>Werk 05</strong><span>Preis auf Anfrage</span></figcaption>
         </figure>
 
         <figure data-title="Werk 06 – Preis auf Anfrage">
-          <img src="https://images.unsplash.com/photo-1526313199968-70e399ffe791?auto=format&fit=crop&w=1200&q=70" alt="Werk 06" loading="lazy">
-          <figcaption><span>Preis auf Anfrage</span><span class="tag">Platzhalter</span></figcaption>
+          <img src="57ea6509-bd58-48fe-81c8-665f5b55f79a.jpeg" alt="Schwarzweiß – Perspektiven">
+          <figcaption><strong>Werk 06</strong><span>Preis auf Anfrage</span></figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ÜBER / ANFRAGE -->
-    <section class="two">
-      <div class="card" id="ueber">
-        <h2 style="margin-top:0;">Über mich</h2>
-
-        <p>
-          Hey, mein Name ist <strong style="color:var(--text)">Sophie Kruszynski</strong>.
-          Vor ungefähr einem Jahr habe ich angefangen, wieder intensiv zu malen — und seitdem spüre ich,
-          wie viel sich mit jedem Werk verändert: mehr Ruhe, mehr Klarheit, mehr eigenes Gefühl.
-        </p>
-
-        <p>
-          Ich arbeite vor allem mit <strong style="color:var(--text)">Ölfarben</strong> und liebe Landschaften,
-          abstrakte Bildräume und illustrative Elemente. Ab und zu nutze ich auch Gouache, Aquarell oder Acryl.
-          Inspiration finde ich in <strong style="color:var(--text)">Natur, Licht, Wasser</strong> und in Momenten,
-          die nicht laut sind, aber bleiben.
-        </p>
-
-        <p>
-          Für nächstes Jahr plane ich eine Ausstellung. Dafür arbeite ich an einer großen Serie
-          (Ziel: ca. 100 Werke) und ersetze einige Papierarbeiten durch Leinwände.
-        </p>
-
-        <div class="pill">📷 Instagram: @sophie_kruszynski_art</div>
-        <div class="pill" style="margin-top:10px;">🎥 TikTok: @sophiekruszynski</div>
-
-        <!-- Deine "Über mich" Fotos (alle klickbar + Modal) -->
-        <div class="about-photos">
-          <a class="big js-open" href="IMG_2453.jpeg" data-title="Sophie – Natur & Licht">
-            <img src="IMG_2453.jpeg" alt="Sophie – Natur & Licht" loading="lazy">
-            <span class="label">Natur & Ruhe</span>
-          </a>
-
-          <a class="small js-open" href="IMG_8327.jpeg" data-title="Studio-Mood">
-            <img src="IMG_8327.jpeg" alt="Studio-Mood" loading="lazy">
-            <span class="label">Studio-Mood</span>
-          </a>
-
-          <a class="small js-open" href="IMG_1691.jpeg" data-title="Sophie – Abendlicht">
-            <img src="IMG_1691.jpeg" alt="Sophie – Abendlicht" loading="lazy">
-            <span class="label">Abendlicht</span>
-          </a>
-
-          <a class="big js-open" href="57ea6509-bd58-48fe-81c8-665f5b55f79a.jpeg" data-title="Perspektiven">
-            <img src="57ea6509-bd58-48fe-81c8-665f5b55f79a.jpeg" alt="Perspektiven" loading="lazy">
-            <span class="label">Perspektiven</span>
-          </a>
-
-          <a class="small js-open" href="IMG_2457.jpeg" data-title="Stille Wege">
-            <img src="IMG_2457.jpeg" alt="Stille Wege" loading="lazy">
-            <span class="label">Stille Wege</span>
-          </a>
-
-          <a class="small js-open" href="IMG_1861.jpeg" data-title="Lichtmomente">
-            <img src="IMG_1861.jpeg" alt="Lichtmomente" loading="lazy">
-            <span class="label">Lichtmomente</span>
-          </a>
-
-          <a class="wide js-open" href="IMG_2257.jpeg" data-title="Naturbild – für ein gutes Gefühl">
-            <img src="IMG_2257.jpeg" alt="Naturbild – für ein gutes Gefühl" loading="lazy">
-            <span class="label">Naturbild – gutes Gefühl</span>
-          </a>
-        </div>
+    <!-- ÜBER MICH + FOTOS SCHÖN VERTEILT -->
+    <section id="ueber">
+      <div class="section-title">
+        <h2>Über mich</h2>
+        <div class="divider"></div>
+        <p>Ein paar Eindrücke aus meinem Weg – ruhig, naturverbunden und mit viel Wasser-Inspiration.</p>
       </div>
 
-      <div class="card" id="anfrage">
-        <h2 style="margin-top:0;">Anfrage</h2>
-        <p>Für Preise, Verfügbarkeit, Auftragsarbeiten oder Prints: schreib mir gern.</p>
+      <div class="about">
+        <div class="card text">
+          <h3>Hi, ich bin Sophie.</h3>
+          <p>
+            Mein Name ist <strong>Sophie Kruszynski</strong>. Vor ungefähr einem Jahr habe ich angefangen,
+            wieder intensiv zu malen – und seitdem unglaublich viel gelernt und mich spürbar weiterentwickelt.
+          </p>
+          <p>
+            Ich bin Künstlerin mit Fokus auf <strong>Landschaften</strong>, <strong>abstrakte Bildräume</strong> und
+            <strong>illustrative Elemente</strong>. Ich arbeite vor allem mit <strong>Ölfarben</strong> – am liebsten,
+            weil ich die Tiefe, das Tempo und die Möglichkeiten liebe. Ab und zu nutze ich auch
+            Gouache, Aquarell und Acryl.
+          </p>
+          <p>
+            Inspiration finde ich in <strong>Natur</strong>, <strong>Licht</strong>, <strong>Wasser</strong> und Momenten,
+            die nicht laut sind, aber bleiben.
+          </p>
 
-        <div class="cta">
-          <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Anfrage%20Kunst&body=Hi%20Sophie%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20das%20Werk%3A%20%5BName%2FLink%5D%0AFormat%3A%20%0ALieferort%3A%20%0A%0ALiebe%20Gr%C3%BC%C3%9Fe">
-            E-Mail öffnen
-          </a>
-          <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram DM</a>
+          <div class="note">
+            <strong>Ausstellung:</strong> Nächstes Jahr möchte ich ausstellen. Dafür brauche/plane ich rund 100 Arbeiten –
+            ich bin bereits sehr nah dran und werde einige Motive als Leinwand-Versionen umsetzen.
+          </div>
+
+          <div class="cta" style="margin-top:16px;">
+            <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram ansehen</a>
+            <a class="btn" href="https://tiktok.com/@sophiekruszynski" target="_blank" rel="noopener">TikTok ansehen</a>
+          </div>
         </div>
 
-        <p style="margin-top:14px; font-size:14px;">
-          Hinweis: Diese Seite hat <strong style="color:var(--text)">keinen Online-Shop</strong>.
-          Verkauf nur nach Absprache.
-        </p>
+        <div class="card">
+          <div class="mosaic">
+            <!-- Sympathisch/nah: Portrait -->
+            <div class="tile big">
+              <img src="IMG_2453.jpeg" alt="Portrait – draußen, natürlich">
+              <div class="tag">Natur & Nähe</div>
+            </div>
+
+            <!-- Urban / Abendstimmung -->
+            <div class="tile">
+              <img src="IMG_1691.jpeg" alt="Abendlicht – unterwegs">
+              <div class="tag">Abendlicht</div>
+            </div>
+
+            <!-- Spiegel-Perspektive -->
+            <div class="tile">
+              <img src="57ea6509-bd58-48fe-81c8-665f5b55f79a.jpeg" alt="Perspektiven – Spiegel">
+              <div class="tag">Perspektiven</div>
+            </div>
+
+            <!-- Naturbild (gutes Gefühl) als breiter Abschluss -->
+            <div class="tile wide">
+              <img src="IMG_2257.jpeg" alt="Naturbild – für ein gutes Gefühl">
+              <div class="tag">Naturbild – für ein gutes Gefühl</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <footer class="wrap" style="padding-left:0; padding-right:0;">
+    <!-- ANFRAGE / KONTAKT -->
+    <section id="anfrage">
+      <div class="section-title">
+        <h2>Anfrage</h2>
+        <div class="divider"></div>
+        <p>Preise, Verfügbarkeit, Auftragsarbeiten oder Prints: schreib mir gern.</p>
+      </div>
+
+      <div class="contact">
+        <div class="card">
+          <div class="card-inner">
+            <h3>Kontakt</h3>
+            <p>Am schnellsten erreichst du mich per E-Mail oder Instagram.</p>
+            <div class="cta">
+              <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Anfrage%20Kunst&body=Hi%20Sophie%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20das%20Werk%3A%20%5BName%2FLink%5D%0AFormat%3A%20%0ALieferort%3A%20%0A%0ALiebe%20Gr%C3%BC%C3%9Fe">E-Mail öffnen</a>
+              <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram DM</a>
+            </div>
+            <p class="note" style="margin-top:14px;">
+              Hinweis: Diese Seite hat <strong>keinen Online-Shop</strong>. Verkauf nur nach Absprache.
+            </p>
+          </div>
+        </div>
+
+        <div class="card hero-media" style="min-height: 320px;">
+          <!-- ruhiges Bild als “Kontakt-Stimmung” -->
+          <img src="IMG_1861.jpeg" alt="Studio Mood">
+          <div class="hero-caption">
+            <div class="pill">💙 Danke, dass du meine Kunst begleitest</div>
+            <p style="margin:0; max-width: 55ch;">
+              Wenn dich ein Werk anspricht oder du Fragen hast, melde dich gern. Ich freue mich über Austausch,
+              erste Eindrücke und Anfragen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="wrap">
       <div class="fine">
         <a href="#impressum">Impressum</a>
         <a href="#datenschutz">Datenschutz</a>
       </div>
 
-      <div id="impressum" style="margin-top:18px;">
-        <strong style="color:var(--text)">Impressum</strong>
-        <p>Sophie Kruszynski • E-Mail: sophie.kruszynskki@gmail.com</p>
+      <div id="impressum" style="margin-top:14px;">
+        <strong>Impressum</strong>
+        <div style="color:rgba(12,27,42,.70); margin-top:6px;">
+          Sophie Kruszynski • E-Mail: sophie.kruszynskki@gmail.com
+        </div>
       </div>
 
-      <div id="datenschutz" style="margin-top:18px;">
-        <strong style="color:var(--text)">Datenschutz (Kurz)</strong>
-        <p>
-          Diese Website nutzt kein Tracking und setzt keine Cookies.
-          Beim Anklicken externer Links (Instagram/TikTok) gelten die Datenschutzbestimmungen der jeweiligen Plattformen.
-        </p>
+      <div id="datenschutz" style="margin-top:14px;">
+        <strong>Datenschutz (Kurz)</strong>
+        <div style="color:rgba(12,27,42,.70); margin-top:6px;">
+          Diese Website nutzt kein Tracking und setzt keine Cookies. Beim Anklicken externer Links (Instagram/TikTok)
+          gelten die Datenschutzbestimmungen der jeweiligen Plattformen.
+        </div>
       </div>
 
-      <p style="margin-top:18px;">© <span id="year"></span> Sophie Kruszynski</p>
+      <div style="margin-top:18px;">© <span id="year"></span> Sophie Kruszynski</div>
     </footer>
   </main>
 
-  <!-- MODAL -->
+  <!-- Modal -->
   <div class="modal" id="modal" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-bar">
         <div id="modalTitle">Werk</div>
         <div class="close" id="closeBtn">Schließen ✕</div>
       </div>
-      <img class="modal-img" id="modalImg" alt="Großansicht" />
+      <img class="modal-img" id="modalImg" alt="Werk groß" />
     </div>
   </div>
 
@@ -516,40 +645,8 @@
     const modalTitle = document.getElementById("modalTitle");
     const closeBtn = document.getElementById("closeBtn");
 
-    function openModal(src, title){
-      modalImg.src = src;
-      modalTitle.textContent = title || "Bild";
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-    }
-
-    function closeModal(){
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-      modalImg.src = "";
-    }
-
-    closeBtn.addEventListener("click", closeModal);
-    modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
-    window.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
-
-    // Galerie: Klick auf figure -> Modal
     document.querySelectorAll("figure").forEach(fig => {
       fig.addEventListener("click", () => {
         const img = fig.querySelector("img");
-        openModal(img.src, fig.dataset.title || img.alt);
-      });
-    });
-
-    // Über-mich-Fotos: Klick auf <a class="js-open">
-    document.querySelectorAll(".js-open").forEach(a => {
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        const src = a.getAttribute("href");
-        const title = a.dataset.title || a.querySelector("img")?.alt;
-        openModal(src, title);
-      });
-    });
-  </script>
-</body>
-</html>
+        modalImg.src = img.src;
+       
