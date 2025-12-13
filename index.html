@@ -56,9 +56,9 @@
     }
     .hero{
       padding:38px 0 12px;
-      display:grid; grid-template-columns: 1.2fr .8fr; gap:14px; align-items:stretch;
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:14px;
     }
-    h1{margin:10px 0 10px; font-size: clamp(28px, 4vw, 46px); line-height:1.15}
+    h1{margin:10px 0; font-size: clamp(28px, 4vw, 46px); line-height:1.15}
     p{margin:0 0 12px; color:var(--muted)}
     .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
     .btn{
@@ -84,14 +84,10 @@
       background: rgba(17,19,26,.6);
       cursor:pointer;
     }
-    figure img{width:100%; height:280px; object-fit:cover; display:block; transition: transform .25s ease}
-    figure:hover img{transform: scale(1.03)}
+    figure img{width:100%; height:280px; object-fit:cover; display:block}
     figcaption{padding:10px 12px; color:var(--muted); font-size:14px}
     .two{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
     footer{padding:26px 0 44px; color:var(--muted); font-size:14px}
-    .fine{display:flex; gap:14px; flex-wrap:wrap}
-    .fine a{color:var(--muted); text-decoration:none}
-    .fine a:hover{color:var(--text)}
     .notice{border-left:3px solid rgba(124,92,255,.7); padding-left:12px; color:var(--muted)}
 
     .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; padding:18px;
@@ -99,208 +95,122 @@
     .modal.open{display:flex}
     .modal-content{max-width:980px; width:100%; border-radius:18px; overflow:hidden;
       border:1px solid rgba(36,40,58,.9); background: rgba(17,19,26,.92)}
-    .modal-bar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+    .modal-bar{display:flex; justify-content:space-between; align-items:center;
       padding:12px 14px; border-bottom:1px solid rgba(36,40,58,.9); color:var(--muted)}
     .close{cursor:pointer; padding:8px 10px; border-radius:12px; border:1px solid rgba(36,40,58,.9)}
-    .close:hover{border-color: rgba(124,92,255,.45); color: var(--text)}
-    .modal-img{width:100%; height:min(70vh, 720px); object-fit:contain; display:block; background:#0b0c10}
+    .modal-img{width:100%; height:min(70vh, 720px); object-fit:contain; background:#0b0c10}
 
     @media (max-width: 920px){
       .hero{grid-template-columns:1fr}
       .grid{grid-template-columns: repeat(2, 1fr)}
-      figure img{height:240px}
-      .two{grid-template-columns:1fr}
     }
     @media (max-width: 520px){
       .grid{grid-template-columns: 1fr}
-      figure img{height:260px}
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="nav">
-      <div class="brand">Sophie Kruszynski</div>
-      <nav class="links">
-        <a href="#galerie">Galerie</a>
-        <a href="#ueber">Über mich</a>
-        <a href="#anfrage">Anfrage</a>
-        <a href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://tiktok.com/@sophiekruszynski" target="_blank" rel="noopener">TikTok</a>
-      </nav>
+<header>
+  <div class="nav">
+    <div class="brand">Sophie Kruszynski</div>
+    <nav class="links">
+      <a href="#galerie">Galerie</a>
+      <a href="#ueber">Über mich</a>
+      <a href="#anfrage">Anfrage</a>
+      <a href="https://instagram.com/sophie_kruszynski_art" target="_blank">Instagram</a>
+      <a href="https://tiktok.com/@sophiekruszynski" target="_blank">TikTok</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="hero">
+  <div class="card">
+    <div class="pill">🎨 Portfolio • Verkauf auf Anfrage</div>
+    <h1>Willkommen auf meiner Seite. <span style="color:var(--text)">Ich bin Sophie Kruszynski</span>.</h1>
+    <p>
+      Hier findest du eine Auswahl meiner Arbeiten – Einblicke in Prozesse, Stimmungen und Bildräume.
+      Nimm dir Zeit, schau dich in Ruhe um und sammle erste Eindrücke. Danke, dass du hier bist.
+    </p>
+    <div class="notice">
+      <strong style="color:var(--text)">Kauf & Preise:</strong> Bitte per E-Mail oder Instagram anfragen.
     </div>
-  </header>
-
-  <main class="wrap">
-    <section class="hero">
-      <div class="card">
-        <div class="pill">🎨 Portfolio • Verkauf auf Anfrage</div>
-        <h1>Willkommen auf meiner Seite. <span style="color:var(--text)">Ich bin Sophie Kruszynski</span> — Hier findest du eine Auswahl meiner Werke</h1>
-        <p>– Einblicke in Prozesse, Stimmungen und Bildräume, 
-          die mich in der vergangenen Zeit begleitet haben.
-          Nimm dir Zeit, schau dich in Ruhe um und sammle erste Eindrücke.
-          Danke, dass du hier bist und meine Kunst begleitest.
-        </p>
-        <div class="notice">
-          <strong style="color:var(--text)">Kauf & Preise:</strong> Bitte per E-Mail oder Instagram anfragen (kein Shop/Checkout).
-        </div>
-
-        <div class="cta">
-          <a class="btn primary" href="#galerie">Zur Galerie</a>
-          <a class="btn" href="mailto:sophie.kruszynskki@gmail.com?subject=Kunst%20Anfrage">E-Mail Anfrage</a>
-          <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">DM auf Instagram</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2 style="margin:0 0 10px;">Infos</h2>
-        <p style="margin:0 0 10px;">Ort: (eintragen) • Aufträge: auf Anfrage</p>
-        <div class="pill" style="width:100%; justify-content:space-between;">
-          <span>🖼️ Werke</span><span>Originale/Prints</span>
-        </div>
-        <div class="pill" style="width:100%; justify-content:space-between; margin-top:10px;">
-          <span>✉️ Kontakt</span><span>Mail / Instagram</span>
-        </div>
-        <div class="pill" style="width:100%; justify-content:space-between; margin-top:10px;">
-          <span>🔗 Social</span><span>Insta / TikTok</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="galerie">
-      <div class="sec-title">
-        <h2>Galerie</h2>
-        <span>Klick auf ein Bild für groß</span>
-      </div>
-
-      <div class="grid">
-        <!-- Ersetze die src-Links durch deine echten Bilder -->
-        <figure data-title="Werk 01 – Preis auf Anfrage">
-          <img src="IMG_2863.jpeg" alt="Ohne Titel, 2024">
-          <figcaption> </figcaption>Preis auf Anfrage</figcaption>
-        </figure>
-
-          <figure data-title="Werk 02 – Preis auf Anfrage">
-            <img src="FB09CD55-5D46-46DB-A7F5-2A7D88065B4F.jpeg" alt="Abstrakte Meereslandschaft">
-            <figcaption>Preis auf Anfrage</figcaption> 
-          </figure>
-
-        <figure data-title="Werk 03 – Preis auf Anfrage">
-          <img src="https://images.unsplash.com/photo-1456081445129-830eb8d4bfc6?auto=format&fit=crop&w=1200&q=70" alt="Werk 03" />
-          <figcaption> Preis auf Anfrage</figcaption>
-        </figure>
-
-        <figure data-title="Werk 04 – Preis auf Anfrage">
-          <img src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1200&q=70" alt="Werk 04" />
-          <figcaption> Preis auf Anfrage</figcaption>
-        </figure>
-
-        <figure data-title="Werk 05 – Preis auf Anfrage">
-          <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=70" alt="Werk 05" />
-          <figcaption> Preis auf Anfrage</figcaption>
-        </figure>
-
-        <figure data-title="Werk 06 – Preis auf Anfrage">
-          <img src="https://images.unsplash.com/photo-1526313199968-70e399ffe791?auto=format&fit=crop&w=1200&q=70" alt="Werk 06" />
-          <figcaption> Preis auf Anfrage</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="two">
-      <div class="card" id="ueber">
-        <h2 style="margin-top:0;">Über mich</h2>
-        <p>
-        Hi, ich bin <strong style="color:var(--text)">Sophie Kruszynski</strong>.
-          Vor etwa einem Jahr (2024) habe ich begonnen, mich wieder intensiv der Malerei zu widmen, 
-          und seitdem große Fortschritte gemacht. 
-          Meine Kunst möchte ich hier teilen – mit dem Ziel, im kommenden Jahr erstmals auszustellen. 
-          Eine Voraussetzung dafür sind rund 100 Arbeiten, und dieses Ziel habe ich bereits geschafft. 
-          Für die Ausstellung plane ich, einen Teil der Werke durch neue Werke auf der Leinwand auszutauschen. <strong style="color:var(--text)  </strong>
-          <strong style="color:var(--text)"></strong>.
-        <p>
-        </p>
-        <div class="pill">📷 Instagram: @sophie_kruszynski_art</div>
-        <div class="pill" style="margin-top:10px;">🎥 TikTok: @sophiekruszynski</div>
-      </div>
-
-      <div class="card" id="anfrage">
-        <h2 style="margin-top:0;">Anfrage</h2>
-        <p>Für Preise, Verfügbarkeit, Auftragsarbeiten oder Prints: schreib mir gern.</p>
-        <div class="cta">
-          <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Anfrage%20Kunst&body=Hi%20Sophie%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20das%20Werk%3A%20%5BName%2FLink%5D%0AFormat%3A%20%0ALieferort%3A%20%0A%0ALiebe%20Gr%C3%BC%C3%9Fe">
-            E-Mail öffnen
-          </a>
-          <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram DM</a>
-        </div>
-        <p style="margin-top:14px; font-size:14px;">
-          Hinweis: Diese Seite hat <strong style="color:var(--text)">keinen Online-Shop</strong>. Verkauf nur nach Absprache.
-        </p>
-      </div>
-    </section>
-
-    <footer class="wrap" style="padding-left:0; padding-right:0;">
-      <div class="fine">
-        <a href="#impressum">Impressum</a>
-        <a href="#datenschutz">Datenschutz</a>
-      </div>
-
-      <div id="impressum" style="margin-top:18px;">
-        <strong style="color:var(--text)">Impressum</strong>
-        <p>
-          Sophie Kruszynski • E-Mail: sophie.kruszynskki@gmail.com
-        </p>
-      </div>
-
-      <div id="datenschutz" style="margin-top:18px;">
-        <strong style="color:var(--text)">Datenschutz (Kurz)</strong>
-        <p>
-          Diese Website nutzt kein Tracking und setzt keine Cookies. Beim Anklicken externer Links (Instagram/TikTok)
-          gelten die Datenschutzbestimmungen der jeweiligen Plattformen.
-        </p>
-      </div>
-
-      <p style="margin-top:18px;">© <span id="year"></span> Sophie Kruszynski</p>
-    </footer>
-  </main>
-
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-content">
-      <div class="modal-bar">
-        <div id="modalTitle">Werk</div>
-        <div class="close" id="closeBtn">Schließen ✕</div>
-      </div>
-      <img class="modal-img" id="modalImg" alt="Werk groß" />
+    <div class="cta">
+      <a class="btn primary" href="#galerie">Zur Galerie</a>
+      <a class="btn" href="mailto:sophie.kruszynskki@gmail.com">E-Mail Anfrage</a>
     </div>
   </div>
+</section>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+<section id="galerie">
+  <div class="sec-title">
+    <h2>Galerie</h2>
+    <span>Klick auf ein Bild für groß</span>
+  </div>
 
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    const modalTitle = document.getElementById("modalTitle");
-    const closeBtn = document.getElementById("closeBtn");
+  <div class="grid">
+    <figure data-title="Werk 01">
+      <img src="IMG_2863.jpeg" alt="Ohne Titel, 2024">
+      <figcaption>Preis auf Anfrage</figcaption>
+    </figure>
 
-    document.querySelectorAll("figure").forEach(fig => {
-      fig.addEventListener("click", () => {
-        const img = fig.querySelector("img");
-        modalImg.src = img.src;
-        modalTitle.textContent = fig.dataset.title || img.alt;
-        modal.classList.add("open");
-        modal.setAttribute("aria-hidden", "false");
-      });
-    });
+    <figure data-title="Werk 02">
+      <img src="FB09CD55-5D46-46DB-A7F5-2A7D88065B4F.jpeg" alt="Abstrakte Meereslandschaft">
+      <figcaption>Preis auf Anfrage</figcaption>
+    </figure>
+  </div>
+</section>
 
-    function closeModal(){
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-      modalImg.src = "";
-    }
-    closeBtn.addEventListener("click", closeModal);
-    modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
-    window.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
-  </script>
+<section class="two">
+  <div class="card" id="ueber">
+    <h2>Über mich</h2>
+    <p>
+      Ich bin <strong style="color:var(--text)">Sophie Kruszynski</strong>.
+      Vor etwa einem Jahr habe ich begonnen, mich wieder intensiv der Malerei zu widmen.
+      Meine Arbeiten bewegen sich zwischen Landschaft und Abstraktion und entstehen vor allem in Öl.
+    </p>
+    <p>
+      Mein Ziel ist es, meine Kunst zu teilen und künftig auszustellen.
+      Verkauf und Anfragen erfolgen persönlich.
+    </p>
+  </div>
+
+  <div class="card" id="anfrage">
+    <h2>Anfrage</h2>
+    <p>Für Preise und Verfügbarkeit schreib mir gern.</p>
+    <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com">E-Mail öffnen</a>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Sophie Kruszynski
+</footer>
+</main>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <div class="modal-bar">
+      <div id="modalTitle"></div>
+      <div class="close" id="closeBtn">Schließen ✕</div>
+    </div>
+    <img class="modal-img" id="modalImg" />
+  </div>
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+const modal=document.getElementById("modal");
+const modalImg=document.getElementById("modalImg");
+const modalTitle=document.getElementById("modalTitle");
+document.querySelectorAll("figure").forEach(f=>{
+  f.onclick=()=>{
+    modalImg.src=f.querySelector("img").src;
+    modalTitle.textContent=f.dataset.title;
+    modal.classList.add("open");
+  }
+});
+document.getElementById("closeBtn").onclick=()=>modal.classList.remove("open");
+</script>
 </body>
 </html>
