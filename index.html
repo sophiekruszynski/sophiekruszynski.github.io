@@ -287,7 +287,7 @@
       font-size:13px;
     }
 
-    /* ÜBER MICH – nur 2 Bilder: erstes oben + letztes unten */
+    /* ÜBER MICH – 2 Bilder */
     .aboutPhotos{
       display:grid;
       grid-template-columns: 1fr;
@@ -441,7 +441,7 @@
       <div class="grid" id="magnetGrid"></div>
     </section>
 
-    <!-- ÜBER MICH (✅ erstes Bild oben + letztes Bild unten behalten) -->
+    <!-- ÜBER MICH -->
     <section id="ueber">
       <div class="secTitle">
         <h2>Über mich</h2>
@@ -465,7 +465,7 @@
           <div style="height:14px"></div>
 
           <div class="aboutPhotos">
-            <!-- ✅ LETZTES Bild (unten) -->
+            <div class="shot"><img src="IMG_2453.jpeg" alt=""></div>
             <div class="shot"><img src="IMG_2457.jpeg" alt=""></div>
           </div>
         </div>
@@ -490,6 +490,7 @@
       </div>
     </section>
 
+    <!-- FOOTER (✅ komplett repariert) -->
     <footer>
       <div class="fine">
         <a href="#impressum">Impressum</a>
@@ -498,25 +499,27 @@
 
       <div class="divider"></div>
 
-      </div<div id="impressum">
-  <strong style="color:rgba(220,230,235,.85);">Impressum</strong>
-  <p style="margin-top:8px; color:rgba(210,220,225,.75);">
-    Sophie Kruszynski • E-Mail: sophie.kruszynskki@gmail.com
-  </p>
-</div>
+      <div id="impressum">
+        <strong style="color:rgba(220,230,235,.85);">Impressum</strong>
+        <p style="margin-top:8px; color:rgba(210,220,225,.75);">
+          Sophie Kruszynski • E-Mail: sophie.kruszynskki@gmail.com
+        </p>
+      </div>
 
-  <div id="datenschutz" style="margin-top:16px;">
-  <strong style="color:rgba(220,230,235,.85);">Datenschutz (Kurz)</strong>
-  <p style="margin-top:8px; color:rgba(210,220,225,.75);">
-    Diese Website nutzt kein Tracking und setzt keine Cookies.
-    Beim Anklicken externer Links (Instagram/TikTok) gelten die
-    Datenschutzbestimmungen der jeweiligen Plattformen.
-  </p>
-</div>
+      <div id="datenschutz" style="margin-top:16px;">
+        <strong style="color:rgba(220,230,235,.85);">Datenschutz (Kurz)</strong>
+        <p style="margin-top:8px; color:rgba(210,220,225,.75);">
+          Diese Website nutzt kein Tracking und setzt keine Cookies.
+          Beim Anklicken externer Links (Instagram/TikTok) gelten die
+          Datenschutzbestimmungen der jeweiligen Plattformen.
+        </p>
+      </div>
 
-    <p style="margin-top:18px; color:rgba(190,205,210,.6);">
-  © 2025 Sophie Kruszynski
-</p>
+      <p style="margin-top:18px; color:rgba(190,205,210,.6);">
+        © <span id="year"></span> Sophie Kruszynski
+      </p>
+    </footer>
+  </main>
 
   <!-- MODAL -->
   <div class="modal" id="modal" aria-hidden="true">
