@@ -8,476 +8,492 @@
 
   <style>
     :root{
-      /* Water / Pastel Palette */
-      --bg1:#eaf7ff;
-      --bg2:#f6fbff;
-      --ink:#0b2233;
-      --text:#0b2233;
-      --muted:rgba(11,34,51,.70);
+      /* Water + Pastell */
+      --bg0:#eaf6ff;
+      --bg1:#d9f0ff;
+      --bg2:#cfe9ff;
+      --ink:#0d2330;
+      --ink2:rgba(13,35,48,.72);
+      --card:rgba(255,255,255,.74);
+      --card2:rgba(255,255,255,.58);
+      --line:rgba(13,35,48,.12);
+      --shadow: 0 18px 45px rgba(13,35,48,.12);
 
-      --card:rgba(255,255,255,.78);
-      --glass:rgba(255,255,255,.62);
-      --line:rgba(40,110,160,.18);
+      --accent:#2aa7ff;
+      --accent2:#7dd6ff;
+      --accent3:#b6f0ff;
+      --radius:24px;
 
-      --accent:#2f8cff;
-      --accent2:#7fd6ff;
-      --accent3:#9aa7ff;
-      --accent4:#a7f0d6;
-
-      --radius:22px;
       --max:1100px;
-      --shadow: 0 18px 60px rgba(7, 45, 80, .12);
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
-
     body{
       margin:0;
-      color:var(--text);
-      line-height:1.6;
+      color:var(--ink);
+      background: linear-gradient(180deg, var(--bg0), var(--bg1) 45%, var(--bg2));
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-
-      /* base water gradient */
-      background:
-        radial-gradient(900px 700px at 15% 10%, rgba(47,140,255,.18), transparent 60%),
-        radial-gradient(900px 700px at 85% 15%, rgba(127,214,255,.18), transparent 60%),
-        radial-gradient(900px 700px at 70% 85%, rgba(167,240,214,.18), transparent 60%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
       overflow-x:hidden;
     }
 
-    /* subtle pastel “water pattern” overlay (animated) */
+    /* Subtile “Wasser”-Layer (keine Punkte) */
     body::before{
       content:"";
       position:fixed;
-      inset:-40px;
+      inset:-40vh -30vw;
+      pointer-events:none;
+      z-index:-2;
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(42,167,255,.22), transparent 60%),
+        radial-gradient(900px 600px at 85% 20%, rgba(125,214,255,.22), transparent 62%),
+        radial-gradient(1200px 900px at 50% 70%, rgba(182,240,255,.22), transparent 60%);
+      filter: blur(10px);
+      opacity:.95;
+    }
+    body::after{
+      /* Sanfte “Wellenbewegung” */
+      content:"";
+      position:fixed;
+      inset:-30vh -30vw;
       pointer-events:none;
       z-index:-1;
-      opacity:.45;
       background:
-        radial-gradient(40px 30px at 20% 30%, rgba(47,140,255,.18), transparent 60%),
-        radial-gradient(50px 40px at 55% 40%, rgba(127,214,255,.18), transparent 62%),
-        radial-gradient(55px 45px at 75% 70%, rgba(154,167,255,.16), transparent 62%),
-        radial-gradient(60px 50px at 35% 80%, rgba(167,240,214,.14), transparent 62%),
-        radial-gradient(70px 55px at 85% 25%, rgba(47,140,255,.14), transparent 62%);
-      filter: blur(10px);
-      animation: waterDrift 14s ease-in-out infinite alternate;
-      transform: translateZ(0);
+        radial-gradient(closest-side, rgba(255,255,255,.35), transparent 65%),
+        radial-gradient(closest-side, rgba(255,255,255,.22), transparent 62%),
+        radial-gradient(closest-side, rgba(42,167,255,.12), transparent 60%);
+      background-size: 520px 520px, 680px 680px, 820px 820px;
+      background-position: 20% 30%, 70% 40%, 50% 70%;
+      filter: blur(18px);
+      opacity:.8;
+      animation: drift 14s ease-in-out infinite alternate;
     }
-
-    @keyframes waterDrift{
-      0%{ transform: translate3d(-10px,-8px,0) scale(1); }
-      100%{ transform: translate3d(12px,10px,0) scale(1.03); }
+    @keyframes drift{
+      from{transform: translate3d(-10px,-6px,0) scale(1.02)}
+      to{transform: translate3d(12px,10px,0) scale(1.06)}
     }
 
     a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0)}
 
-    .wrap{max-width:var(--max); margin:0 auto; padding:18px 18px 44px}
-
-    /* HEADER: slim + hides on scroll down */
+    /* Header: schmaler + verschwindet beim Scrollen */
     header{
-      position:sticky; top:0; z-index:50;
-      background: rgba(238, 250, 255, .72);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-      transition: transform .28s ease, box-shadow .28s ease;
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      background: rgba(234,246,255,.76);
+      border-bottom:1px solid var(--line);
+      transition: transform .25s ease, padding .25s ease, background .25s ease;
     }
-    header.header--hidden{
-      transform: translateY(-110%);
-      box-shadow: none;
-    }
-
-    .nav{
+    header.hide{transform: translateY(-110%)}
+    header .inner{
       max-width:var(--max);
       margin:0 auto;
+      padding:14px 24px 12px;
       display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding:10px 18px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
+      flex-direction:column;
       gap:10px;
-      min-width: 180px;
     }
 
-    /* small personal image at the top (tiny) */
+    .brandRow{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      justify-content:flex-start;
+    }
     .avatar{
-      width:34px; height:34px;
+      width:42px; height:42px;
       border-radius:999px;
       overflow:hidden;
-      border:1px solid rgba(40,110,160,.22);
-      box-shadow: 0 8px 18px rgba(10,40,80,.10);
+      border:1px solid rgba(13,35,48,.10);
+      box-shadow: 0 10px 25px rgba(13,35,48,.10);
       flex:0 0 auto;
       background: rgba(255,255,255,.7);
     }
     .avatar img{width:100%; height:100%; object-fit:cover; display:block}
-
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:0;
+    }
     .brand .name{
       font-weight:800;
-      letter-spacing:.26em;
+      letter-spacing:.28em;
+      font-size:14px;
       text-transform:uppercase;
-      font-size:13px;
-      color: rgba(11,34,51,.85);
       white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brand .tag{
+      color:var(--ink2);
+      font-size:13px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .dot{
+      width:6px; height:6px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display:inline-block;
+      box-shadow: 0 6px 18px rgba(42,167,255,.28);
     }
 
-    .links{
+    /* NAV: unter Name, von links nach rechts */
+    nav.links{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    .links a{
-      text-decoration:none;
-      padding:9px 12px;
-      border-radius:999px;
-      border: 1px solid rgba(40,110,160,.18);
-      background: rgba(255,255,255,.70);
-      color: rgba(11,34,51,.78);
-      font-size:14px;
-      box-shadow: 0 10px 24px rgba(10,40,80,.06);
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    .links a:hover{
-      transform: translateY(-1px);
-      border-color: rgba(47,140,255,.30);
-      background: rgba(255,255,255,.82);
-    }
-
-    /* CARDS */
-    .card{
-      background: var(--card);
-      border:1px solid rgba(40,110,160,.18);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .pill{
-      display:inline-flex;
-      gap:8px;
       align-items:center;
+    }
+    .pillLink{
+      text-decoration:none;
       padding:10px 14px;
       border-radius:999px;
-      border: 1px solid rgba(40,110,160,.16);
-      background: rgba(255,255,255,.62);
-      color: rgba(11,34,51,.74);
+      background: rgba(255,255,255,.66);
+      border:1px solid rgba(13,35,48,.12);
+      box-shadow: 0 10px 25px rgba(13,35,48,.08);
+      color:rgba(13,35,48,.85);
+      font-weight:600;
       font-size:14px;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .pillLink:hover{transform: translateY(-1px); border-color: rgba(42,167,255,.35)}
+    .pillLink.primary{
+      background: linear-gradient(135deg, rgba(42,167,255,.95), rgba(125,214,255,.78));
+      border-color: rgba(42,167,255,.35);
+      color:white;
     }
 
-    .btn{
+    /* Sections */
+    section{padding:22px 0}
+    .card{
+      border-radius:var(--radius);
+      background: var(--card);
+      border: 1px solid rgba(13,35,48,.10);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .cardPad{padding:22px}
+    h1,h2,h3{
+      margin:0 0 10px;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      letter-spacing:.01em;
+    }
+    p{margin:0 0 12px; color:var(--ink2); font-size:16px; line-height:1.75}
+
+    .hero{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:14px;
+      align-items:stretch;
+    }
+
+    /* Hero Background Bild + Parallax */
+    .heroVisual{
+      position:relative;
+      border-radius:var(--radius);
+      overflow:hidden;
+      border: 1px solid rgba(13,35,48,.10);
+      box-shadow: var(--shadow);
+      min-height:420px;
+      background: rgba(255,255,255,.5);
+    }
+    .heroVisual img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+      transform: translate3d(0,0,0) scale(1.04);
+      filter: saturate(1.04) contrast(1.02);
+    }
+    .heroVisual::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(234,246,255,.20), rgba(234,246,255,.72));
+      pointer-events:none;
+    }
+
+    .heroText .kicker{
       display:inline-flex;
       align-items:center;
-      justify-content:center;
-      padding:12px 14px;
-      border-radius: 16px;
-      border:1px solid rgba(40,110,160,.18);
-      background: rgba(255,255,255,.78);
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(13,35,48,.10);
+      color: rgba(13,35,48,.78);
+      font-weight:700;
+      margin-bottom:12px;
+    }
+    .heroText h1{
+      font-size: clamp(30px, 4.2vw, 52px);
+      line-height:1.06;
+    }
+
+    .note{
+      margin-top:12px;
+      border-left:4px solid rgba(42,167,255,.55);
+      padding:10px 12px;
+      background: rgba(255,255,255,.55);
+      border-radius:16px;
+      color: rgba(13,35,48,.76);
+    }
+
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
       text-decoration:none;
-      color: rgba(11,34,51,.88);
-      box-shadow: 0 16px 30px rgba(10,40,80,.07);
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(13,35,48,.12);
+      background: rgba(255,255,255,.65);
+      font-weight:700;
+      color: rgba(13,35,48,.86);
+      box-shadow: 0 12px 26px rgba(13,35,48,.10);
       transition: transform .15s ease;
     }
     .btn:hover{transform: translateY(-1px)}
     .btn.primary{
-      border-color: rgba(47,140,255,.40);
-      background: linear-gradient(135deg, rgba(47,140,255,.95), rgba(127,214,255,.72));
-      color: white;
+      background: linear-gradient(135deg, rgba(42,167,255,.95), rgba(125,214,255,.78));
+      color:#fff;
+      border-color: rgba(42,167,255,.35);
     }
 
-    section{padding:18px 0}
-
-    /* HERO (professional, readable, no clipping) */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
+    /* Infos card on right */
+    .infoStack{
+      display:flex;
+      flex-direction:column;
       gap:14px;
-      align-items:start;
-      padding-top:10px;
     }
-
-    .hero-visual{
-      position:relative;
+    .miniCard{
+      border-radius:var(--radius);
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(13,35,48,.10);
+      box-shadow: 0 12px 32px rgba(13,35,48,.10);
       overflow:hidden;
-      border-radius: calc(var(--radius) + 6px);
-      min-height: 560px;
-      border:1px solid rgba(40,110,160,.20);
-      box-shadow: var(--shadow);
-      transform: translateZ(0);
-      background: rgba(255,255,255,.40);
     }
-
-    /* background artwork */
-    .hero-visual .bg{
-      position:absolute;
-      inset:-30px;
-      background: var(--hero-img) center/cover no-repeat;
-      transform: translate3d(0,0,0) scale(1.05);
-      will-change: transform;
-      filter: saturate(1.03) contrast(1.02);
+    .miniCard .top{
+      padding:14px 16px 8px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
     }
-
-    /* gradient overlay for perfect readability */
-    .hero-visual .fade{
+    .miniCard .top strong{font-family: ui-serif, Georgia, "Times New Roman", Times, serif; font-size:18px}
+    .miniCard .top span{color:var(--ink2); font-weight:700; font-size:13px}
+    .miniCard .img{
+      height:240px;
+      position:relative;
+    }
+    .miniCard .img img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.03);
+    }
+    .miniCard .img::after{
+      content:"";
       position:absolute;
       inset:0;
-      background:
-        radial-gradient(600px 400px at 20% 15%, rgba(255,255,255,.35), transparent 62%),
-        linear-gradient(180deg, rgba(245,252,255,.40), rgba(245,252,255,.86) 60%, rgba(245,252,255,.95));
+      background: linear-gradient(180deg, rgba(234,246,255,.05), rgba(234,246,255,.55));
+      pointer-events:none;
     }
 
-    /* glass panel */
-    .hero-panel{
-      position:relative;
-      z-index:2;
-      margin:18px;
-      padding:18px 18px 16px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(40,110,160,.18);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 18px 40px rgba(10,40,80,.10);
-    }
-
-    .hero h1{
-      margin:12px 0 10px;
-      font-size: clamp(28px, 5vw, 46px);
-      line-height:1.08;
-      letter-spacing:-0.02em;
-      color: rgba(11,34,51,.94);
-    }
-
-    .hero p{
-      margin:0 0 12px;
-      color: rgba(11,34,51,.72);
-      font-size:16px;
-    }
-
-    .cta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    .notice{
-      border-left: 3px solid rgba(47,140,255,.55);
-      padding-left:12px;
-      color: rgba(11,34,51,.72);
-      background: rgba(234,247,255,.55);
-      border-radius: 12px;
-      padding:10px 12px;
-      border: 1px solid rgba(47,140,255,.14);
-      margin-top:12px;
-    }
-
-    .info-card{padding:18px}
-    .info-card h2{margin:0 0 10px; font-size:18px}
-    .info-card p{margin:0 0 10px; color:var(--muted)}
-
-    /* SECTION TITLES */
-    .sec-title{
+    /* Section Titles */
+    .secTitle{
       display:flex;
       align-items:baseline;
       justify-content:space-between;
-      gap:12px;
+      gap:10px;
       margin-bottom:10px;
     }
-    .sec-title h2{
-      margin:0;
-      font-size:22px;
-      letter-spacing:-0.01em;
-      color: rgba(11,34,51,.92);
-    }
-    .sec-title span{
-      color: rgba(11,34,51,.62);
-      font-size:14px;
-    }
+    .secTitle h2{font-size:26px}
+    .secTitle span{color:var(--ink2); font-weight:700; font-size:13px}
 
-    /* GALLERY */
+    /* Gallery Cards */
     .grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:12px;
+      gap:14px;
     }
-
     figure.work{
       margin:0;
-      border-radius: 18px;
+      border-radius:22px;
       overflow:hidden;
-      border: 1px solid rgba(40,110,160,.18);
       background: rgba(255,255,255,.72);
+      border:1px solid rgba(13,35,48,.10);
+      box-shadow: 0 16px 40px rgba(13,35,48,.10);
       cursor:pointer;
-      box-shadow: 0 16px 40px rgba(10,40,80,.08);
+      position:relative;
     }
-
     figure.work img{
       width:100%;
       height:280px;
       object-fit:cover;
       display:block;
       transition: transform .25s ease;
-      background: rgba(230,245,255,.8);
     }
     figure.work:hover img{transform: scale(1.03)}
-
-    .cap{
+    .workBar{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      padding:12px 12px;
-      color: rgba(11,34,51,.78);
-      font-size:14px;
+      padding:12px 14px;
     }
-    .cap .tag{
+    .workBar .left{
+      font-weight:800;
+      color: rgba(13,35,48,.86);
+    }
+    .badge{
       padding:8px 12px;
-      border-radius: 999px;
-      background: rgba(234,247,255,.85);
-      border: 1px solid rgba(47,140,255,.18);
-      color: rgba(11,34,51,.72);
+      border-radius:999px;
+      background: rgba(42,167,255,.10);
+      border:1px solid rgba(42,167,255,.22);
+      color: rgba(13,35,48,.78);
+      font-weight:800;
       white-space:nowrap;
     }
 
-    /* ABOUT */
-    .two{
+    /* About / Personal photos mosaic */
+    .about{
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
       align-items:start;
     }
-    .about-card{padding:18px}
-    .about-card h2{margin:0 0 10px; font-size:22px}
-    .about-card p{margin:0 0 12px; color: rgba(11,34,51,.70)}
-
-    /* personal photo mosaic (no captions) */
     .mosaic{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:12px;
-      padding:18px;
     }
     .shot{
-      border-radius: 18px;
+      border-radius:22px;
       overflow:hidden;
-      border: 1px solid rgba(40,110,160,.18);
-      box-shadow: 0 16px 40px rgba(10,40,80,.08);
-      background: rgba(255,255,255,.72);
-      min-height: 210px;
+      border:1px solid rgba(13,35,48,.10);
+      background: rgba(255,255,255,.70);
+      box-shadow: 0 16px 40px rgba(13,35,48,.10);
       position:relative;
+      min-height:200px;
     }
-    .shot.tall{grid-row: span 2; min-height: 444px;}
-    .shot img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transform: translateZ(0);
-    }
+    .shot img{width:100%; height:100%; object-fit:cover; display:block}
     .shot::after{
       content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(255,255,255,.00), rgba(255,255,255,.16));
+      position:absolute;
+      inset:0;
+      background: radial-gradient(500px 300px at 30% 20%, rgba(255,255,255,.18), transparent 60%);
       pointer-events:none;
     }
+    .shot.tall{grid-row: span 2; min-height:420px}
 
-    /* CONTACT */
-    .contact-card{padding:18px}
-
-    /* FOOTER */
-    footer{padding:22px 0 40px; color: rgba(11,34,51,.62); font-size:14px}
+    /* Footer */
+    footer{
+      padding:30px 0 46px;
+      color:var(--ink2);
+      font-size:14px;
+    }
     .fine{display:flex; gap:14px; flex-wrap:wrap}
-    .fine a{color: rgba(11,34,51,.65); text-decoration:none}
-    .fine a:hover{color: rgba(11,34,51,.9)}
+    .fine a{color:var(--ink2); text-decoration:none; font-weight:800}
+    .fine a:hover{color:rgba(13,35,48,.92)}
+    .divider{height:1px; background: rgba(13,35,48,.10); margin:18px 0}
 
-    /* MODAL */
+    /* Modal */
     .modal{
-      position:fixed; inset:0;
+      position:fixed;
+      inset:0;
       display:none;
       align-items:center;
       justify-content:center;
       padding:18px;
-      background: rgba(5, 20, 35, .72);
-      z-index:100;
+      background: rgba(5,14,20,.72);
+      z-index:80;
     }
     .modal.open{display:flex}
-    .modal-content{
-      max-width:980px; width:100%;
-      border-radius: 18px;
+    .modalContent{
+      width:min(980px, 100%);
+      border-radius:24px;
       overflow:hidden;
-      border:1px solid rgba(180,220,255,.25);
-      background: rgba(255,255,255,.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 26px 80px rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 30px 80px rgba(0,0,0,.35);
     }
-    .modal-bar{
+    .modalBar{
       display:flex;
       justify-content:space-between;
       align-items:center;
       gap:10px;
       padding:12px 14px;
-      border-bottom:1px solid rgba(40,110,160,.18);
-      color: rgba(11,34,51,.75);
-      background: rgba(255,255,255,.70);
+      color: rgba(255,255,255,.86);
+      border-bottom:1px solid rgba(255,255,255,.14);
     }
     .close{
       cursor:pointer;
-      padding:9px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(40,110,160,.18);
-      background: rgba(255,255,255,.75);
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      color: rgba(255,255,255,.88);
+      font-weight:800;
     }
-    .close:hover{border-color: rgba(47,140,255,.32)}
-    .modal-img{
+    .close:hover{background: rgba(255,255,255,.16)}
+    .modalImg{
       width:100%;
-      height:min(72vh, 760px);
+      height:min(76vh, 780px);
       object-fit:contain;
       display:block;
-      background: rgba(230,245,255,.85);
+      background: rgba(5,14,20,.22);
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 920px){
+    /* Responsive */
+    @media (max-width: 980px){
       .hero{grid-template-columns:1fr}
       .grid{grid-template-columns: repeat(2, 1fr)}
-      figure.work img{height:240px}
-      .two{grid-template-columns:1fr}
-      .hero-visual{min-height: 580px}
+      .miniCard .img{height:220px}
+      .about{grid-template-columns:1fr}
     }
     @media (max-width: 520px){
-      .grid{grid-template-columns: 1fr}
+      .wrap{padding:18px}
+      header .inner{padding:12px 18px 10px}
+      .grid{grid-template-columns:1fr}
       figure.work img{height:260px}
-      .brand .name{letter-spacing:.22em}
     }
   </style>
 </head>
 
 <body>
-  <header id="header">
-    <div class="nav">
-      <div class="brand">
-        <!-- ganz kleines Foto oben -->
-        <div class="avatar">
-          <!-- Datei muss im Repo liegen (Root) -->
-          <img src="IMG_8327.jpeg" alt="Sophie" />
+  <header id="siteHeader">
+    <div class="inner">
+      <div class="brandRow">
+        <!-- kleines Bild oben (Avatar) -->
+        <div class="avatar" aria-hidden="true">
+          <img src="IMG_8327.jpeg" alt="">
         </div>
-        <div class="name">SOPHIE KRUSZYNSKI</div>
+
+        <div class="brand">
+          <div class="name">SOPHIE KRUSZYNSKI</div>
+          <div class="tag">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Kunst in Pastell & Wasserstimmung</span>
+            <span style="opacity:.6;">•</span>
+            <span>Verkauf auf Anfrage</span>
+          </div>
+        </div>
       </div>
 
-      <nav class="links">
-        <a href="#galerie">Galerie</a>
-        <a href="#ueber">Über mich</a>
-        <a href="#anfrage">Anfrage</a>
-        <a href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://tiktok.com/@sophiekruszynski" target="_blank" rel="noopener">TikTok</a>
+      <!-- Nav unter dem Namen (links nach rechts) -->
+      <nav class="links" aria-label="Navigation">
+        <a class="pillLink primary" href="#galerie">Galerie</a>
+        <a class="pillLink" href="#ueber">Über mich</a>
+        <a class="pillLink" href="#anfrage">Anfrage</a>
+        <a class="pillLink" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
+        <a class="pillLink" href="https://tiktok.com/@sophiekruszynski" target="_blank" rel="noopener">TikTok</a>
       </nav>
     </div>
   </header>
@@ -485,203 +501,174 @@
   <main class="wrap">
     <!-- HERO -->
     <section class="hero">
-      <!-- Hintergrund: bitte ein WERK-Bild (kein Personenfoto) -->
-      <div class="hero-visual" style="--hero-img:url('FB09CD55-5D46-46DB-A7F5-2A7D88065B4F.jpeg');">
-        <div class="bg" data-parallax></div>
-        <div class="fade"></div>
+      <div class="card heroText">
+        <div class="cardPad">
+          <div class="kicker">🌊 Portfolio • Originale & Prints (auf Anfrage)</div>
 
-        <div class="hero-panel">
-          <div class="pill">🌊 Kunst in Pastell & Wasserstimmung • Verkauf auf Anfrage</div>
-
-          <h1>Kunst, inspiriert von Natur, Licht &amp; Wasser.</h1>
+          <h1>Kunst, inspiriert von<br> Natur, Licht & Wasser.</h1>
 
           <p>
             Hier findest du eine Auswahl meiner Werke und ein paar Einblicke in die Stimmung dahinter.
             Nimm dir Zeit – schau dich in Ruhe um. Danke, dass du hier bist.
           </p>
 
+          <div class="note">
+            <strong style="color:rgba(13,35,48,.92)">Kauf & Preise:</strong>
+            Bitte per E-Mail oder Instagram anfragen (kein Online-Shop/Checkout).
+          </div>
+
           <div class="cta">
             <a class="btn primary" href="#galerie">Zur Galerie</a>
             <a class="btn" href="#ueber">Über mich</a>
             <a class="btn" href="#anfrage">Anfrage</a>
           </div>
-
-          <div class="notice">
-            <strong style="color:rgba(11,34,51,.92)">Kauf &amp; Preise:</strong>
-            Bitte per E-Mail oder Instagram anfragen (kein Shop/Checkout).
-          </div>
         </div>
       </div>
 
-      <div class="card info-card">
-        <h2>Infos</h2>
-        <p>Ort: (eintragen) • Aufträge: auf Anfrage</p>
-
-        <div class="pill" style="width:100%; justify-content:space-between;">
-          <span>🖼️ Werke</span><span>Originale / Prints</span>
+      <!-- Persönliches Bild oben größer & stimmig -->
+      <div class="infoStack">
+        <div class="heroVisual" aria-label="Stimmung">
+          <!-- Nimm hier dein Lieblingsfoto für oben (größer) -->
+          <img id="parallaxHero" src="57ea6509-bd58-48fe-81c8-665f5b55f79a.jpeg" alt="Sophie – Portrait">
         </div>
 
-        <div class="pill" style="width:100%; justify-content:space-between; margin-top:10px;">
-          <span>✉️ Kontakt</span><span>Mail / Instagram</span>
-        </div>
-
-        <div class="pill" style="width:100%; justify-content:space-between; margin-top:10px;">
-          <span>🔗 Social</span><span>Insta / TikTok</span>
-        </div>
-
-        <div class="cta" style="margin-top:14px;">
-          <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Kunst%20Anfrage">E-Mail Anfrage</a>
-          <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">DM auf Instagram</a>
+        <div class="miniCard">
+          <div class="top">
+            <strong>Infos</strong>
+            <span>Kontakt • Prints • Originale</span>
+          </div>
+          <div class="img">
+            <!-- Naturbild für gutes Gefühl -->
+            <img src="IMG_2257.jpeg" alt="Natur & Ruhe">
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- GALERIE -->
+    <!-- GALERIE (NUR WERKE, KEINE PERSONENFOTOS) -->
     <section id="galerie">
-      <div class="sec-title">
+      <div class="secTitle">
         <h2>Galerie</h2>
         <span>Klick auf ein Bild für groß</span>
       </div>
 
       <div class="grid">
-        <!-- WICHTIG: hier nur WERKE-Bilder (keine Personenfotos) -->
         <figure class="work" data-title="Werk 01">
-          <img src="IMG_2863.jpeg" alt="Werk 01" />
-          <div class="cap">
-            <span>Werk 01</span>
-            <span class="tag">Preis auf Anfrage</span>
+          <img src="IMG_2863.jpeg" alt="Werk 01">
+          <div class="workBar">
+            <div class="left">Werk 01</div>
+            <div class="badge">Preis auf Anfrage</div>
           </div>
         </figure>
 
         <figure class="work" data-title="Werk 02">
-          <img src="FB09CD55-5D46-46DB-A7F5-2A7D88065B4F.jpeg" alt="Werk 02" />
-          <div class="cap">
-            <span>Werk 02</span>
-            <span class="tag">Preis auf Anfrage</span>
+          <img src="FB09CD55-5D46-46DB-A7F5-2A7D88065B4F.jpeg" alt="Werk 02">
+          <div class="workBar">
+            <div class="left">Werk 02</div>
+            <div class="badge">Preis auf Anfrage</div>
           </div>
         </figure>
 
-        <!-- Platzhalter: ersetze nach und nach durch deine Werke -->
+        <!-- Platzhalter: kopiere so viele Werke rein wie du willst -->
         <figure class="work" data-title="Werk 03">
-          <img src="https://images.unsplash.com/photo-1456081445129-830eb8d4bfc6?auto=format&fit=crop&w=1400&q=75" alt="Werk 03" />
-          <div class="cap">
-            <span>Werk 03</span>
-            <span class="tag">Preis auf Anfrage</span>
-          </div>
-        </figure>
-
-        <figure class="work" data-title="Werk 04">
-          <img src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1400&q=75" alt="Werk 04" />
-          <div class="cap">
-            <span>Werk 04</span>
-            <span class="tag">Preis auf Anfrage</span>
-          </div>
-        </figure>
-
-        <figure class="work" data-title="Werk 05">
-          <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1400&q=75" alt="Werk 05" />
-          <div class="cap">
-            <span>Werk 05</span>
-            <span class="tag">Preis auf Anfrage</span>
-          </div>
-        </figure>
-
-        <figure class="work" data-title="Werk 06">
-          <img src="https://images.unsplash.com/photo-1526313199968-70e399ffe791?auto=format&fit=crop&w=1400&q=75" alt="Werk 06" />
-          <div class="cap">
-            <span>Werk 06</span>
-            <span class="tag">Preis auf Anfrage</span>
+          <img src="IMG_2863.jpeg" alt="Werk 03">
+          <div class="workBar">
+            <div class="left">Werk 03</div>
+            <div class="badge">Preis auf Anfrage</div>
           </div>
         </figure>
       </div>
     </section>
 
-    <!-- ÜBER MICH + PERSONENFOTOS (ohne Beschriftung) -->
-    <section class="two" id="ueber">
-      <div class="card about-card">
-        <div class="pill">💧 Natur • Licht • Wasser • Öl</div>
-        <h2 style="margin-top:12px;">Über mich</h2>
-
-        <p>
-          Hi, ich bin <strong>Sophie Kruszynski</strong>. Ich male Landschaften, abstrakte Bildräume und illustrative Elemente –
-          am liebsten mit Öl. Inspiration finde ich in Natur, Licht, Wasser und Momenten, die nicht laut sind, aber bleiben.
-        </p>
-
-        <p>
-          Vor etwa einem Jahr habe ich wieder intensiv angefangen zu malen. Seitdem ist eine große Serie entstanden –
-          mit dem Ziel, im kommenden Jahr auszustellen.
-        </p>
-
-        <div class="cta">
-          <a class="btn primary" href="#anfrage">Kontakt / Anfrage</a>
-          <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
-          <a class="btn" href="https://tiktok.com/@sophiekruszynski" target="_blank" rel="noopener">TikTok</a>
-        </div>
+    <!-- ÜBER MICH (PERSONENFOTOS SCHÖN VERTEILT, OHNE BESCHRIFTUNG) -->
+    <section id="ueber">
+      <div class="secTitle">
+        <h2>Über mich</h2>
+        <span>Ein paar Eindrücke</span>
       </div>
 
-      <div class="card mosaic">
-        <!-- Deine Personen-/Moodbilder (ohne Caption) -->
-        <div class="shot tall">
-          <img src="IMG_2457.jpeg" alt="Sophie Foto 1" />
+      <div class="about">
+        <div class="card">
+          <div class="cardPad">
+            <h3 style="font-size:26px; margin-bottom:10px;">Hi, ich bin Sophie.</h3>
+            <p>
+              Ich male in Pastell- und Wasserstimmungen – inspiriert von Natur, Lichtmomenten und
+              dem Gefühl von Ruhe. Meine Arbeiten entstehen aus Beobachtungen, Erinnerungen und
+              kleinen Details, die sonst leicht übersehen werden.
+            </p>
+            <p>
+              Wenn dich ein Werk anspricht oder du Fragen zu Formaten, Prints oder Verfügbarkeit hast,
+              schreib mir gerne – ich freue mich auf Austausch.
+            </p>
+
+            <div class="cta">
+              <a class="btn primary" href="#anfrage">Kontakt</a>
+              <a class="btn" href="mailto:sophie.kruszynskki@gmail.com?subject=Kunst%20Anfrage">E-Mail</a>
+              <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
         </div>
-        <div class="shot">
-          <img src="IMG_1691.jpeg" alt="Sophie Foto 2" />
-        </div>
-        <div class="shot">
-          <img src="57ea6509-bd58-48fe-81c8-665f5b55f79a.jpeg" alt="Sophie Foto 3" />
-        </div>
-        <div class="shot">
-          <img src="IMG_1861.jpeg" alt="Sophie Foto 4" />
-        </div>
-        <div class="shot">
-          <!-- Naturbild für gutes Gefühl -->
-          <img src="IMG_2257.jpeg" alt="Naturmoment" />
+
+        <div class="mosaic" aria-label="Fotos von Sophie">
+          <div class="shot tall">
+            <img src="IMG_2453.jpeg" alt="">
+          </div>
+          <div class="shot">
+            <img src="IMG_1691.jpeg" alt="">
+          </div>
+          <div class="shot">
+            <img src="IMG_1861.jpeg" alt="">
+          </div>
+          <div class="shot">
+            <img src="IMG_2457.jpeg" alt="">
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ANFRAGE -->
     <section id="anfrage">
-      <div class="card contact-card">
-        <div class="sec-title" style="margin-bottom:0;">
-          <h2>Anfrage</h2>
-          <span>Preise • Verfügbarkeit • Aufträge • Prints</span>
-        </div>
+      <div class="secTitle">
+        <h2>Anfrage</h2>
+        <span>Preise • Verfügbarkeit • Prints</span>
+      </div>
 
-        <p style="margin-top:10px; color: rgba(11,34,51,.70);">
-          Schreib mir gern eine Nachricht – am liebsten mit dem Link/Screen zum Werk, Format und Lieferort (falls relevant).
-        </p>
+      <div class="card">
+        <div class="cardPad">
+          <p>
+            Für Preise, Verfügbarkeit, Auftragsarbeiten oder Prints:
+            schreib mir gern per E-Mail oder Instagram.
+          </p>
 
-        <div class="cta">
-          <a class="btn primary"
-             href="mailto:sophie.kruszynskki@gmail.com?subject=Anfrage%20Kunst&body=Hi%20Sophie%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20das%20Werk%3A%20%5BName%2FLink%5D%0AFormat%3A%20%0ALieferort%3A%20%0A%0ALiebe%20Gr%C3%BC%C3%9Fe">
-            E-Mail öffnen
-          </a>
-          <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram DM</a>
-        </div>
+          <div class="cta">
+            <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Anfrage%20Kunst&body=Hi%20Sophie%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20das%20Werk%3A%20%5BName%2FLink%5D%0AFormat%3A%20%0ALieferort%3A%20%0A%0ALiebe%20Gr%C3%BC%C3%9Fe">E-Mail öffnen</a>
+            <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram DM</a>
+          </div>
 
-        <div class="notice" style="margin-top:14px;">
-          Hinweis: Diese Seite hat <strong style="color:rgba(11,34,51,.92)">keinen Online-Shop</strong>. Verkauf nur nach Absprache.
+          <div class="note" style="margin-top:14px;">
+            Hinweis: Diese Seite hat <strong style="color:rgba(13,35,48,.92)">keinen Online-Shop</strong>.
+            Verkauf nur nach Absprache.
+          </div>
         </div>
       </div>
     </section>
 
-    <footer class="wrap" style="padding-left:0; padding-right:0;">
+    <footer>
       <div class="fine">
         <a href="#impressum">Impressum</a>
         <a href="#datenschutz">Datenschutz</a>
       </div>
 
-      <div id="impressum" style="margin-top:18px;">
-        <strong style="color:rgba(11,34,51,.92)">Impressum</strong>
-        <p style="margin:8px 0 0; color:rgba(11,34,51,.65);">
-          Sophie Kruszynski • E-Mail: sophie.kruszynskki@gmail.com
-        </p>
+      <div class="divider"></div>
+
+      <div id="impressum">
+        <strong style="color:rgba(13,35,48,.92)">Impressum</strong>
+        <p style="margin-top:8px;">Sophie Kruszynski • E-Mail: sophie.kruszynskki@gmail.com</p>
       </div>
 
-      <div id="datenschutz" style="margin-top:18px;">
-        <strong style="color:rgba(11,34,51,.92)">Datenschutz (Kurz)</strong>
-        <p style="margin:8px 0 0; color:rgba(11,34,51,.65);">
+      <div id="datenschutz" style="margin-top:16px;">
+        <strong style="color:rgba(13,35,48,.92)">Datenschutz (Kurz)</strong>
+        <p style="margin-top:8px;">
           Diese Website nutzt kein Tracking und setzt keine Cookies. Beim Anklicken externer Links (Instagram/TikTok)
           gelten die Datenschutzbestimmungen der jeweiligen Plattformen.
         </p>
@@ -691,22 +678,22 @@
     </footer>
   </main>
 
-  <!-- MODAL -->
+  <!-- MODAL für Werke -->
   <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-content">
-      <div class="modal-bar">
+    <div class="modalContent">
+      <div class="modalBar">
         <div id="modalTitle">Werk</div>
-        <div class="close" id="closeBtn">Schließen ✕</div>
+        <button class="close" id="closeBtn" type="button">Schließen ✕</button>
       </div>
-      <img class="modal-img" id="modalImg" alt="Werk groß" />
+      <img class="modalImg" id="modalImg" alt="Werk groß" />
     </div>
   </div>
 
   <script>
-    // Year
+    // Jahr
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Modal for artworks
+    // Modal (nur Werke)
     const modal = document.getElementById("modal");
     const modalImg = document.getElementById("modalImg");
     const modalTitle = document.getElementById("modalTitle");
@@ -731,35 +718,28 @@
     modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
     window.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
 
-    // Header hides on scroll down (slim + “kurz nachziehen”)
-    const header = document.getElementById("header");
+    // Header: kurz “nachziehen” und dann verschwinden (Scroll-Down)
+    const header = document.getElementById("siteHeader");
     let lastY = window.scrollY;
-    let ticking = false;
 
-    function onScroll(){
-      const y = window.scrollY;
-
-      // hide only after a little scroll, show when going up
-      if (y > lastY && y > 90) header.classList.add("header--hidden");
-      else header.classList.remove("header--hidden");
-
-      lastY = y;
-      ticking = false;
-    }
     window.addEventListener("scroll", () => {
-      if(!ticking){
-        window.requestAnimationFrame(onScroll);
-        ticking = true;
+      const y = window.scrollY;
+      const goingDown = y > lastY;
+
+      if (y > 140 && goingDown){
+        header.classList.add("hide");
+      } else {
+        header.classList.remove("hide");
       }
+      lastY = y;
     }, {passive:true});
 
-    // Parallax effect on hero background (“water movement”)
-    const parallaxBg = document.querySelector("[data-parallax]");
+    // Parallax Effekt für das große Bild oben
+    const heroImg = document.getElementById("parallaxHero");
     window.addEventListener("scroll", () => {
-      if(!parallaxBg) return;
       const y = window.scrollY;
-      const offset = Math.min(60, y * 0.08);     // subtle
-      parallaxBg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.05)`;
+      const offset = Math.min(26, y * 0.06);
+      heroImg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.06)`;
     }, {passive:true});
   </script>
 </body>
