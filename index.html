@@ -8,27 +8,27 @@
 
   <style>
     :root{
-      /* Water + Pastell */
       --bg0:#eaf6ff;
       --bg1:#d9f0ff;
       --bg2:#cfe9ff;
+
       --ink:#0d2330;
       --ink2:rgba(13,35,48,.72);
+
       --card:rgba(255,255,255,.74);
-      --card2:rgba(255,255,255,.58);
       --line:rgba(13,35,48,.12);
       --shadow: 0 18px 45px rgba(13,35,48,.12);
 
       --accent:#2aa7ff;
       --accent2:#7dd6ff;
-      --accent3:#b6f0ff;
-      --radius:24px;
 
+      --radius:24px;
       --max:1100px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       color:var(--ink);
@@ -37,7 +37,7 @@
       overflow-x:hidden;
     }
 
-    /* Subtile “Wasser”-Layer (keine Punkte) */
+    /* Subtile Wasser-Layer (ohne Punkte) */
     body::before{
       content:"";
       position:fixed;
@@ -52,7 +52,6 @@
       opacity:.95;
     }
     body::after{
-      /* Sanfte “Wellenbewegung” */
       content:"";
       position:fixed;
       inset:-30vh -30vw;
@@ -75,9 +74,8 @@
 
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:24px}
-    .sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0)}
 
-    /* Header: schmaler + verschwindet beim Scrollen */
+    /* Header: schmal + verschwindet beim Scrollen */
     header{
       position:sticky;
       top:0;
@@ -85,7 +83,7 @@
       backdrop-filter: blur(12px);
       background: rgba(234,246,255,.76);
       border-bottom:1px solid var(--line);
-      transition: transform .25s ease, padding .25s ease, background .25s ease;
+      transition: transform .28s ease, background .25s ease;
     }
     header.hide{transform: translateY(-110%)}
     header .inner{
@@ -101,7 +99,6 @@
       display:flex;
       align-items:center;
       gap:12px;
-      justify-content:flex-start;
     }
     .avatar{
       width:42px; height:42px;
@@ -143,7 +140,7 @@
       box-shadow: 0 6px 18px rgba(42,167,255,.28);
     }
 
-    /* NAV: unter Name, von links nach rechts */
+    /* NAV unter Name, links nach rechts */
     nav.links{
       display:flex;
       gap:10px;
@@ -158,7 +155,7 @@
       border:1px solid rgba(13,35,48,.12);
       box-shadow: 0 10px 25px rgba(13,35,48,.08);
       color:rgba(13,35,48,.85);
-      font-weight:600;
+      font-weight:700;
       font-size:14px;
       transition: transform .15s ease, border-color .15s ease, background .15s ease;
     }
@@ -169,11 +166,10 @@
       color:white;
     }
 
-    /* Sections */
     section{padding:22px 0}
     .card{
       border-radius:var(--radius);
-      background: var(--card);
+      background: rgba(255,255,255,.74);
       border: 1px solid rgba(13,35,48,.10);
       box-shadow: var(--shadow);
       overflow:hidden;
@@ -193,8 +189,6 @@
       gap:14px;
       align-items:stretch;
     }
-
-    /* Hero Background Bild + Parallax */
     .heroVisual{
       position:relative;
       border-radius:var(--radius);
@@ -208,15 +202,15 @@
       width:100%; height:100%;
       object-fit:cover;
       display:block;
-      transform: translate3d(0,0,0) scale(1.04);
-      filter: saturate(1.04) contrast(1.02);
+      transform: translate3d(0,0,0) scale(1.06);
+      filter: saturate(1.05) contrast(1.02);
+      will-change: transform;
     }
     .heroVisual::after{
       content:"";
       position:absolute;
       inset:0;
-      background:
-        linear-gradient(180deg, rgba(234,246,255,.20), rgba(234,246,255,.72));
+      background: linear-gradient(180deg, rgba(234,246,255,.10), rgba(234,246,255,.78));
       pointer-events:none;
     }
 
@@ -229,23 +223,21 @@
       background: rgba(255,255,255,.70);
       border:1px solid rgba(13,35,48,.10);
       color: rgba(13,35,48,.78);
-      font-weight:700;
+      font-weight:800;
       margin-bottom:12px;
     }
     .heroText h1{
       font-size: clamp(30px, 4.2vw, 52px);
       line-height:1.06;
     }
-
     .note{
       margin-top:12px;
-      border-left:4px solid rgba(42,167,255,.55);
+      border-left:4px solid rgba(42,167,255,.65);
       padding:10px 12px;
-      background: rgba(255,255,255,.55);
+      background: rgba(255,255,255,.62);
       border-radius:16px;
-      color: rgba(13,35,48,.76);
+      color: rgba(13,35,48,.78);
     }
-
     .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
     .btn{
       text-decoration:none;
@@ -253,7 +245,7 @@
       border-radius:16px;
       border:1px solid rgba(13,35,48,.12);
       background: rgba(255,255,255,.65);
-      font-weight:700;
+      font-weight:800;
       color: rgba(13,35,48,.86);
       box-shadow: 0 12px 26px rgba(13,35,48,.10);
       transition: transform .15s ease;
@@ -265,12 +257,7 @@
       border-color: rgba(42,167,255,.35);
     }
 
-    /* Infos card on right */
-    .infoStack{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
+    .infoStack{display:flex; flex-direction:column; gap:14px}
     .miniCard{
       border-radius:var(--radius);
       background: rgba(255,255,255,.70);
@@ -286,26 +273,16 @@
       gap:10px;
     }
     .miniCard .top strong{font-family: ui-serif, Georgia, "Times New Roman", Times, serif; font-size:18px}
-    .miniCard .top span{color:var(--ink2); font-weight:700; font-size:13px}
-    .miniCard .img{
-      height:240px;
-      position:relative;
-    }
-    .miniCard .img img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
-      transform: scale(1.03);
-    }
+    .miniCard .top span{color:var(--ink2); font-weight:800; font-size:13px}
+    .miniCard .img{height:240px; position:relative}
+    .miniCard .img img{width:100%; height:100%; object-fit:cover; display:block; transform: scale(1.03)}
     .miniCard .img::after{
       content:"";
-      position:absolute;
-      inset:0;
+      position:absolute; inset:0;
       background: linear-gradient(180deg, rgba(234,246,255,.05), rgba(234,246,255,.55));
       pointer-events:none;
     }
 
-    /* Section Titles */
     .secTitle{
       display:flex;
       align-items:baseline;
@@ -314,9 +291,8 @@
       margin-bottom:10px;
     }
     .secTitle h2{font-size:26px}
-    .secTitle span{color:var(--ink2); font-weight:700; font-size:13px}
+    .secTitle span{color:var(--ink2); font-weight:800; font-size:13px}
 
-    /* Gallery Cards */
     .grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -326,7 +302,7 @@
       margin:0;
       border-radius:22px;
       overflow:hidden;
-      background: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.78);
       border:1px solid rgba(13,35,48,.10);
       box-shadow: 0 16px 40px rgba(13,35,48,.10);
       cursor:pointer;
@@ -338,6 +314,7 @@
       object-fit:cover;
       display:block;
       transition: transform .25s ease;
+      background: rgba(255,255,255,.35);
     }
     figure.work:hover img{transform: scale(1.03)}
     .workBar{
@@ -347,21 +324,17 @@
       gap:10px;
       padding:12px 14px;
     }
-    .workBar .left{
-      font-weight:800;
-      color: rgba(13,35,48,.86);
-    }
+    .workBar .left{font-weight:900; color: rgba(13,35,48,.86)}
     .badge{
       padding:8px 12px;
       border-radius:999px;
-      background: rgba(42,167,255,.10);
+      background: rgba(42,167,255,.12);
       border:1px solid rgba(42,167,255,.22);
       color: rgba(13,35,48,.78);
-      font-weight:800;
+      font-weight:900;
       white-space:nowrap;
     }
 
-    /* About / Personal photos mosaic */
     .about{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
@@ -392,24 +365,17 @@
     }
     .shot.tall{grid-row: span 2; min-height:420px}
 
-    /* Footer */
-    footer{
-      padding:30px 0 46px;
-      color:var(--ink2);
-      font-size:14px;
-    }
+    footer{padding:30px 0 46px; color:var(--ink2); font-size:14px}
     .fine{display:flex; gap:14px; flex-wrap:wrap}
-    .fine a{color:var(--ink2); text-decoration:none; font-weight:800}
+    .fine a{color:var(--ink2); text-decoration:none; font-weight:900}
     .fine a:hover{color:rgba(13,35,48,.92)}
     .divider{height:1px; background: rgba(13,35,48,.10); margin:18px 0}
 
     /* Modal */
     .modal{
-      position:fixed;
-      inset:0;
+      position:fixed; inset:0;
       display:none;
-      align-items:center;
-      justify-content:center;
+      align-items:center; justify-content:center;
       padding:18px;
       background: rgba(5,14,20,.72);
       z-index:80;
@@ -425,12 +391,10 @@
       box-shadow: 0 30px 80px rgba(0,0,0,.35);
     }
     .modalBar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+      display:flex; justify-content:space-between; align-items:center;
       gap:10px;
       padding:12px 14px;
-      color: rgba(255,255,255,.86);
+      color: rgba(255,255,255,.88);
       border-bottom:1px solid rgba(255,255,255,.14);
     }
     .close{
@@ -439,8 +403,8 @@
       border-radius:999px;
       border:1px solid rgba(255,255,255,.18);
       background: rgba(255,255,255,.10);
-      color: rgba(255,255,255,.88);
-      font-weight:800;
+      color: rgba(255,255,255,.92);
+      font-weight:900;
     }
     .close:hover{background: rgba(255,255,255,.16)}
     .modalImg{
@@ -451,7 +415,6 @@
       background: rgba(5,14,20,.22);
     }
 
-    /* Responsive */
     @media (max-width: 980px){
       .hero{grid-template-columns:1fr}
       .grid{grid-template-columns: repeat(2, 1fr)}
@@ -471,7 +434,6 @@
   <header id="siteHeader">
     <div class="inner">
       <div class="brandRow">
-        <!-- kleines Bild oben (Avatar) -->
         <div class="avatar" aria-hidden="true">
           <img src="IMG_8327.jpeg" alt="">
         </div>
@@ -487,9 +449,9 @@
         </div>
       </div>
 
-      <!-- Nav unter dem Namen (links nach rechts) -->
       <nav class="links" aria-label="Navigation">
-        <a class="pillLink primary" href="#galerie">Galerie</a>
+        <a class="pillLink primary" href="#leinwand">Leinwand</a>
+        <a class="pillLink" href="#magnet">Magnetleinwände</a>
         <a class="pillLink" href="#ueber">Über mich</a>
         <a class="pillLink" href="#anfrage">Anfrage</a>
         <a class="pillLink" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
@@ -518,17 +480,15 @@
           </div>
 
           <div class="cta">
-            <a class="btn primary" href="#galerie">Zur Galerie</a>
-            <a class="btn" href="#ueber">Über mich</a>
+            <a class="btn primary" href="#leinwand">Zur Leinwand-Galerie</a>
+            <a class="btn" href="#magnet">Magnetleinwände</a>
             <a class="btn" href="#anfrage">Anfrage</a>
           </div>
         </div>
       </div>
 
-      <!-- Persönliches Bild oben größer & stimmig -->
       <div class="infoStack">
         <div class="heroVisual" aria-label="Stimmung">
-          <!-- Nimm hier dein Lieblingsfoto für oben (größer) -->
           <img id="parallaxHero" src="57ea6509-bd58-48fe-81c8-665f5b55f79a.jpeg" alt="Sophie – Portrait">
         </div>
 
@@ -538,83 +498,33 @@
             <span>Kontakt • Prints • Originale</span>
           </div>
           <div class="img">
-            <!-- Naturbild für gutes Gefühl -->
             <img src="IMG_2257.jpeg" alt="Natur & Ruhe">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- GALERIE (NUR WERKE, KEINE PERSONENFOTOS) -->
-    <section id="galerie">
+    <!-- LEINWAND -->
+    <section id="leinwand">
       <div class="secTitle">
-        <h2>Galerie</h2>
+        <h2>Werke auf Leinwand</h2>
         <span>Klick auf ein Bild für groß</span>
       </div>
 
-/* 🖼️ Werke auf Leinwand (inkl. der letzten 16) */
-const canvasWorks = [
-  "IMG_7357.jpeg",
-
-  // ✅ die letzten 16 Bilder = normale Leinwand-Werke
-  "31642A80-E61D-45E5-8BF3-ACE071304826.jpeg",
-  "158DFB26-6187-4758-8184-B8D6133D0833.jpeg",
-  "21ACC9D9-44A9-4B96-9431-932E6D31C885.jpeg",
-  "2D326F07-90A6-4F04-B249-EFC44198B02F.jpeg",
-  "2F2CF949-EB9E-41AB-93D9-EA9BF1428EE2.jpeg",
-  "3A5116EB-D731-4450-A2C8-ACB00822DB92.jpeg",
-  "3C2F2322-FC01-45A2-874D-670C1F247EA7.jpeg",
-  "50AE5D91-3295-4818-B679-51BA2FE702E7.jpeg",
-  "5BCF7558-9D4E-4CFA-864D-CBB6007D3147.jpeg",
-  "682D3BFD-6596-48BD-93D4-BDDDE2AB39E5.jpeg",
-  "7C37CBDD-C409-40CB-A3A4-603264874563.jpeg",
-  "B517D3D5-4EB6-4310-9A41-226740D755D9.jpeg",
-  "B5B73DB5-32D1-40CC-9DA2-76FA1297AA8B.jpeg",
-  "D42BCD60-09C9-4ED1-A049-1A069F251E93.jpeg",
-  "FF5CCBDE-F35F-4520-93D4-D3C4D2974892.jpeg",
-
-  // (falls du noch weitere Leinwand-Werke hast, einfach hier drunter ergänzen)
-];
-
-/* 🧲 Magnetleinwände (separat) */
-const magnetWorks = [
-  // ⚠️ Hier bitte NUR die Magnetleinwand-Dateien rein.
-  // Wenn du mir kurz sagst welche Dateinamen das sind, sortiere ich sie dir 100% korrekt.
-  "E0964605-C85B-4270-8F40-DF848B927735.jpeg",
-  "E54FFE98-3485-4229-8B8D-AB2D6F932E4E.jpeg",
-  "ED686DDC-8AE0-4549-B96D-26BC084AFBA3.jpeg"
-];
-
-      
-      <div class="grid">
-        <figure class="work" data-title="Werk 01">
-          <img src="IMG_2863.jpeg" alt="Werk 01">
-          <div class="workBar">
-            <div class="left">Werk 01</div>
-            <div class="badge">Preis auf Anfrage</div>
-          </div>
-        </figure>
-
-        <figure class="work" data-title="Werk 02">
-          <img src="FB09CD55-5D46-46DB-A7F5-2A7D88065B4F.jpeg" alt="Werk 02">
-          <div class="workBar">
-            <div class="left">Werk 02</div>
-            <div class="badge">Preis auf Anfrage</div>
-          </div>
-        </figure>
-
-        <!-- Platzhalter: kopiere so viele Werke rein wie du willst -->
-        <figure class="work" data-title="Werk 03">
-          <img src="IMG_2863.jpeg" alt="Werk 03">
-          <div class="workBar">
-            <div class="left">Werk 03</div>
-            <div class="badge">Preis auf Anfrage</div>
-          </div>
-        </figure>
-      </div>
+      <div class="grid" id="canvasGrid" aria-label="Werke auf Leinwand"></div>
     </section>
 
-    <!-- ÜBER MICH (PERSONENFOTOS SCHÖN VERTEILT, OHNE BESCHRIFTUNG) -->
+    <!-- MAGNETLEINWÄNDE -->
+    <section id="magnet">
+      <div class="secTitle">
+        <h2>Magnetleinwände</h2>
+        <span>Klick auf ein Bild für groß</span>
+      </div>
+
+      <div class="grid" id="magnetGrid" aria-label="Magnetleinwände"></div>
+    </section>
+
+    <!-- ÜBER MICH -->
     <section id="ueber">
       <div class="secTitle">
         <h2>Über mich</h2>
@@ -644,18 +554,10 @@ const magnetWorks = [
         </div>
 
         <div class="mosaic" aria-label="Fotos von Sophie">
-          <div class="shot tall">
-            <img src="IMG_2453.jpeg" alt="">
-          </div>
-          <div class="shot">
-            <img src="IMG_1691.jpeg" alt="">
-          </div>
-          <div class="shot">
-            <img src="IMG_1861.jpeg" alt="">
-          </div>
-          <div class="shot">
-            <img src="IMG_2457.jpeg" alt="">
-          </div>
+          <div class="shot tall"><img src="IMG_2453.jpeg" alt=""></div>
+          <div class="shot"><img src="IMG_1691.jpeg" alt=""></div>
+          <div class="shot"><img src="IMG_1861.jpeg" alt=""></div>
+          <div class="shot"><img src="IMG_2457.jpeg" alt=""></div>
         </div>
       </div>
     </section>
@@ -675,7 +577,7 @@ const magnetWorks = [
           </p>
 
           <div class="cta">
-            <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Anfrage%20Kunst&body=Hi%20Sophie%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20das%20Werk%3A%20%5BName%2FLink%5D%0AFormat%3A%20%0ALieferort%3A%20%0A%0ALiebe%20Gr%C3%BC%C3%9Fe">E-Mail öffnen</a>
+            <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Anfrage%20Kunst&body=Hi%20Sophie%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20das%20Werk%3A%20%5BDateiname%2FLink%5D%0AFormat%3A%20%0ALieferort%3A%20%0A%0ALiebe%20Gr%C3%BC%C3%9Fe">E-Mail öffnen</a>
             <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram DM</a>
           </div>
 
@@ -712,7 +614,7 @@ const magnetWorks = [
     </footer>
   </main>
 
-  <!-- MODAL für Werke -->
+  <!-- MODAL -->
   <div class="modal" id="modal" aria-hidden="true">
     <div class="modalContent">
       <div class="modalBar">
@@ -727,21 +629,102 @@ const magnetWorks = [
     // Jahr
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Modal (nur Werke)
+    // ✅ Deine Werke (Leinwand) – inkl. der letzten 16
+    const canvasWorks = [
+      "IMG_7357.jpeg",
+      "31642A80-E61D-45E5-8BF3-ACE071304826.jpeg",
+      "158DFB26-6187-4758-8184-B8D6133D0833.jpeg",
+      "21ACC9D9-44A9-4B96-9431-932E6D31C885.jpeg",
+      "2D326F07-90A6-4F04-B249-EFC44198B02F.jpeg",
+      "2F2CF949-EB9E-41AB-93D9-EA9BF1428EE2.jpeg",
+      "3A5116EB-D731-4450-A2C8-ACB00822DB92.jpeg",
+      "3C2F2322-FC01-45A2-874D-670C1F247EA7.jpeg",
+      "50AE5D91-3295-4818-B679-51BA2FE702E7.jpeg",
+      "5BCF7558-9D4E-4CFA-864D-CBB6007D3147.jpeg",
+      "682D3BFD-6596-48BD-93D4-BDDDE2AB39E5.jpeg",
+      "7C37CBDD-C409-40CB-A3A4-603264874563.jpeg",
+      "B517D3D5-4EB6-4310-9A41-226740D755D9.jpeg",
+      "B5B73DB5-32D1-40CC-9DA2-76FA1297AA8B.jpeg",
+      "D42BCD60-09C9-4ED1-A049-1A069F251E93.jpeg",
+      "FF5CCBDE-F35F-4520-93D4-D3C4D2974892.jpeg",
+    ];
+
+    // ✅ Magnetleinwände (separat)
+    const magnetWorks = [
+      "E0964605-C85B-4270-8F40-DF848B927735.jpeg",
+      "E54FFE98-3485-4229-8B8D-AB2D6F932E4E.jpeg",
+      "ED686DDC-8AE0-4549-B96D-26BC084AFBA3.jpeg"
+    ];
+
+    // Hilfsfunktion: Grid rendern
+    function renderGrid(gridEl, files, prefixTitle){
+      if (!gridEl) return;
+
+      gridEl.innerHTML = "";
+
+      files.forEach((file, i) => {
+        const n = String(i + 1).padStart(2, "0");
+
+        const fig = document.createElement("figure");
+        fig.className = "work";
+        fig.dataset.title = `${prefixTitle} ${n}`;
+
+        const img = document.createElement("img");
+        img.src = file;
+        img.alt = `${prefixTitle} ${n}`;
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.addEventListener("error", () => {
+          // Falls ein Dateiname doch nicht exakt passt:
+          img.style.objectFit = "contain";
+          img.style.padding = "18px";
+          img.src = "";
+          img.alt = "Bild nicht gefunden";
+        });
+
+        const bar = document.createElement("div");
+        bar.className = "workBar";
+
+        const left = document.createElement("div");
+        left.className = "left";
+        left.textContent = `${prefixTitle} ${n}`;
+
+        const badge = document.createElement("div");
+        badge.className = "badge";
+        badge.textContent = "Preis auf Anfrage";
+
+        bar.appendChild(left);
+        bar.appendChild(badge);
+
+        fig.appendChild(img);
+        fig.appendChild(bar);
+
+        gridEl.appendChild(fig);
+      });
+    }
+
+    renderGrid(document.getElementById("canvasGrid"), canvasWorks, "Leinwand");
+    renderGrid(document.getElementById("magnetGrid"), magnetWorks, "Magnet");
+
+    // Modal
     const modal = document.getElementById("modal");
     const modalImg = document.getElementById("modalImg");
     const modalTitle = document.getElementById("modalTitle");
     const closeBtn = document.getElementById("closeBtn");
 
-    document.querySelectorAll("figure.work").forEach(fig => {
-      fig.addEventListener("click", () => {
-        const img = fig.querySelector("img");
-        modalImg.src = img.src;
-        modalTitle.textContent = fig.dataset.title || img.alt || "Werk";
-        modal.classList.add("open");
-        modal.setAttribute("aria-hidden", "false");
+    function bindModalClicks(){
+      document.querySelectorAll("figure.work").forEach(fig => {
+        fig.addEventListener("click", () => {
+          const img = fig.querySelector("img");
+          if (!img || !img.src) return;
+          modalImg.src = img.src;
+          modalTitle.textContent = fig.dataset.title || img.alt || "Werk";
+          modal.classList.add("open");
+          modal.setAttribute("aria-hidden", "false");
+        });
       });
-    });
+    }
+    bindModalClicks();
 
     function closeModal(){
       modal.classList.remove("open");
@@ -768,12 +751,12 @@ const magnetWorks = [
       lastY = y;
     }, {passive:true});
 
-    // Parallax Effekt für das große Bild oben
+    // Parallax Effekt
     const heroImg = document.getElementById("parallaxHero");
     window.addEventListener("scroll", () => {
       const y = window.scrollY;
-      const offset = Math.min(26, y * 0.06);
-      heroImg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.06)`;
+      const offset = Math.min(28, y * 0.06);
+      heroImg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.07)`;
     }, {passive:true});
   </script>
 </body>
