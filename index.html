@@ -21,14 +21,12 @@
 
       --accent:#2aa7ff;
       --accent2:#7dd6ff;
-
       --radius:24px;
       --max:1100px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    html{scroll-behavior:smooth}
     body{
       margin:0;
       color:var(--ink);
@@ -37,7 +35,6 @@
       overflow-x:hidden;
     }
 
-    /* Subtile Wasser-Layer (ohne Punkte) */
     body::before{
       content:"";
       position:fixed;
@@ -72,10 +69,10 @@
       to{transform: translate3d(12px,10px,0) scale(1.06)}
     }
 
-    a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    a{color:inherit}
+    section{padding:22px 0}
 
-    /* Header: schmal + verschwindet beim Scrollen */
     header{
       position:sticky;
       top:0;
@@ -83,7 +80,7 @@
       backdrop-filter: blur(12px);
       background: rgba(234,246,255,.76);
       border-bottom:1px solid var(--line);
-      transition: transform .28s ease, background .25s ease;
+      transition: transform .25s ease;
     }
     header.hide{transform: translateY(-110%)}
     header .inner{
@@ -95,27 +92,18 @@
       gap:10px;
     }
 
-    .brandRow{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
+    .brandRow{display:flex; align-items:center; gap:12px}
     .avatar{
       width:42px; height:42px;
       border-radius:999px;
       overflow:hidden;
       border:1px solid rgba(13,35,48,.10);
       box-shadow: 0 10px 25px rgba(13,35,48,.10);
-      flex:0 0 auto;
       background: rgba(255,255,255,.7);
+      flex:0 0 auto;
     }
     .avatar img{width:100%; height:100%; object-fit:cover; display:block}
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      min-width:0;
-    }
+    .brand{display:flex; flex-direction:column; gap:2px; min-width:0}
     .brand .name{
       font-weight:800;
       letter-spacing:.28em;
@@ -140,7 +128,6 @@
       box-shadow: 0 6px 18px rgba(42,167,255,.28);
     }
 
-    /* NAV unter Name, links nach rechts */
     nav.links{
       display:flex;
       gap:10px;
@@ -155,9 +142,9 @@
       border:1px solid rgba(13,35,48,.12);
       box-shadow: 0 10px 25px rgba(13,35,48,.08);
       color:rgba(13,35,48,.85);
-      font-weight:700;
+      font-weight:600;
       font-size:14px;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      transition: transform .15s ease, border-color .15s ease;
     }
     .pillLink:hover{transform: translateY(-1px); border-color: rgba(42,167,255,.35)}
     .pillLink.primary{
@@ -166,15 +153,15 @@
       color:white;
     }
 
-    section{padding:22px 0}
     .card{
       border-radius:var(--radius);
-      background: rgba(255,255,255,.74);
+      background: var(--card);
       border: 1px solid rgba(13,35,48,.10);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
     .cardPad{padding:22px}
+
     h1,h2,h3{
       margin:0 0 10px;
       font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
@@ -183,12 +170,55 @@
     p{margin:0 0 12px; color:var(--ink2); font-size:16px; line-height:1.75}
 
     .hero{
-      position:relative;
       display:grid;
       grid-template-columns: 1.25fr .75fr;
       gap:14px;
       align-items:stretch;
     }
+    .heroText .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(13,35,48,.10);
+      color: rgba(13,35,48,.78);
+      font-weight:700;
+      margin-bottom:12px;
+    }
+    .heroText h1{font-size: clamp(30px, 4.2vw, 52px); line-height:1.06}
+
+    .note{
+      margin-top:12px;
+      border-left:4px solid rgba(42,167,255,.55);
+      padding:10px 12px;
+      background: rgba(255,255,255,.55);
+      border-radius:16px;
+      color: rgba(13,35,48,.76);
+    }
+
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      text-decoration:none;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(13,35,48,.12);
+      background: rgba(255,255,255,.65);
+      font-weight:700;
+      color: rgba(13,35,48,.86);
+      box-shadow: 0 12px 26px rgba(13,35,48,.10);
+      transition: transform .15s ease;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(42,167,255,.95), rgba(125,214,255,.78));
+      color:#fff;
+      border-color: rgba(42,167,255,.35);
+    }
+
+    .infoStack{display:flex; flex-direction:column; gap:14px}
+
     .heroVisual{
       position:relative;
       border-radius:var(--radius);
@@ -202,62 +232,17 @@
       width:100%; height:100%;
       object-fit:cover;
       display:block;
-      transform: translate3d(0,0,0) scale(1.06);
-      filter: saturate(1.05) contrast(1.02);
-      will-change: transform;
+      transform: translate3d(0,0,0) scale(1.04);
+      filter: saturate(1.04) contrast(1.02);
     }
     .heroVisual::after{
       content:"";
       position:absolute;
       inset:0;
-      background: linear-gradient(180deg, rgba(234,246,255,.10), rgba(234,246,255,.78));
+      background: linear-gradient(180deg, rgba(234,246,255,.20), rgba(234,246,255,.72));
       pointer-events:none;
     }
 
-    .heroText .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      background: rgba(255,255,255,.70);
-      border:1px solid rgba(13,35,48,.10);
-      color: rgba(13,35,48,.78);
-      font-weight:800;
-      margin-bottom:12px;
-    }
-    .heroText h1{
-      font-size: clamp(30px, 4.2vw, 52px);
-      line-height:1.06;
-    }
-    .note{
-      margin-top:12px;
-      border-left:4px solid rgba(42,167,255,.65);
-      padding:10px 12px;
-      background: rgba(255,255,255,.62);
-      border-radius:16px;
-      color: rgba(13,35,48,.78);
-    }
-    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .btn{
-      text-decoration:none;
-      padding:12px 14px;
-      border-radius:16px;
-      border:1px solid rgba(13,35,48,.12);
-      background: rgba(255,255,255,.65);
-      font-weight:800;
-      color: rgba(13,35,48,.86);
-      box-shadow: 0 12px 26px rgba(13,35,48,.10);
-      transition: transform .15s ease;
-    }
-    .btn:hover{transform: translateY(-1px)}
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(42,167,255,.95), rgba(125,214,255,.78));
-      color:#fff;
-      border-color: rgba(42,167,255,.35);
-    }
-
-    .infoStack{display:flex; flex-direction:column; gap:14px}
     .miniCard{
       border-radius:var(--radius);
       background: rgba(255,255,255,.70);
@@ -273,12 +258,13 @@
       gap:10px;
     }
     .miniCard .top strong{font-family: ui-serif, Georgia, "Times New Roman", Times, serif; font-size:18px}
-    .miniCard .top span{color:var(--ink2); font-weight:800; font-size:13px}
+    .miniCard .top span{color:var(--ink2); font-weight:700; font-size:13px}
     .miniCard .img{height:240px; position:relative}
-    .miniCard .img img{width:100%; height:100%; object-fit:cover; display:block; transform: scale(1.03)}
+    .miniCard .img img{width:100%; height:100%; object-fit:cover; display:block}
     .miniCard .img::after{
       content:"";
-      position:absolute; inset:0;
+      position:absolute;
+      inset:0;
       background: linear-gradient(180deg, rgba(234,246,255,.05), rgba(234,246,255,.55));
       pointer-events:none;
     }
@@ -291,32 +277,45 @@
       margin-bottom:10px;
     }
     .secTitle h2{font-size:26px}
-    .secTitle span{color:var(--ink2); font-weight:800; font-size:13px}
+    .secTitle span{color:var(--ink2); font-weight:700; font-size:13px}
 
+    /* ✅ Galerie: nebeneinander + komplett sichtbar */
     .grid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:18px;
     }
+
     figure.work{
       margin:0;
       border-radius:22px;
       overflow:hidden;
-      background: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.72);
       border:1px solid rgba(13,35,48,.10);
       box-shadow: 0 16px 40px rgba(13,35,48,.10);
       cursor:pointer;
       position:relative;
     }
+
+    /* Bild-Rahmen mit fixem Verhältnis – Bild wird NICHT abgeschnitten */
+    .frame{
+      width:100%;
+      aspect-ratio: 4 / 3;
+      background: rgba(5,14,20,.92);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
     figure.work img{
       width:100%;
-      height:280px;
-      object-fit:cover;
+      height:100%;
+      object-fit:contain;   /* ✅ komplett sichtbar */
       display:block;
-      transition: transform .25s ease;
-      background: rgba(255,255,255,.35);
+      padding:14px;
+      background: transparent;
     }
-    figure.work:hover img{transform: scale(1.03)}
+
     .workBar{
       display:flex;
       align-items:center;
@@ -324,58 +323,29 @@
       gap:10px;
       padding:12px 14px;
     }
-    .workBar .left{font-weight:900; color: rgba(13,35,48,.86)}
+    .workBar .left{font-weight:800; color: rgba(13,35,48,.86)}
     .badge{
       padding:8px 12px;
       border-radius:999px;
-      background: rgba(42,167,255,.12);
+      background: rgba(42,167,255,.10);
       border:1px solid rgba(42,167,255,.22);
       color: rgba(13,35,48,.78);
-      font-weight:900;
+      font-weight:800;
       white-space:nowrap;
     }
 
-    .about{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:14px;
-      align-items:start;
-    }
-    .mosaic{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    .shot{
-      border-radius:22px;
-      overflow:hidden;
-      border:1px solid rgba(13,35,48,.10);
-      background: rgba(255,255,255,.70);
-      box-shadow: 0 16px 40px rgba(13,35,48,.10);
-      position:relative;
-      min-height:200px;
-    }
-    .shot img{width:100%; height:100%; object-fit:cover; display:block}
-    .shot::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(500px 300px at 30% 20%, rgba(255,255,255,.18), transparent 60%);
-      pointer-events:none;
-    }
-    .shot.tall{grid-row: span 2; min-height:420px}
-
     footer{padding:30px 0 46px; color:var(--ink2); font-size:14px}
     .fine{display:flex; gap:14px; flex-wrap:wrap}
-    .fine a{color:var(--ink2); text-decoration:none; font-weight:900}
-    .fine a:hover{color:rgba(13,35,48,.92)}
+    .fine a{color:var(--ink2); text-decoration:none; font-weight:800}
     .divider{height:1px; background: rgba(13,35,48,.10); margin:18px 0}
 
     /* Modal */
     .modal{
-      position:fixed; inset:0;
+      position:fixed;
+      inset:0;
       display:none;
-      align-items:center; justify-content:center;
+      align-items:center;
+      justify-content:center;
       padding:18px;
       background: rgba(5,14,20,.72);
       z-index:80;
@@ -391,10 +361,12 @@
       box-shadow: 0 30px 80px rgba(0,0,0,.35);
     }
     .modalBar{
-      display:flex; justify-content:space-between; align-items:center;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
       gap:10px;
       padding:12px 14px;
-      color: rgba(255,255,255,.88);
+      color: rgba(255,255,255,.86);
       border-bottom:1px solid rgba(255,255,255,.14);
     }
     .close{
@@ -403,8 +375,8 @@
       border-radius:999px;
       border:1px solid rgba(255,255,255,.18);
       background: rgba(255,255,255,.10);
-      color: rgba(255,255,255,.92);
-      font-weight:900;
+      color: rgba(255,255,255,.88);
+      font-weight:800;
     }
     .close:hover{background: rgba(255,255,255,.16)}
     .modalImg{
@@ -417,15 +389,12 @@
 
     @media (max-width: 980px){
       .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns: repeat(2, 1fr)}
       .miniCard .img{height:220px}
-      .about{grid-template-columns:1fr}
     }
     @media (max-width: 520px){
       .wrap{padding:18px}
       header .inner{padding:12px 18px 10px}
-      .grid{grid-template-columns:1fr}
-      figure.work img{height:260px}
+      .frame{aspect-ratio: 3 / 4;} /* auf Handy Hochformat angenehmer */
     }
   </style>
 </head>
@@ -450,8 +419,7 @@
       </div>
 
       <nav class="links" aria-label="Navigation">
-        <a class="pillLink primary" href="#leinwand">Leinwand</a>
-        <a class="pillLink" href="#magnet">Magnetleinwände</a>
+        <a class="pillLink primary" href="#galerie">Galerie</a>
         <a class="pillLink" href="#ueber">Über mich</a>
         <a class="pillLink" href="#anfrage">Anfrage</a>
         <a class="pillLink" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
@@ -480,8 +448,8 @@
           </div>
 
           <div class="cta">
-            <a class="btn primary" href="#leinwand">Zur Leinwand-Galerie</a>
-            <a class="btn" href="#magnet">Magnetleinwände</a>
+            <a class="btn primary" href="#galerie">Zur Galerie</a>
+            <a class="btn" href="#ueber">Über mich</a>
             <a class="btn" href="#anfrage">Anfrage</a>
           </div>
         </div>
@@ -504,60 +472,50 @@
       </div>
     </section>
 
-    <!-- LEINWAND -->
-    <section id="leinwand">
+    <!-- GALERIE -->
+    <section id="galerie">
       <div class="secTitle">
         <h2>Werke auf Leinwand</h2>
         <span>Klick auf ein Bild für groß</span>
       </div>
 
-      <div class="grid" id="canvasGrid" aria-label="Werke auf Leinwand"></div>
-    </section>
+      <div class="grid" id="gridCanvas"></div>
 
-    <!-- MAGNETLEINWÄNDE -->
-    <section id="magnet">
+      <div style="height:14px"></div>
+
       <div class="secTitle">
         <h2>Magnetleinwände</h2>
         <span>Klick auf ein Bild für groß</span>
       </div>
 
-      <div class="grid" id="magnetGrid" aria-label="Magnetleinwände"></div>
+      <div class="grid" id="gridMagnet"></div>
     </section>
 
-    <!-- ÜBER MICH -->
+    <!-- ÜBER MICH (ohne Bilder) -->
     <section id="ueber">
       <div class="secTitle">
         <h2>Über mich</h2>
-        <span>Ein paar Eindrücke</span>
+        <span>Kontakt & Infos</span>
       </div>
 
-      <div class="about">
-        <div class="card">
-          <div class="cardPad">
-            <h3 style="font-size:26px; margin-bottom:10px;">Hi, ich bin Sophie.</h3>
-            <p>
-              Ich male in Pastell- und Wasserstimmungen – inspiriert von Natur, Lichtmomenten und
-              dem Gefühl von Ruhe. Meine Arbeiten entstehen aus Beobachtungen, Erinnerungen und
-              kleinen Details, die sonst leicht übersehen werden.
-            </p>
-            <p>
-              Wenn dich ein Werk anspricht oder du Fragen zu Formaten, Prints oder Verfügbarkeit hast,
-              schreib mir gerne – ich freue mich auf Austausch.
-            </p>
+      <div class="card">
+        <div class="cardPad">
+          <h3 style="font-size:26px; margin-bottom:10px;">Hi, ich bin Sophie.</h3>
+          <p>
+            Ich male in Pastell- und Wasserstimmungen – inspiriert von Natur, Lichtmomenten und
+            dem Gefühl von Ruhe. Meine Arbeiten entstehen aus Beobachtungen, Erinnerungen und
+            kleinen Details, die sonst leicht übersehen werden.
+          </p>
+          <p>
+            Wenn dich ein Werk anspricht oder du Fragen zu Formaten, Prints oder Verfügbarkeit hast,
+            schreib mir gerne – ich freue mich auf Austausch.
+          </p>
 
-            <div class="cta">
-              <a class="btn primary" href="#anfrage">Kontakt</a>
-              <a class="btn" href="mailto:sophie.kruszynskki@gmail.com?subject=Kunst%20Anfrage">E-Mail</a>
-              <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
-            </div>
+          <div class="cta">
+            <a class="btn primary" href="#anfrage">Kontakt</a>
+            <a class="btn" href="mailto:sophie.kruszynskki@gmail.com?subject=Kunst%20Anfrage">E-Mail</a>
+            <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
           </div>
-        </div>
-
-        <div class="mosaic" aria-label="Fotos von Sophie">
-          <div class="shot tall"><img src="IMG_2453.jpeg" alt=""></div>
-          <div class="shot"><img src="IMG_1691.jpeg" alt=""></div>
-          <div class="shot"><img src="IMG_1861.jpeg" alt=""></div>
-          <div class="shot"><img src="IMG_2457.jpeg" alt=""></div>
         </div>
       </div>
     </section>
@@ -577,7 +535,7 @@
           </p>
 
           <div class="cta">
-            <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Anfrage%20Kunst&body=Hi%20Sophie%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20das%20Werk%3A%20%5BDateiname%2FLink%5D%0AFormat%3A%20%0ALieferort%3A%20%0A%0ALiebe%20Gr%C3%BC%C3%9Fe">E-Mail öffnen</a>
+            <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Anfrage%20Kunst&body=Hi%20Sophie%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20das%20Werk%3A%20%5BName%2FLink%5D%0AFormat%3A%20%0ALieferort%3A%20%0A%0ALiebe%20Gr%C3%BC%C3%9Fe">E-Mail öffnen</a>
             <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram DM</a>
           </div>
 
@@ -629,9 +587,10 @@
     // Jahr
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ✅ Deine Werke (Leinwand) – inkl. der letzten 16
+    // ✅ Deine Werke (Leinwand – inkl. letzte 16 + IMG_7357)
     const canvasWorks = [
       "IMG_7357.jpeg",
+
       "31642A80-E61D-45E5-8BF3-ACE071304826.jpeg",
       "158DFB26-6187-4758-8184-B8D6133D0833.jpeg",
       "21ACC9D9-44A9-4B96-9431-932E6D31C885.jpeg",
@@ -646,65 +605,52 @@
       "B517D3D5-4EB6-4310-9A41-226740D755D9.jpeg",
       "B5B73DB5-32D1-40CC-9DA2-76FA1297AA8B.jpeg",
       "D42BCD60-09C9-4ED1-A049-1A069F251E93.jpeg",
-      "FF5CCBDE-F35F-4520-93D4-D3C4D2974892.jpeg",
+      "FF5CCBDE-F35F-4520-93D4-D3C4D2974892.jpeg"
     ];
 
-    // ✅ Magnetleinwände (separat)
+    // ✅ Magnetleinwände (separater Bereich)
     const magnetWorks = [
+      "15FA227E-21C7-43A5-8A64-1EA50F937FA3.jpeg",
+      "43324478-A85F-492B-BAB2-6C16A78189FB.jpeg",
+      "3E8C822B-8371-4490-8820-CD6A53BA66E9.jpeg",
+      "64E33493-DD1C-4883-8732-FC3A3F688FA3.jpeg",
+      "5DF42F6F-DE35-483F-98BA-0CCF02E04B94.jpeg",
+      "6A6D1F63-10A0-4DA4-91D7-FBD2CDE980C3.jpeg",
+      "C82A1EE6-92D2-451D-8B57-FE435D1F172D.jpeg",
+      "B7543028-241A-499E-B0FF-99D72022B275.jpeg",
+      "CEA8C24C-40AB-43E5-9D67-560D8F976617.jpeg",
       "E0964605-C85B-4270-8F40-DF848B927735.jpeg",
       "E54FFE98-3485-4229-8B8D-AB2D6F932E4E.jpeg",
       "ED686DDC-8AE0-4549-B96D-26BC084AFBA3.jpeg"
     ];
 
-    // Hilfsfunktion: Grid rendern
-    function renderGrid(gridEl, files, prefixTitle){
-      if (!gridEl) return;
+    // ✅ Render-Funktion für Grid
+    function renderWorks(list, gridId, prefixTitle){
+      const grid = document.getElementById(gridId);
+      grid.innerHTML = "";
 
-      gridEl.innerHTML = "";
-
-      files.forEach((file, i) => {
-        const n = String(i + 1).padStart(2, "0");
-
+      list.forEach((src, i) => {
         const fig = document.createElement("figure");
         fig.className = "work";
-        fig.dataset.title = `${prefixTitle} ${n}`;
+        const title = `${prefixTitle} ${String(i+1).padStart(2,"0")}`;
+        fig.dataset.title = title;
 
-        const img = document.createElement("img");
-        img.src = file;
-        img.alt = `${prefixTitle} ${n}`;
-        img.loading = "lazy";
-        img.decoding = "async";
-        img.addEventListener("error", () => {
-          // Falls ein Dateiname doch nicht exakt passt:
-          img.style.objectFit = "contain";
-          img.style.padding = "18px";
-          img.src = "";
-          img.alt = "Bild nicht gefunden";
-        });
+        fig.innerHTML = `
+          <div class="frame">
+            <img src="${src}" alt="${title}">
+          </div>
+          <div class="workBar">
+            <div class="left">${title}</div>
+            <div class="badge">Preis auf Anfrage</div>
+          </div>
+        `;
 
-        const bar = document.createElement("div");
-        bar.className = "workBar";
-
-        const left = document.createElement("div");
-        left.className = "left";
-        left.textContent = `${prefixTitle} ${n}`;
-
-        const badge = document.createElement("div");
-        badge.className = "badge";
-        badge.textContent = "Preis auf Anfrage";
-
-        bar.appendChild(left);
-        bar.appendChild(badge);
-
-        fig.appendChild(img);
-        fig.appendChild(bar);
-
-        gridEl.appendChild(fig);
+        grid.appendChild(fig);
       });
     }
 
-    renderGrid(document.getElementById("canvasGrid"), canvasWorks, "Leinwand");
-    renderGrid(document.getElementById("magnetGrid"), magnetWorks, "Magnet");
+    renderWorks(canvasWorks, "gridCanvas", "Werk");
+    renderWorks(magnetWorks, "gridMagnet", "Magnet");
 
     // Modal
     const modal = document.getElementById("modal");
@@ -712,11 +658,10 @@
     const modalTitle = document.getElementById("modalTitle");
     const closeBtn = document.getElementById("closeBtn");
 
-    function bindModalClicks(){
+    function attachModalHandlers(){
       document.querySelectorAll("figure.work").forEach(fig => {
         fig.addEventListener("click", () => {
           const img = fig.querySelector("img");
-          if (!img || !img.src) return;
           modalImg.src = img.src;
           modalTitle.textContent = fig.dataset.title || img.alt || "Werk";
           modal.classList.add("open");
@@ -724,7 +669,7 @@
         });
       });
     }
-    bindModalClicks();
+    attachModalHandlers();
 
     function closeModal(){
       modal.classList.remove("open");
@@ -735,28 +680,23 @@
     modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
     window.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
 
-    // Header: kurz “nachziehen” und dann verschwinden (Scroll-Down)
+    // Header Hide on scroll down
     const header = document.getElementById("siteHeader");
     let lastY = window.scrollY;
-
     window.addEventListener("scroll", () => {
       const y = window.scrollY;
       const goingDown = y > lastY;
-
-      if (y > 140 && goingDown){
-        header.classList.add("hide");
-      } else {
-        header.classList.remove("hide");
-      }
+      if (y > 140 && goingDown) header.classList.add("hide");
+      else header.classList.remove("hide");
       lastY = y;
     }, {passive:true});
 
-    // Parallax Effekt
+    // Parallax
     const heroImg = document.getElementById("parallaxHero");
     window.addEventListener("scroll", () => {
       const y = window.scrollY;
-      const offset = Math.min(28, y * 0.06);
-      heroImg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.07)`;
+      const offset = Math.min(26, y * 0.06);
+      heroImg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.06)`;
     }, {passive:true});
   </script>
 </body>
