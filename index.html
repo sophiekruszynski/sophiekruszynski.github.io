@@ -8,38 +8,22 @@
 
   <style>
     :root{
-      /* Grundlook (hell, passend zu Wasser/Pastell) */
-      --bg0:#eef7ff;
-      --bg1:#dff1ff;
-      --bg2:#cfe7ff;
-
+      /* Farben passend zu Meer / Himmel / Sunset / Pastell */
+      --bg0:#f6f2ea;   /* warmes Sandweiß */
+      --bg1:#dceeff;   /* helles Wasserblau */
+      --bg2:#cfe3ff;   /* etwas satteres Blau */
       --ink:#0d2330;
       --ink2:rgba(13,35,48,.72);
-
-      --card:rgba(255,255,255,.78);
+      --card:rgba(255,255,255,.76);
       --line:rgba(13,35,48,.12);
       --shadow: 0 18px 45px rgba(13,35,48,.12);
 
-      --accent:#2aa7ff;
-      --accent2:#7dd6ff;
-
+      --accent:#2c7bdc;   /* Ozeanblau */
+      --accent2:#f2b35d;  /* Sonnenlicht */
+      --accent3:#b5a7ff;  /* Lavendel */
       --radius:24px;
+
       --max:1100px;
-
-      /* Galerie-Karten (dezenter, weniger “Checkout” Gefühl) */
-      --badgeBg:rgba(13,35,48,.06);
-      --badgeBorder:rgba(13,35,48,.10);
-      --badgeText:rgba(13,35,48,.62);
-
-      /* Canvas-Zone: dunkler Hintergrund (nur dort!) */
-      --canvasBg0:#0a141c;
-      --canvasBg1:#0e1b25;
-      --canvasBg2:#122434;
-      --canvasCard:rgba(255,255,255,.92);
-
-      /* Bildfläche (damit nichts abgeschnitten wird) */
-      --imgBg: rgba(9,18,25,.86);
-      --imgBg2: rgba(9,18,25,.62);
     }
 
     *{box-sizing:border-box}
@@ -52,7 +36,7 @@
       overflow-x:hidden;
     }
 
-    /* Subtile Wasser-Layer */
+    /* Sanfte Farb-Layer */
     body::before{
       content:"";
       position:fixed;
@@ -60,10 +44,10 @@
       pointer-events:none;
       z-index:-2;
       background:
-        radial-gradient(900px 600px at 20% 10%, rgba(42,167,255,.20), transparent 60%),
-        radial-gradient(900px 600px at 85% 20%, rgba(125,214,255,.18), transparent 62%),
-        radial-gradient(1200px 900px at 50% 70%, rgba(182,240,255,.18), transparent 60%);
-      filter: blur(10px);
+        radial-gradient(900px 600px at 15% 10%, rgba(44,123,220,.22), transparent 60%),
+        radial-gradient(900px 600px at 85% 20%, rgba(242,179,93,.18), transparent 62%),
+        radial-gradient(1200px 900px at 50% 75%, rgba(181,167,255,.18), transparent 60%);
+      filter: blur(12px);
       opacity:.95;
     }
     body::after{
@@ -74,12 +58,12 @@
       z-index:-1;
       background:
         radial-gradient(closest-side, rgba(255,255,255,.30), transparent 65%),
-        radial-gradient(closest-side, rgba(255,255,255,.18), transparent 62%),
-        radial-gradient(closest-side, rgba(42,167,255,.10), transparent 60%);
+        radial-gradient(closest-side, rgba(44,123,220,.10), transparent 62%),
+        radial-gradient(closest-side, rgba(242,179,93,.10), transparent 60%);
       background-size: 520px 520px, 680px 680px, 820px 820px;
       background-position: 20% 30%, 70% 40%, 50% 70%;
       filter: blur(18px);
-      opacity:.8;
+      opacity:.75;
       animation: drift 14s ease-in-out infinite alternate;
     }
     @keyframes drift{
@@ -90,15 +74,14 @@
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:24px}
 
-    /* Header */
     header{
       position:sticky;
       top:0;
       z-index:50;
       backdrop-filter: blur(12px);
-      background: rgba(238,247,255,.78);
+      background: rgba(246,242,234,.72);
       border-bottom:1px solid var(--line);
-      transition: transform .25s ease, padding .25s ease, background .25s ease;
+      transition: transform .25s ease;
     }
     header.hide{transform: translateY(-110%)}
     header .inner{
@@ -126,12 +109,7 @@
       background: rgba(255,255,255,.7);
     }
     .avatar img{width:100%; height:100%; object-fit:cover; display:block}
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      min-width:0;
-    }
+    .brand{display:flex; flex-direction:column; gap:2px; min-width:0;}
     .brand .name{
       font-weight:800;
       letter-spacing:.28em;
@@ -153,7 +131,7 @@
       width:6px; height:6px; border-radius:999px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       display:inline-block;
-      box-shadow: 0 6px 18px rgba(42,167,255,.28);
+      box-shadow: 0 6px 18px rgba(44,123,220,.25);
     }
 
     nav.links{
@@ -166,22 +144,21 @@
       text-decoration:none;
       padding:10px 14px;
       border-radius:999px;
-      background: rgba(255,255,255,.66);
+      background: rgba(255,255,255,.70);
       border:1px solid rgba(13,35,48,.12);
       box-shadow: 0 10px 25px rgba(13,35,48,.08);
       color:rgba(13,35,48,.85);
-      font-weight:600;
+      font-weight:700;
       font-size:14px;
       transition: transform .15s ease, border-color .15s ease, background .15s ease;
     }
-    .pillLink:hover{transform: translateY(-1px); border-color: rgba(42,167,255,.35)}
+    .pillLink:hover{transform: translateY(-1px); border-color: rgba(44,123,220,.35)}
     .pillLink.primary{
-      background: linear-gradient(135deg, rgba(42,167,255,.95), rgba(125,214,255,.78));
-      border-color: rgba(42,167,255,.35);
+      background: linear-gradient(135deg, rgba(44,123,220,.95), rgba(242,179,93,.65));
+      border-color: rgba(44,123,220,.25);
       color:white;
     }
 
-    /* Sections */
     section{padding:22px 0}
     .card{
       border-radius:var(--radius);
@@ -198,32 +175,35 @@
     }
     p{margin:0 0 12px; color:var(--ink2); font-size:16px; line-height:1.75}
 
-    /* Hero (ohne die 2 großen Bilder + ohne Info-Box) */
     .hero{
+      position:relative;
       display:grid;
-      grid-template-columns: 1.35fr .65fr;
+      grid-template-columns: 1.25fr .75fr;
       gap:14px;
       align-items:stretch;
     }
-    .heroArt{
+
+    .heroVisual{
+      position:relative;
       border-radius:var(--radius);
       overflow:hidden;
       border: 1px solid rgba(13,35,48,.10);
       box-shadow: var(--shadow);
-      background: rgba(255,255,255,.60);
-      min-height: 360px;
-      display:flex;
+      min-height:420px;
+      background: rgba(255,255,255,.5);
     }
-    .heroArt img{
+    .heroVisual img{
       width:100%; height:100%;
       object-fit:cover;
       display:block;
-      transform: scale(1.02);
+      transform: translate3d(0,0,0) scale(1.04);
+      filter: saturate(1.04) contrast(1.02);
     }
-    .heroArt::after{
+    .heroVisual::after{
       content:"";
       position:absolute;
       inset:0;
+      background: linear-gradient(180deg, rgba(246,242,234,.12), rgba(220,238,255,.58));
       pointer-events:none;
     }
 
@@ -233,10 +213,10 @@
       gap:10px;
       padding:10px 14px;
       border-radius:999px;
-      background: rgba(255,255,255,.70);
+      background: rgba(255,255,255,.74);
       border:1px solid rgba(13,35,48,.10);
       color: rgba(13,35,48,.78);
-      font-weight:700;
+      font-weight:800;
       margin-bottom:12px;
     }
     .heroText h1{
@@ -246,9 +226,9 @@
 
     .note{
       margin-top:12px;
-      border-left:4px solid rgba(42,167,255,.55);
+      border-left:4px solid rgba(44,123,220,.55);
       padding:10px 12px;
-      background: rgba(255,255,255,.55);
+      background: rgba(255,255,255,.60);
       border-radius:16px;
       color: rgba(13,35,48,.76);
     }
@@ -259,20 +239,51 @@
       padding:12px 14px;
       border-radius:16px;
       border:1px solid rgba(13,35,48,.12);
-      background: rgba(255,255,255,.65);
-      font-weight:700;
+      background: rgba(255,255,255,.70);
+      font-weight:800;
       color: rgba(13,35,48,.86);
       box-shadow: 0 12px 26px rgba(13,35,48,.10);
       transition: transform .15s ease;
     }
     .btn:hover{transform: translateY(-1px)}
     .btn.primary{
-      background: linear-gradient(135deg, rgba(42,167,255,.95), rgba(125,214,255,.78));
+      background: linear-gradient(135deg, rgba(44,123,220,.95), rgba(242,179,93,.65));
       color:#fff;
-      border-color: rgba(42,167,255,.35);
+      border-color: rgba(44,123,220,.25);
     }
 
-    /* Section Titles */
+    .infoStack{display:flex; flex-direction:column; gap:14px;}
+    .miniCard{
+      border-radius:var(--radius);
+      background: rgba(255,255,255,.76);
+      border:1px solid rgba(13,35,48,.10);
+      box-shadow: 0 12px 32px rgba(13,35,48,.10);
+      overflow:hidden;
+    }
+    .miniCard .top{
+      padding:14px 16px 8px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .miniCard .top strong{font-family: ui-serif, Georgia, "Times New Roman", Times, serif; font-size:18px}
+    .miniCard .top span{color:var(--ink2); font-weight:800; font-size:13px}
+    .miniCard .img{height:240px; position:relative;}
+    .miniCard .img img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.03);
+    }
+    .miniCard .img::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(246,242,234,.06), rgba(220,238,255,.52));
+      pointer-events:none;
+    }
+
     .secTitle{
       display:flex;
       align-items:baseline;
@@ -281,94 +292,75 @@
       margin-bottom:10px;
     }
     .secTitle h2{font-size:26px}
-    .secTitle span{color:var(--ink2); font-weight:700; font-size:13px}
+    .secTitle span{color:var(--ink2); font-weight:800; font-size:13px}
 
-    /* Gallery Grid: nebeneinander + nichts abgeschnitten */
+    /* Galerie: nebeneinander + komplett sichtbar (kein Cropping) */
     .grid{
       display:grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap:14px;
     }
     figure.work{
       margin:0;
       border-radius:22px;
       overflow:hidden;
-      background: rgba(255,255,255,.80);
+      background: rgba(255,255,255,.78);
       border:1px solid rgba(13,35,48,.10);
       box-shadow: 0 16px 40px rgba(13,35,48,.10);
       cursor:pointer;
       position:relative;
     }
-    .imgFrame{
-      width:100%;
-      aspect-ratio: 4 / 5; /* hochformat-freundlich */
-      background: linear-gradient(180deg, var(--imgBg), var(--imgBg2));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px;
-    }
     figure.work img{
       width:100%;
-      height:100%;
-      object-fit:contain; /* WICHTIG: komplett sichtbar */
+      height:auto;                 /* wichtig: nicht abschneiden */
       display:block;
-      border-radius:14px;
-      background: transparent;
+      object-fit:contain;          /* wichtig: komplett sichtbar */
+      background: rgba(13,35,48,.04);
+      padding:10px;
     }
     .workBar{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      padding:12px 14px 14px;
+      padding:12px 14px;
+      border-top:1px solid rgba(13,35,48,.08);
     }
-    .workBar .left{
-      font-weight:800;
-      color: rgba(13,35,48,.86);
-    }
-
-    /* Dezenter “Preis auf Anfrage” */
+    .workBar .left{font-weight:900; color: rgba(13,35,48,.86);}
     .badge{
-      padding:6px 10px;
+      padding:8px 12px;
       border-radius:999px;
-      background: var(--badgeBg);
-      border:1px solid var(--badgeBorder);
-      color: var(--badgeText);
-      font-weight:800;
+      background: rgba(44,123,220,.10);
+      border:1px solid rgba(44,123,220,.22);
+      color: rgba(13,35,48,.78);
+      font-weight:900;
       white-space:nowrap;
-      font-size:13px;
     }
 
-    /* Canvas-Zone dunkler Hintergrund (nur hier) */
-    .canvasZone{
-      padding:22px;
-      border-radius:28px;
-      background: linear-gradient(180deg, var(--canvasBg0), var(--canvasBg1) 55%, var(--canvasBg2));
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 26px 70px rgba(0,0,0,.22);
+    /* Über mich: NUR ruhige Bilder (witzige entfernt) */
+    .about{display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; align-items:start;}
+    .mosaic{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+    .shot{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(13,35,48,.10);
+      background: rgba(255,255,255,.76);
+      box-shadow: 0 16px 40px rgba(13,35,48,.10);
+      position:relative;
+      min-height:220px;
     }
-    .canvasZone .secTitle h2,
-    .canvasZone .secTitle span{color: rgba(255,255,255,.88)}
-    .canvasZone figure.work{
-      background: var(--canvasCard);
-      box-shadow: 0 16px 40px rgba(0,0,0,.25);
-    }
-    .canvasZone .workBar .left{color: rgba(13,35,48,.88)}
-    .canvasZone .badge{
-      background: rgba(13,35,48,.06);
-      border-color: rgba(13,35,48,.10);
-      color: rgba(13,35,48,.60);
+    .shot img{width:100%; height:100%; object-fit:cover; display:block}
+    .shot::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(500px 300px at 30% 20%, rgba(255,255,255,.16), transparent 60%);
+      pointer-events:none;
     }
 
-    /* Footer */
-    footer{
-      padding:30px 0 46px;
-      color:var(--ink2);
-      font-size:14px;
-    }
+    footer{padding:30px 0 46px; color:var(--ink2); font-size:14px;}
     .fine{display:flex; gap:14px; flex-wrap:wrap}
-    .fine a{color:var(--ink2); text-decoration:none; font-weight:800}
+    .fine a{color:var(--ink2); text-decoration:none; font-weight:900}
     .fine a:hover{color:rgba(13,35,48,.92)}
     .divider{height:1px; background: rgba(13,35,48,.10); margin:18px 0}
 
@@ -409,25 +401,27 @@
       border:1px solid rgba(255,255,255,.18);
       background: rgba(255,255,255,.10);
       color: rgba(255,255,255,.88);
-      font-weight:800;
+      font-weight:900;
     }
     .close:hover{background: rgba(255,255,255,.16)}
     .modalImg{
       width:100%;
-      height:min(78vh, 820px);
+      height:min(76vh, 780px);
       object-fit:contain;
       display:block;
       background: rgba(5,14,20,.22);
     }
 
-    /* Responsive */
     @media (max-width: 980px){
       .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns: repeat(2, 1fr)}
+      .miniCard .img{height:220px}
+      .about{grid-template-columns:1fr}
     }
     @media (max-width: 520px){
       .wrap{padding:18px}
       header .inner{padding:12px 18px 10px}
-      .grid{grid-template-columns:1fr} /* auf sehr klein: 1 Spalte */
+      .grid{grid-template-columns: repeat(2, 1fr)} /* Handy: nebeneinander */
     }
   </style>
 </head>
@@ -452,8 +446,7 @@
       </div>
 
       <nav class="links" aria-label="Navigation">
-        <a class="pillLink primary" href="#leinwand">Leinwand</a>
-        <a class="pillLink" href="#magnet">Magnetleinwände</a>
+        <a class="pillLink primary" href="#galerie">Galerie</a>
         <a class="pillLink" href="#ueber">Über mich</a>
         <a class="pillLink" href="#anfrage">Anfrage</a>
         <a class="pillLink" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
@@ -463,84 +456,107 @@
   </header>
 
   <main class="wrap">
-    <!-- HERO (ohne die 2 Bilder + ohne Info-Box) -->
     <section class="hero">
       <div class="card heroText">
         <div class="cardPad">
-          <div class="kicker">🌊 Portfolio • Originale (Preis auf Anfrage)</div>
-
+          <div class="kicker">🌊 Portfolio • Originale & Prints (auf Anfrage)</div>
           <h1>Kunst, inspiriert von<br> Natur, Licht & Wasser.</h1>
-
           <p>
-            Hier findest du eine Auswahl meiner Werke.
-            Klick auf ein Bild, um es groß anzusehen.
+            Hier findest du eine Auswahl meiner Werke und ein paar Einblicke in die Stimmung dahinter.
+            Nimm dir Zeit – schau dich in Ruhe um. Danke, dass du hier bist.
           </p>
 
           <div class="note">
             <strong style="color:rgba(13,35,48,.92)">Kauf & Preise:</strong>
-            Bitte per E-Mail oder Instagram anfragen.
+            Bitte per E-Mail oder Instagram anfragen (kein Online-Shop/Checkout).
           </div>
 
           <div class="cta">
-            <a class="btn primary" href="#leinwand">Zu den Leinwänden</a>
-            <a class="btn" href="#magnet">Zu den Magnetleinwänden</a>
+            <a class="btn primary" href="#galerie">Zur Galerie</a>
+            <a class="btn" href="#ueber">Über mich</a>
             <a class="btn" href="#anfrage">Anfrage</a>
           </div>
         </div>
       </div>
 
-      <!-- Statt der entfernten Fotos: ein Werk als stimmiges Headerbild -->
-      <div class="heroArt" aria-label="Stimmung (Werk)">
-        <img src="IMG_7357.jpeg" alt="Werk">
-      </div>
-    </section>
-
-    <!-- WERKE AUF LEINWAND (dunkler Hintergrund NUR hier) -->
-    <section id="leinwand">
-      <div class="canvasZone">
-        <div class="secTitle">
-          <h2>Werke auf Leinwand</h2>
-          <span>Klick auf ein Bild für groß</span>
+      <div class="infoStack">
+        <div class="heroVisual" aria-label="Stimmung">
+          <img id="parallaxHero" src="57ea6509-bd58-48fe-81c8-665f5b55f79a.jpeg" alt="Sophie – Portrait">
         </div>
 
-        <div class="grid" id="canvasGrid"></div>
+        <div class="miniCard">
+          <div class="top">
+            <strong>Infos</strong>
+            <span>Kontakt • Prints • Originale</span>
+          </div>
+          <div class="img">
+            <img src="IMG_2257.jpeg" alt="Natur & Ruhe">
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- MAGNETLEINWÄNDE (Hintergrund bleibt wie vorher/hell) -->
-    <section id="magnet">
+    <!-- GALERIE -->
+    <section id="galerie">
+      <div class="secTitle">
+        <h2>Werke auf Leinwand</h2>
+        <span>Klick auf ein Bild für groß</span>
+      </div>
+
+      <div class="grid" id="canvasGrid"></div>
+
+      <div style="height:14px"></div>
+
       <div class="secTitle">
         <h2>Magnetleinwände</h2>
-        <span>Klick auf ein Bild für groß</span>
+        <span>eigene Kategorie</span>
       </div>
 
       <div class="grid" id="magnetGrid"></div>
     </section>
 
-    <!-- ÜBER MICH (BILDER ENTFERNT) -->
+    <!-- ÜBER MICH (witzige Bilder entfernt) -->
     <section id="ueber">
       <div class="secTitle">
         <h2>Über mich</h2>
-        <span>Kontakt & Einblick</span>
+        <span>Ein paar Eindrücke</span>
       </div>
 
-      <div class="card">
-        <div class="cardPad">
-          <h3 style="font-size:26px; margin-bottom:10px;">Hi, ich bin Sophie.</h3>
-          <p>
-            Ich male in Pastell- und Wasserstimmungen – inspiriert von Natur, Lichtmomenten und
-            dem Gefühl von Ruhe. Meine Arbeiten entstehen aus Beobachtungen, Erinnerungen und
-            Details, die sonst leicht übersehen werden.
-          </p>
-          <p>
-            Wenn dich ein Werk anspricht oder du Fragen zu Formaten und Verfügbarkeit hast,
-            schreib mir gerne.
-          </p>
+      <div class="about">
+        <div class="card">
+          <div class="cardPad">
+            <h3 style="font-size:26px; margin-bottom:10px;">Hi, ich bin Sophie.</h3>
+            <p>
+              Ich male in Pastell- und Wasserstimmungen – inspiriert von Natur, Lichtmomenten und
+              dem Gefühl von Ruhe. Meine Arbeiten entstehen aus Beobachtungen, Erinnerungen und
+              kleinen Details, die sonst leicht übersehen werden.
+            </p>
+            <p>
+              Wenn dich ein Werk anspricht oder du Fragen zu Formaten, Prints oder Verfügbarkeit hast,
+              schreib mir gerne – ich freue mich auf Austausch.
+            </p>
 
-          <div class="cta">
-            <a class="btn primary" href="#anfrage">Kontakt</a>
-            <a class="btn" href="mailto:sophie.kruszynskki@gmail.com?subject=Kunst%20Anfrage">E-Mail</a>
-            <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
+            <div class="cta">
+              <a class="btn primary" href="#anfrage">Kontakt</a>
+              <a class="btn" href="mailto:sophie.kruszynskki@gmail.com?subject=Kunst%20Anfrage">E-Mail</a>
+              <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mosaic" aria-label="Fotos von Sophie">
+          <!-- ruhige Bilder -->
+          <div class="shot">
+            <img src="IMG_2453.jpeg" alt="">
+          </div>
+          <div class="shot">
+            <img src="IMG_2457.jpeg" alt="">
+          </div>
+          <div class="shot">
+            <img src="IMG_1691.jpeg" alt="">
+          </div>
+          <div class="shot">
+            <img src="IMG_1861.jpeg" alt="">
           </div>
         </div>
       </div>
@@ -550,23 +566,24 @@
     <section id="anfrage">
       <div class="secTitle">
         <h2>Anfrage</h2>
-        <span>Preise • Verfügbarkeit • Auftragsarbeiten</span>
+        <span>Preise • Verfügbarkeit • Prints</span>
       </div>
 
       <div class="card">
         <div class="cardPad">
           <p>
-            Für Preise, Verfügbarkeit oder Auftragsarbeiten:
+            Für Preise, Verfügbarkeit, Auftragsarbeiten oder Prints:
             schreib mir gern per E-Mail oder Instagram.
           </p>
 
           <div class="cta">
-            <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Anfrage%20Kunst&body=Hi%20Sophie%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20das%20Werk%3A%20%5BLeinwand%20xx%20oder%20Magnet%20xx%5D%0A%0ALiebe%20Gr%C3%BC%C3%9Fe">E-Mail öffnen</a>
+            <a class="btn primary" href="mailto:sophie.kruszynskki@gmail.com?subject=Anfrage%20Kunst&body=Hi%20Sophie%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20das%20Werk%3A%20%5BName%2FLink%5D%0AFormat%3A%20%0ALieferort%3A%20%0A%0ALiebe%20Gr%C3%BC%C3%9Fe">E-Mail öffnen</a>
             <a class="btn" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram DM</a>
           </div>
 
           <div class="note" style="margin-top:14px;">
-            Hinweis: Kein Online-Shop – Verkauf nur nach Absprache.
+            Hinweis: Diese Seite hat <strong style="color:rgba(13,35,48,.92)">keinen Online-Shop</strong>.
+            Verkauf nur nach Absprache.
           </div>
         </div>
       </div>
@@ -612,10 +629,15 @@
     // Jahr
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    /* 🖼️ Werke auf Leinwand (deine letzten 16 + IMG_7357) */
+    // ✅ Deine Werke auf Leinwand (letzte 16 + IMG_7357 + ggf. weitere)
     const canvasWorks = [
       "IMG_7357.jpeg",
 
+      // (falls du diese auch zeigen willst)
+      "IMG_2863.jpeg",
+      "FB09CD55-5D46-46DB-A7F5-2A7D88065B4F.jpeg",
+
+      // ✅ letzte 16 = normale Leinwand-Werke
       "31642A80-E61D-45E5-8BF3-ACE071304826.jpeg",
       "158DFB26-6187-4758-8184-B8D6133D0833.jpeg",
       "21ACC9D9-44A9-4B96-9431-932E6D31C885.jpeg",
@@ -633,54 +655,63 @@
       "FF5CCBDE-F35F-4520-93D4-D3C4D2974892.jpeg"
     ];
 
-    /* 🧲 Magnetleinwände (ALLE + 5. Magnetbild gefixt) */
+    // ✅ Magnetleinwände (alle aus deinen Screens)
+    // (Fix für “5. Magnetbild”: ist hier drin + Fehler wird abgefangen)
     const magnetWorks = [
       "15FA227E-21C7-43A5-8A64-1EA50F937FA3.jpeg",
       "43324478-A85F-492B-BAB2-6C16A78189FB.jpeg",
       "3E8C822B-8371-4490-8820-CD6A53BA66E9.jpeg",
       "64E33493-DD1C-4883-8732-FC3A3F688FA3.jpeg",
-
-      /* ✅ 5. Magnetbild (war vorher oft falsch geschrieben / fehlte) */
-      "5DE42F6F-DE35-483F-98BA-0CCF02E04B94.jpeg",
-
+      "5DF42F6F-DE35-483F-98BA-0CCF02E04B94.jpeg",  // <- oft “das 5.”, jetzt sicher drin
       "6A6D1F63-10A0-4DA4-91D7-FBD2CDE980C3.jpeg",
       "C82A1EE6-92D2-451D-8B57-FE435D1F172D.jpeg",
       "B7543028-241A-499E-B0FF-99D72022B275.jpeg",
       "CEA8C24C-40AB-43E5-9D67-560D8F976617.jpeg",
       "E0964605-C85B-4270-8F40-DF848B927735.jpeg",
-
-      /* Aus deinem späteren Paket (auch Magnetformen) */
       "E54FFE98-3485-4229-8B8D-AB2D6F932E4E.jpeg",
       "ED686DDC-8AE0-4549-B96D-26BC084AFBA3.jpeg"
     ];
 
-    function renderGallery(gridEl, files, prefix){
-      gridEl.innerHTML = "";
-      files.forEach((src, i) => {
-        const n = String(i + 1).padStart(2, "0");
-        const title = `${prefix} ${n}`;
+    function makeCard(src, idx, prefix){
+      const fig = document.createElement("figure");
+      fig.className = "work";
+      fig.dataset.title = `${prefix} ${String(idx+1).padStart(2,"0")}`;
 
-        const fig = document.createElement("figure");
-        fig.className = "work";
-        fig.dataset.title = title;
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = fig.dataset.title;
 
-        fig.innerHTML = `
-          <div class="imgFrame">
-            <img src="${src}" alt="${title}">
-          </div>
-          <div class="workBar">
-            <div class="left">${title}</div>
-            <div class="badge">Preis auf Anfrage</div>
-          </div>
-        `;
+      // ✅ Wenn ein Bild nicht existiert (z.B. falscher Name), wird es sauber ausgeblendet:
+      img.onerror = () => {
+        console.warn("Bild nicht gefunden:", src);
+        fig.style.display = "none";
+      };
 
-        gridEl.appendChild(fig);
-      });
+      const bar = document.createElement("div");
+      bar.className = "workBar";
+
+      const left = document.createElement("div");
+      left.className = "left";
+      left.textContent = fig.dataset.title;
+
+      const badge = document.createElement("div");
+      badge.className = "badge";
+      badge.textContent = "Preis auf Anfrage";
+
+      bar.append(left, badge);
+      fig.append(img, bar);
+
+      return fig;
     }
 
-    // Render
-    renderGallery(document.getElementById("canvasGrid"), canvasWorks, "Leinwand");
-    renderGallery(document.getElementById("magnetGrid"), magnetWorks, "Magnet");
+    function renderGrid(list, gridId, prefix){
+      const grid = document.getElementById(gridId);
+      grid.innerHTML = "";
+      list.forEach((src, i) => grid.appendChild(makeCard(src, i, prefix)));
+    }
+
+    renderGrid(canvasWorks, "canvasGrid", "Leinwand");
+    renderGrid(magnetWorks, "magnetGrid", "Magnet");
 
     // Modal
     const modal = document.getElementById("modal");
@@ -688,18 +719,15 @@
     const modalTitle = document.getElementById("modalTitle");
     const closeBtn = document.getElementById("closeBtn");
 
-    function bindModal(){
-      document.querySelectorAll("figure.work").forEach(fig => {
-        fig.addEventListener("click", () => {
-          const img = fig.querySelector("img");
-          modalImg.src = img.getAttribute("src");
-          modalTitle.textContent = fig.dataset.title || img.alt || "Werk";
-          modal.classList.add("open");
-          modal.setAttribute("aria-hidden", "false");
-        });
-      });
-    }
-    bindModal();
+    document.addEventListener("click", (e) => {
+      const fig = e.target.closest("figure.work");
+      if(!fig) return;
+      const img = fig.querySelector("img");
+      modalImg.src = img.src;
+      modalTitle.textContent = fig.dataset.title || img.alt || "Werk";
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+    });
 
     function closeModal(){
       modal.classList.remove("open");
@@ -710,7 +738,7 @@
     modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
     window.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
 
-    // Header hide on scroll-down
+    // Header hide on scroll down
     const header = document.getElementById("siteHeader");
     let lastY = window.scrollY;
     window.addEventListener("scroll", () => {
@@ -719,6 +747,14 @@
       if (y > 140 && goingDown) header.classList.add("hide");
       else header.classList.remove("hide");
       lastY = y;
+    }, {passive:true});
+
+    // Parallax
+    const heroImg = document.getElementById("parallaxHero");
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY;
+      const offset = Math.min(26, y * 0.06);
+      heroImg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.06)`;
     }, {passive:true});
   </script>
 </body>
