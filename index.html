@@ -646,29 +646,64 @@ F01F46CF4D09.jpeg" alt="Werk">
   });
 }
 
-// Individuelle Namen pro Bild (optional)
+ // Individuelle Namen pro Bild (optional)
 const customTitles = {
   leinwand: {
     "01": "Stille See",
     "02": "Horizont",
     "03": "Morgenlicht",
-    "04": "Weite",
+    "04": "Weite"
   },
   magnet: {
     "01": "Abendruhe",
     "02": "Fliederhimmel",
     "03": "Rosé Wasser",
-    "04": "Sanfte Wellen",
+    "04": "Sanfte Wellen"
   },
   spezial: {
-    "01": "Lagerfeuer",
+    "01": "Lagerfeuer"
   }
 };
 
-    
-    renderGallery(document.getElementById("canvasGrid"), canvasWorks, "Leinwand");
-    renderGallery(document.getElementById("magnetGrid"), magnetWorks, "Magnet");
-    renderGallery(document.getElementById("specialGrid"), specialWorks, "Spezial");
+function renderGallery(gridEl, files, prefix) {
+  gridEl.innerHTML = "";
+
+  files.forEach((src, i) => {
+    const n = String(i + 1).padStart(2, "0");   // "01"
+    const key = prefix.toLowerCase();          // "leinwand" | "magnet" | "spezial"
+
+    // Titel: entweder aus customTitles oder Standard "Leinwand 01"
+    const title = (customTitles[key] && customTitles[key][n])
+      ? customTitles[key][n]
+      : `${prefix} ${n}`;
+
+    // Badge: Spezial = Unikat, sonst Preis auf Anfrage
+    const badgeText = (key === "spezial") ? "Unikat" : "Preis auf Anfrage";
+
+    const fig = document.createElement("figure");
+    fig.className = "work";
+    fig.dataset.title = title;
+
+    fig.innerHTML = `
+      <div class="imgFrame">
+        <img src="${src}" alt="${title}">
+      </div>
+      <div class="workBar">
+        <div class="left">
+          <div class="workTitle">${title}</div>
+          <div class="workPrice">${badgeText}</div>
+        </div>
+      </div>
+    `;
+
+    gridEl.appendChild(fig);
+  });
+}
+
+// WICHTIG: diese Aufrufe müssen NACH der Funktion kommen:
+renderGallery(document.getElementById("canvasGrid"), canvasWorks, "Leinwand");
+renderGallery(document.getElementById("magnetGrid"), magnetWorks, "Magnet");
+renderGallery(document.getElementById("specialGrid"), specialWorks, "Special");
 
     // Modal
     const modal = document.getElementById("modal");
