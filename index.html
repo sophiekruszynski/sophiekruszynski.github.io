@@ -622,7 +622,7 @@ F01F46CF4D09.jpeg" alt="Werk">
         : `${prefix} ${n}`;
 
     let badgeText = "Preis auf Anfrage";
-    if (key === "spezial") badgeText = "Unikat";
+    if (key === "special") badgeText = "Unikat";
 
     const fig = document.createElement("figure");
     fig.className = "work";
@@ -657,7 +657,7 @@ function renderGallery(gridEl, files, prefix) {
       : `${prefix} ${n}`;
 
     // Badge: Spezial = Unikat, sonst Preis auf Anfrage
-    const badgeText = (key === "spezial") ? "Unikat" : "Preis auf Anfrage";
+    const badgeText = (key === "special") ? "Unikat" : "Preis auf Anfrage";
 
     const fig = document.createElement("figure");
     fig.className = "work";
@@ -712,7 +712,7 @@ const customTitles = {
     "11": "Morgenstille(Reserviert)",
     "12": "Stillstand"
   },
-  spezial: {
+  special: {
     "01": "Wenn Wärme bleibt"
   }
 };
