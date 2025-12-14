@@ -615,7 +615,10 @@ F01F46CF4D09.jpeg" alt="Werk">
     const n = String(i + 1).padStart(2, "0");
 
     // Standard
-    let title = `${prefix} ${n}`;
+    let key = prefix.toLowerCase(); // leinwand | magnet | spezial
+    let title =
+  customTitles[key]?.[n] || `${prefix} ${n}`;
+    
     let badgeText = "Preis auf Anfrage";
 
     // Spezial: erstes Bild = Lagerfeuer + Unikat
@@ -643,6 +646,31 @@ F01F46CF4D09.jpeg" alt="Werk">
   });
 }
 
+// Individuelle Namen pro Bild (optional)
+const customTitles = {
+  // Leinwände
+  leinwand: {
+    1: "Stille See",
+    2: "Horizont",
+    3: "Morgenlicht",
+    4: "Weite"
+  },
+
+  // Magnete
+  magnet: {
+    1: "Abendruhe",
+    2: "Fliederhimmel",
+    3: "Rosé Wasser",
+    4: "Sanfte Wellen"
+  },
+
+  // Spezial
+  spezial: {
+    1: "Lagerfeuer"
+  }
+};
+
+    
     renderGallery(document.getElementById("canvasGrid"), canvasWorks, "Leinwand");
     renderGallery(document.getElementById("magnetGrid"), magnetWorks, "Magnet");
     renderGallery(document.getElementById("specialGrid"), specialWorks, "Spezial");
