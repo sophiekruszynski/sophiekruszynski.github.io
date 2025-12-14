@@ -609,23 +609,20 @@ F01F46CF4D09.jpeg" alt="Werk">
       "5BCF7558-9D4E-4CFA-864D-CBB6007D3147.jpeg" // Lagerfeuer
       ];
 
-   function renderGallery(gridEl, files, prefix){
+  function renderGallery(gridEl, files, prefix) {
   gridEl.innerHTML = "";
 
   files.forEach((src, i) => {
-    const n = String(i + 1).padStart(2, "0");     // "01"
-    const key = prefix.toLowerCase();             // "leinwand" | "magnet" | "spezial"
+    const n = String(i + 1).padStart(2, "0");
+    const key = prefix.toLowerCase();
 
-    let title = (customTitles[key] && customTitles[key][n])
-      ? customTitles[key][n]
-      : `${prefix} ${n}`;
+    const title =
+      customTitles[key] && customTitles[key][n]
+        ? customTitles[key][n]
+        : `${prefix} ${n}`;
 
     let badgeText = "Preis auf Anfrage";
     if (key === "spezial") badgeText = "Unikat";
-
-    // ... dein fig-code bleibt wie er ist
-  });
-} 
 
     const fig = document.createElement("figure");
     fig.className = "work";
@@ -635,16 +632,17 @@ F01F46CF4D09.jpeg" alt="Werk">
       <div class="imgFrame">
         <img src="${src}" alt="${title}">
       </div>
-     <div class="workBar">
-  <div class="left">
-    <div class="workTitle">${title}</div>
-    <div class="workPrice">${badgeText}</div>
-  </div>
-</div>
+      <div class="workBar">
+        <div class="left">
+          <div class="workTitle">${title}</div>
+          <div class="workPrice">${badgeText}</div>
+        </div>
+      </div>
     `;
+
     gridEl.appendChild(fig);
   });
-}
+  }
 
  // Individuelle Namen pro Bild (optional)
 const customTitles = {
