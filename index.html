@@ -388,6 +388,7 @@
       <nav class="links" aria-label="Navigation">
         <a class="pillLink primary" href="#leinwand">Leiwände</a>
         <a class="pillLink" href="#magnet">Magnetleinwände</a>
+        <a class="pillLink" href="#special">Spezielle Werke</a>
         <a class="pillLink" href="#ueber">Über mich</a>
         <a class="pillLink" href="#anfrage">Anfrage</a>
         <a class="pillLink" href="https://instagram.com/sophie_kruszynski_art" target="_blank" rel="noopener">Instagram</a>
@@ -444,6 +445,15 @@
       </div>
       <div class="grid" id="magnetGrid"></div>
     </section>
+
+<!-- SPEZIAL -->
+<section id="spezial">
+  <div class="secTitle">
+    <h2>Spezial</h2>
+    <span>Unikate & besondere Werke</span>
+  </div>
+  <div class="grid" id="specialGrid"></div>
+</section>
 
     <!-- ÜBER MICH -->
     <section id="ueber">
@@ -560,7 +570,6 @@
       "2D326F07-90A6-4F04-B249-EFC44198B02F.jpeg",
       "2F2CF949-EB9E-41AB-93D9-EA9BF1428EE2.jpeg",
       "50AE5D91-3295-4818-B679-51BA2FE702E7.jpeg",
-      "5BCF7558-9D4E-4CFA-864D-CBB6007D3147.jpeg",
       "D42BCD60-09C9-4ED1-A049-1A069F251E93.jpeg",
       
     ];
@@ -580,31 +589,45 @@
       "ED686DDC-8AE0-4549-B96D-26BC084AFBA3.jpeg"
     ];
 
+    const specialWorks = [
+      "5BCF7558-9D4E-4CFA-864D-CBB6007D3147.jpeg" // Lagerfeuer
+      ];
+
     function renderGallery(gridEl, files, prefix){
-      gridEl.innerHTML = "";
-      files.forEach((src, i) => {
-        const n = String(i + 1).padStart(2, "0");
-        const title = `${prefix} ${n}`;
+  gridEl.innerHTML = "";
+  files.forEach((src, i) => {
+    const n = String(i + 1).padStart(2, "0");
 
-        const fig = document.createElement("figure");
-        fig.className = "work";
-        fig.dataset.title = title;
+    // Standard
+    let title = `${prefix} ${n}`;
+    let badgeText = "Preis auf Anfrage";
 
-        fig.innerHTML = `
-          <div class="imgFrame">
-            <img src="${src}" alt="${title}">
-          </div>
-          <div class="workBar">
-            <div class="left">${title}</div>
-            <div class="badge">Preis auf Anfrage</div>
-          </div>
-        `;
-        gridEl.appendChild(fig);
-      });
+    // Spezial: erstes Bild = Lagerfeuer + Unikat
+    if (prefix === "Spezial") {
+      if (i === 0) title = "Lagerfeuer";
+      badgeText = "Unikat";
     }
+
+    const fig = document.createElement("figure");
+    fig.className = "work";
+    fig.dataset.title = title;
+
+    fig.innerHTML = `
+      <div class="imgFrame">
+        <img src="${src}" alt="${title}">
+      </div>
+      <div class="workBar">
+        <div class="left">${title}</div>
+        <div class="badge">${badgeText}</div>
+      </div>
+    `;
+    gridEl.appendChild(fig);
+  });
+}
 
     renderGallery(document.getElementById("canvasGrid"), canvasWorks, "Leinwand");
     renderGallery(document.getElementById("magnetGrid"), magnetWorks, "Magnet");
+    renderGallery(document.getElementById("specialGrid"), specialWorks, "Spezial");
 
     // Modal
     const modal = document.getElementById("modal");
