@@ -566,180 +566,129 @@ F01F46CF4D09.jpeg" alt="Werk">
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const canvasWorks = [
-      "IMG_7357.jpeg", 
-      "FF5CCBDE-F35F-4520-93D4-D3C4D2974892.jpeg",
-      "3C2F2322-FC01-45A2-874D-670C1F247EA7.jpeg", 
-      "B5B73DB5-32D1-40CC-9DA2-76FA1297AA8B.jpeg",  
-      "7C37CBDD-C409-40CB-A3A4-603264874563.jpeg",
-      "31642A80-E61D-45E5-8BF3-ACE071304826.jpeg",         
-      "3A5116EB-D731-4450-A2C8-ACB00822DB92.jpeg",  
-      "682D3BFD-6596-48BD-93D4-BDDDE2AB39E5.jpeg",   
-      "158DFB26-6187-4758-8184-B8D6133D0833.jpeg",
-      "B517D3D5-4EB6-4310-9A41-226740D755D9.jpeg",
-      "21ACC9D9-44A9-4B96-9431-932E6D31C885.jpeg",
-      "2D326F07-90A6-4F04-B249-EFC44198B02F.jpeg",
-      "2F2CF949-EB9E-41AB-93D9-EA9BF1428EE2.jpeg",
-      "50AE5D91-3295-4818-B679-51BA2FE702E7.jpeg",
-      "D42BCD60-09C9-4ED1-A049-1A069F251E93.jpeg",
-      "D8340BB3-21FB-46DA-B95C-6EEB20520FDE.jpeg",
-      "AB037A6A-B507-4B0B-BC12-82D5CF956172.jpeg",
-      "A273541B-C6A7-4E53-867C-F17BABE5C732.jpeg",
-      "9F734A16-BB9F-485B-9743-2C0197BFAA52.jpeg",
-      "2D52523F-87B6-4D55-9FB1-8F1E8A8A4C7B.jpeg",
-      "537A3C77-1DFB-42D5-AE52-D4D16C8897C3.jpeg"
-      
-    ];
+const canvasWorks = [
+  { src: "IMG_7357.jpeg", title: "Quit Place 20x20cm", badge: "Preis auf Anfrage" },
+  { src: "FF5CCBDE-F35F-4520-93D4-D3C4D2974892.jpeg", title: "Horizont 30x40cm", badge: "Preis auf Anfrage" },
+  { src: "3C2F2322-FC01-45A2-874D-670C1F247EA7.jpeg", title: "Zeit 30x40", badge: "Preis auf Anfrage" },
+  { src: "B5B73DB5-32D1-40CC-9DA2-76FA1297AA8B.jpeg", title: "Weite 40x50cm", badge: "Preis auf Anfrage" },
+  { src: "7C37CBDD-C409-40CB-A3A4-603264874563.jpeg", title: "Lines 20x20cm", badge: "Preis auf Anfrage" },
+  { src: "31642A80-E61D-45E5-8BF3-ACE071304826.jpeg", title: "Ein Atemzug Blau 20x20cm", badge: "Preis auf Anfrage" },
+  { src: "3A5116EB-D731-4450-A2C8-ACB00822DB92.jpeg", title: "Sanftes Treiben", badge: "Preis auf Anfrage" },
+  { src: "682D3BFD-6596-48BD-93D4-BDDDE2AB39E5.jpeg", title: "Nach dem letzten Licht", badge: "Preis auf Anfrage" },
+  { src: "158DFB26-6187-4758-8184-B8D6133D0833.jpeg", title: "Verloren im Licht 40x40cm (Verkauft)", badge: "Preis auf Anfrage" },
+  { src: "B517D3D5-4EB6-4310-9A41-226740D755D9.jpeg", title: "Stille Weite 40x40xm", badge: "Preis auf Anfrage" },
+  { src: "21ACC9D9-44A9-4B96-9431-932E6D31C885.jpeg", title: "Die Ruhe dahinter", badge: "Preis auf Anfrage" },
+  { src: "2D326F07-90A6-4F04-B249-EFC44198B02F.jpeg", title: "Goldene Stille 20x20cm", badge: "Preis auf Anfrage" },
+  { src: "2F2CF949-EB9E-41AB-93D9-EA9BF1428EE2.jpeg", title: "Licht im letztem Atemzug", badge: "Preis auf Anfrage" },
+  { src: "50AE5D91-3295-4818-B679-51BA2FE702E7.jpeg", title: "Dämmerung", badge: "Preis auf Anfrage" },
+  { src: "D42BCD60-09C9-4ED1-A049-1A069F251E93.jpeg", title: "Deep blue Horizon", badge: "Preis auf Anfrage" },
+  { src: "D8340BB3-21FB-46DA-B95C-6EEB20520FDE.jpeg", title: "Stille Weite", badge: "Preis auf Anfrage" },
+  { src: "AB037A6A-B507-4B0B-BC12-82D5CF956172.jpeg", title: "Offenes Meer", badge: "Preis auf Anfrage" },
+  { src: "A273541B-C6A7-4E53-867C-F17BABE5C732.jpeg", title: "Tiefe Ruhe 20x20cm", badge: "Preis auf Anfrage" },
+  { src: "9F734A16-BB9F-485B-9743-2C0197BFAA52.jpeg", title: "Stilles Leuchten", badge: "Preis auf Anfrage" },
+  { src: "2D52523F-87B6-4D55-9FB1-8F1E8A8A4C7B.jpeg", title: "Blauer Atem", badge: "Preis auf Anfrage" },
+  { src: "537A3C77-1DFB-42D5-AE52-D4D16C8897C3.jpeg", title: "Getragene Weite", badge: "Preis auf Anfrage" }
+];
 
-    const magnetWorks = [
-      "15FA227E-21C7-43A5-8A64-1EA50F937FA3.jpeg",
-      "43324478-A85F-492B-BAB2-6C16A78189FB.jpeg",
-      "3E8C822B-8371-4490-8820-CD6A53BA66E9.jpeg",
-      "64E33493-DD1C-4883-8732-FC3A3F688FA3.jpeg",
-      "5DE42F6F-DE35-483F-98BA-0CCF02E04B94.jpeg",
-      "6A6D1F63-10A0-4DA4-91D7-FBD2CDE980C3.jpeg",
-      "C82A1EE6-92D2-451D-8B57-FE435D1F172D.jpeg",
-      "B7543028-241A-499E-B0FF-99D72022B275.jpeg",
-      "CEA8C24C-40AB-43E5-9D67-560D8F976617.jpeg",
-      "E0964605-C85B-4270-8F40-DF848B927735.jpeg",
-      "E54FFE98-3485-4229-8B8D-AB2D6F932E4E.jpeg",
-      "ED686DDC-8AE0-4549-B96D-26BC084AFBA3.jpeg"
-    ];
+const magnetWorks = [
+  { src: "15FA227E-21C7-43A5-8A64-1EA50F937FA3.jpeg", title: "Abendruhe 7,5x7,5cm", badge: "Preis auf Anfrage" },
+  { src: "43324478-A85F-492B-BAB2-6C16A78189FB.jpeg", title: "Flieder 7,5x7,5cm", badge: "Preis auf Anfrage" },
+  { src: "3E8C822B-8371-4490-8820-CD6A53BA66E9.jpeg", title: "Rosé Wasser 7,5x7,5cm", badge: "Preis auf Anfrage" },
+  { src: "64E33493-DD1C-4883-8732-FC3A3F688FA3.jpeg", title: "Sanfte Wellen 7,5x7,5cm", badge: "Preis auf Anfrage" },
+  { src: "5DE42F6F-DE35-483F-98BA-0CCF02E04B94.jpeg", title: "Offenes Meer 7,5x7,5cm", badge: "Preis auf Anfrage" },
+  { src: "6A6D1F63-10A0-4DA4-91D7-FBD2CDE980C3.jpeg", title: "Blush 7,5x7,5cm", badge: "Preis auf Anfrage" },
+  { src: "C82A1EE6-92D2-451D-8B57-FE435D1F172D.jpeg", title: "Horizont 7,5x7,5cm", badge: "Preis auf Anfrage" },
+  { src: "B7543028-241A-499E-B0FF-99D72022B275.jpeg", title: "Lichtspur 7,5x7,5cm", badge: "Preis auf Anfrage" },
+  { src: "CEA8C24C-40AB-43E5-9D67-560D8F976617.jpeg", title: "Zwischen Blau 7,5x7,5cm", badge: "Preis auf Anfrage" },
+  { src: "E0964605-C85B-4270-8F40-DF848B927735.jpeg", title: "Leiser Wind 7,5x7,5cm", badge: "Preis auf Anfrage" },
+  { src: "E54FFE98-3485-4229-8B8D-AB2D6F932E4E.jpeg", title: "Morgenstille 7,5x7,5cm (Reserviert)", badge: "Preis auf Anfrage" },
+  { src: "ED686DDC-8AE0-4549-B96D-26BC084AFBA3.jpeg", title: "Stillstand 7,5x7,5cm", badge: "Preis auf Anfrage" }
+];
 
-    const specialWorks = [
-      "5BCF7558-9D4E-4CFA-864D-CBB6007D3147.jpeg",
-      "9AD8BABA-B7C0-4CE2-BD66-410AB748CC69.jpeg",
-      "581B0A5F-8365-4D4A-A7CC-3A04867129AE.jpeg",
-      "FC12BBF5-A20E-4BA5-ADDB-2477F78125AB.jpeg",
-      "0AB96B52-587F-4905-A538-22C63D7D32B4.jpeg",
-     "69425866-B9C0-4C67-847A-8FA84E2AD19C.jpeg",
-      "DEBBA19B-88AA-42AF-A7CC-1B3B20E4BCC4.jpeg",
-     "5A00790C-9BD1-4C3C-BE21-D452C6416C9E.jpeg",
-    "E8E7DB6B-FE26-42E6-BEA2-A97E44622B73.jpeg",
-      "04D28EB6-3472-4EC2-B0A5-A54B9AE3F2D2.jpeg",
-  "A2A53B98-F355-43E3-BDC4-C8981D812398.jpeg",
-  "2587F6C6-66C6-4220-99BE-74B27FD07B2C.jpeg",
-   "36592447-1376-49A9-9801-028F6474F22B.jpeg",
-     "C715DFB5-332D-4000-94AE-5B5D04CFB021.jpeg",
-      "BF31311F-573B-49A4-A0FF-5F516ED5ABE9.jpeg",
-    "AD9064ED-C8F1-4095-86CE-B9F190E66608.jpeg",
-       "5C7EA258-1D46-48BE-8226-4BE1787FBA56.jpeg",
-      "19C31273-1A3A-406A-8474-DB1E5587855F.jpeg",
-     "8959A6AC-40AC-44B4-BB56-5602F59D6589.jpeg",
-         "2676A375-1C75-4BC4-B06A-C3C92DA5330D.jpeg",
-         "33A139D6-A1F0-47FA-9A33-3D3C97757195.jpeg",
+const specialWorks = [
+  { src: "5BCF7558-9D4E-4CFA-864D-CBB6007D3147.jpeg", title: "Wenn Wärme bleibt", badge: "Unikat" },
+  { src: "9AD8BABA-B7C0-4CE2-BD66-410AB748CC69.jpeg", title: "Zerfall der Stunden", badge: "Unikat" },
+  { src: "581B0A5F-8365-4D4A-A7CC-3A04867129AE.jpeg", title: "Nachklang", badge: "Unikat" },
+  { src: "FC12BBF5-A20E-4BA5-ADDB-2477F78125AB.jpeg", title: "Ziellos", badge: "Unikat" },
+  { src: "0AB96B52-587F-4905-A538-22C63D7D32B4.jpeg", title: "By night with Mountains", badge: "Unikat" },
+  { src: "69425866-B9C0-4C67-847A-8FA84E2AD19C.jpeg", title: "Vor der Nacht", badge: "Unikat" },
+  { src: "DEBBA19B-88AA-42AF-A7CC-1B3B20E4BCC4.jpeg", title: "Roter Atem A6", badge: "Unikat" },
+  { src: "5A00790C-9BD1-4C3C-BE21-D452C6416C9E.jpeg", title: "Tiefe Ruhe A6", badge: "Unikat" },
+  { src: "E8E7DB6B-FE26-42E6-BEA2-A97E44622B73.jpeg", title: "Sanfte Schwere A4", badge: "Unikat" },
+  { src: "04D28EB6-3472-4EC2-B0A5-A54B9AE3F2D2.jpeg", title: "Wo was bleibt", badge: "Unikat" },
+  { src: "A2A53B98-F355-43E3-BDC4-C8981D812398.jpeg", title: "Ort ohne Stimme A6", badge: "Unikat" },
+  { src: "2587F6C6-66C6-4220-99BE-74B27FD07B2C.jpeg", title: "Nacht, die hält", badge: "Unikat" },
+  { src: "36592447-1376-49A9-9801-028F6474F22B.jpeg", title: "Grüner Atem A6", badge: "Unikat" },
+  { src: "C715DFB5-332D-4000-94AE-5B5D04CFB021.jpeg", title: "Stiller Spiegel A6", badge: "Unikat" },
+  { src: "BF31311F-573B-49A4-A0FF-5F516ED5ABE9.jpeg", title: "Unter dem weiten Himmel", badge: "Unikat" },
+  { src: "AD9064ED-C8F1-4095-86CE-B9F190E66608.jpeg", title: "Ruhe", badge: "Unikat" },
+  { src: "5C7EA258-1D46-48BE-8226-4BE1787FBA56.jpeg", title: "Am Rande der Küste", badge: "Unikat" },
+  { src: "19C31273-1A3A-406A-8474-DB1E5587855F.jpeg", title: "Zeit im Grünen A6", badge: "Unikat" },
+  { src: "8959A6AC-40AC-44B4-BB56-5602F59D6589.jpeg", title: "Schweres Wasser A6", badge: "Unikat" },
+  { src: "2676A375-1C75-4BC4-B06A-C3C92DA5330D.jpeg", title: "Blauer Abgrund", badge: "Unikat" },
+  { src: "33A139D6-A1F0-47FA-9A33-3D3C97757195.jpeg", title: "Rosa Stille A6", badge: "Unikat" },
+  { src: "F7012009-8914-41F4-B41F-8507DF58D0DF.jpeg", title: "Verlorene Blüten A6", badge: "Unikat" },
+  { src: "CA8A37EA-77C5-485D-B82D-07F70923011F.jpeg", title: "Langsames Jetzt A4", badge: "Unikat" },
+  { src: "7978C2C1-DBCF-43CA-82A8-5E7C3ACD1512.jpeg", title: "Blaue Blüten A6", badge: "Unikat" },
+  { src: "BC44A855-8A31-4239-A4CC-A97D9C4C3FA6.jpeg", title: "Blaue Gerberas A6", badge: "Unikat" },
+  { src: "DCB6D985-D35F-453C-AAFA-EC04C291CAAA.jpeg", title: "Wo nichts drängt A5", badge: "Unikat" },
+  { src: "B678D0FC-4A60-4A38-AD80-279EC57B9F60.jpeg", title: "Ein später Moment A6", badge: "Unikat" },
+  { src: "C4838CD8-D0A1-4978-81D6-AE0AD1E4FA76.jpeg", title: "Ohne Richtung A6", badge: "Unikat" },
+  { src: "BEFC15B7-077D-4FCC-9A0B-F64DE349B151.jpeg", title: "Tunnel A6", badge: "Unikat" },
+  { src: "B147CF5A-34FF-4B6A-A3C4-E8F7D1A0DC1E.jpeg", title: "leichtes Vergehen A5", badge: "Unikat" },
+  { src: "98AC9AC9-75FC-495F-9D72-B2191F983C56.jpeg", title: "Licht im Hintergrund A5", badge: "Unikat" },
+  { src: "8FD00C2F-A2C9-410A-AED3-2D74A97D0F41.jpeg", title: "Keine Eile A5", badge: "Unikat" },
+  { src: "8BEC4405-2294-452D-827A-22197DF935FB.jpeg", title: "Grünes Blatt A6", badge: "Unikat" },
+  { src: "6CD29892-5885-4D68-90B5-D2123CF32F18.jpeg", title: "Licht und Wärme A6", badge: "Unikat" },
+  { src: "5EA25A49-0C40-464E-9A04-243263A78CB2.jpeg", title: "Graue Weite A6", badge: "Unikat" },
+  { src: "105C7346-FACE-4125-A565-972112D154E8.jpeg", title: "Wolkenweg A5", badge: "Unikat" },
+  { src: "06A7DF1F-FA07-4D6F-B6BF-747C72DDF727.jpeg", title: "Stiller Weg A6", badge: "Unikat" },
+  { src: "6EDA6A29-93BA-48B3-A23C-71C1CF86B273.jpeg", title: "Sanfter Übergang A6", badge: "Unikat" },
+  { src: "6E27EFA3-E45B-4D66-BB21-A3E9FD82E6E8.jpeg", title: "Farbenweg A6", badge: "Unikat" },
+  { src: "6DEE0D52-4441-4AB2-998B-2456D3DF095C.jpeg", title: "Ort ohne Namen A6", badge: "Unikat" },
+  { src: "9E44CF93-B137-4925-BBA3-146597A4CCB0.jpeg", title: "Stille Hoffnung", badge: "Unikat" },
+  { src: "732EE4A9-E8E9-4686-8060-6194962CB52B.jpeg", title: "Zerrissene Gedanken", badge: "Unikat" },
+  { src: "DCE79F4D-ADDD-48E8-B175-E559AC853EF4.jpeg", title: "Die Blume hinter dem Blick", badge: "Unikat" },
+  { src: "6490B4E7-33FC-426B-9AE1-A733889A6ED1.jpeg", title: "Erwachen A6", badge: "Unikat" },
+  { src: "D4F4AF47-EB48-441C-BC73-67BD04426981.jpeg", title: "Regen der Erinnerung A5", badge: "Unikat" },
+  { src: "E1DCAEA1-2B9B-4ADA-B7FC-3FEA3FEBA5BF.jpeg", title: "Die Nacht trägt Wasser A5", badge: "Unikat" },
+  { src: "CADA4ECF-71D1-49DD-ACBE-3C43CC46CBFA.jpeg", title: "Zwischen fallenden Blättern A6", badge: "Unikat" },
+  { src: "BBCB1A41-4FEE-404D-ACF7-5ED309C77FDC.jpeg", title: "Dissonanz A6", badge: "Unikat" },
+  { src: "B952D029-1AE1-4CC3-9DFF-6A8252E7E5DF.jpeg", title: "Ungehaltene Linien A6", badge: "Unikat" },
+  { src: "CEE94D32-6938-46DB-8B88-A7FFBC124C2D.jpeg", title: "Stilles System A5", badge: "Unikat" },
+  { src: "8FEB1A13-DD1E-495F-ACFB-7F91950FA07F.jpeg", title: "Innenlast A6", badge: "Unikat" },
+  { src: "8A4392AC-44A9-48AC-97F7-5E8DC5DF6435.jpeg", title: "Durchlässiges Licht A5", badge: "Unikat" },
+  { src: "845874AC-B28F-437B-9823-BC59F6B96526.jpeg", title: "Strömung A5", badge: "Unikat" },
+  { src: "7D011BCC-B8D5-47B1-AB94-687F8775D1A3.jpeg", title: "Gegenlauf A5", badge: "Unikat" },
+  { src: "709B36B0-2389-4824-A31A-03DECFF2FB05.jpeg", title: "Gedämpft A6", badge: "Unikat" },
+  { src: "688121A7-0607-47E4-ABF2-DD7A1D50C776.jpeg", title: "Verdichtete Zeit A5", badge: "Unikat" },
+  { src: "5667DAAE-7B1A-4D0E-B311-28D2E3707A89.jpeg", title: "Übergang (Reserviert)", badge: "Unikat" },
+  { src: "2C5552E0-5BC2-4C00-915B-B7DCB18DA9C0.jpeg", title: "Viermal Abendlicht", badge: "Unikat" },
+  { src: "452558FF-D892-417A-8363-CFC8C0518E1A.jpeg", title: "Stille am Teich A6", badge: "Unikat" },
+  { src: "4EF1AD88-222B-4FAF-B820-C6374E2BD9C1.jpeg", title: "Sommerwiese A6", badge: "Unikat" },
+  { src: "5253F699-A450-4DAA-A753-B8135054D1E2.jpeg", title: "Morgen im Nebelwald A6", badge: "Unikat" },
+  { src: "5EA25A49-0C40-464E-9A04-243263A78CB2.jpeg", title: "Weiße Blumen im Grau A6", badge: "Unikat" },
+  { src: "3BB8606F-5E88-4327-B83D-1E5650FEB7C8.jpeg", title: "Formen in Violett A6", badge: "Unikat" },
+  { src: "3E9BE6AD-5B07-4653-9D40-A49FA63998DE.jpeg", title: "Bruchstücke von Erinnerung A6", badge: "Unikat" },
+  { src: "4ACF489E-14E0-4351-B2D9-924357DC876E.jpeg", title: "Blauer Dialog A6", badge: "Unikat" }
+];
 
-  "F7012009-8914-41F4-B41F-8507DF58D0DF.jpeg", 
- "CA8A37EA-77C5-485D-B82D-07F70923011F.jpeg",
-   "7978C2C1-DBCF-43CA-82A8-5E7C3ACD1512.jpeg",
-  "BC44A855-8A31-4239-A4CC-A97D9C4C3FA6.jpeg",
-            "DCB6D985-D35F-453C-AAFA-EC04C291CAAA.jpeg",
-   "B678D0FC-4A60-4A38-AD80-279EC57B9F60.jpeg",
- "C4838CD8-D0A1-4978-81D6-AE0AD1E4FA76.jpeg",
-   "BEFC15B7-077D-4FCC-9A0B-F64DE349B151.jpeg",
-    "B147CF5A-34FF-4B6A-A3C4-E8F7D1A0DC1E.jpeg",
-   "98AC9AC9-75FC-495F-9D72-B2191F983C56.jpeg",
-  "8FD00C2F-A2C9-410A-AED3-2D74A97D0F41.jpeg",
-    "8BEC4405-2294-452D-827A-22197DF935FB.jpeg",
-    "6CD29892-5885-4D68-90B5-D2123CF32F18.jpeg",
-    "5EA25A49-0C40-464E-9A04-243263A78CB2.jpeg",
-   "105C7346-FACE-4125-A565-972112D154E8.jpeg",
-     "06A7DF1F-FA07-4D6F-B6BF-747C72DDF727.jpeg",
-    "6EDA6A29-93BA-48B3-A23C-71C1CF86B273.jpeg",
-      "6E27EFA3-E45B-4D66-BB21-A3E9FD82E6E8.jpeg",
-     "6DEE0D52-4441-4AB2-998B-2456D3DF095C.jpeg",
-      "9E44CF93-B137-4925-BBA3-146597A4CCB0.jpeg",
-
-      "732EE4A9-E8E9-4686-8060-6194962CB52B.jpeg",
-      
-      "DCE79F4D-ADDD-48E8-B175-E559AC853EF4.jpeg",
-      "6490B4E7-33FC-426B-9AE1-A733889A6ED1.jpeg",
-      "D4F4AF47-EB48-441C-BC73-67BD04426981.jpeg",
-         "E1DCAEA1-2B9B-4ADA-B7FC-3FEA3FEBA5BF.jpeg",
-      "CADA4ECF-71D1-49DD-ACBE-3C43CC46CBFA.jpeg",
-      "BBCB1A41-4FEE-404D-ACF7-5ED309C77FDC.jpeg",
-      "B952D029-1AE1-4CC3-9DFF-6A8252E7E5DF.jpeg",
-   "CEE94D32-6938-46DB-8B88-A7FFBC124C2D.jpeg",
-      "8FEB1A13-DD1E-495F-ACFB-7F91950FA07F.jpeg",   
-      "8A4392AC-44A9-48AC-97F7-5E8DC5DF6435.jpeg",
-     "845874AC-B28F-437B-9823-BC59F6B96526.jpeg",
-      "7D011BCC-B8D5-47B1-AB94-687F8775D1A3.jpeg",
-     "709B36B0-2389-4824-A31A-03DECFF2FB05.jpeg",
-     "688121A7-0607-47E4-ABF2-DD7A1D50C776.jpeg",
-      "5667DAAE-7B1A-4D0E-B311-28D2E3707A89.jpeg",
-      "2C5552E0-5BC2-4C00-915B-B7DCB18DA9C0.jpeg",
-      "452558FF-D892-417A-8363-CFC8C0518E1A.jpeg",
-      "4EF1AD88-222B-4FAF-B820-C6374E2BD9C1.jpeg",
-      "5253F699-A450-4DAA-A753-B8135054D1E2.jpeg",
-      "5EA25A49-0C40-464E-9A04-243263A78CB2.jpeg",
-      "3BB8606F-5E88-4327-B83D-1E5650FEB7C8.jpeg",
-      "3E9BE6AD-5B07-4653-9D40-A49FA63998DE.jpeg",
-      "4ACF489E-14E0-4351-B2D9-924357DC876E.jpeg"
-      
-    ];
-
-  function renderGallery(gridEl, files, prefix) {
+function renderGallery(gridEl, works) {
   gridEl.innerHTML = "";
 
-  files.forEach((src, i) => {
-    const n = String(i + 1).padStart(2, "0");
-    const key = prefix.toLowerCase();
-
-    const title =
-      customTitles[key] && customTitles[key][n]
-        ? customTitles[key][n]
-        : `${prefix} ${n}`;
-
-    let badgeText = "Preis auf Anfrage";
-    if (key === "special") badgeText = "Unikat";
-
+  works.forEach((work) => {
     const fig = document.createElement("figure");
     fig.className = "work";
-    fig.dataset.title = title;
+    fig.dataset.title = work.title;
 
     fig.innerHTML = `
       <div class="imgFrame">
-        <img src="${src}" alt="${title}">
+        <img src="${work.src}" alt="${work.title}">
       </div>
       <div class="workBar">
         <div class="left">
-          <div class="workTitle">${title}</div>
-          <div class="workPrice">${badgeText}</div>
-        </div>
-      </div>
-    `;
-
-    gridEl.appendChild(fig);
-  });
-  }
-
-function renderGallery(gridEl, files, prefix) {
-  gridEl.innerHTML = "";
-
-  files.forEach((src, i) => {
-    const n = String(i + 1).padStart(2, "0");   // "01"
-    const key = prefix.toLowerCase();          // "leinwand" | "magnet" | "spezial"
-
-    // Titel: entweder aus customTitles oder Standard "Leinwand 01"
-    const title = (customTitles[key] && customTitles[key][n])
-      ? customTitles[key][n]
-      : `${prefix} ${n}`;
-
-    // Badge: Spezial = Unikat, sonst Preis auf Anfrage
-    const badgeText = (key === "special") ? "Unikat" : "Preis auf Anfrage";
-
-    const fig = document.createElement("figure");
-    fig.className = "work";
-    fig.dataset.title = title;
-
-    fig.innerHTML = `
-      <div class="imgFrame">
-        <img src="${src}" alt="${title}">
-      </div>
-      <div class="workBar">
-        <div class="left">
-          <div class="workTitle">${title}</div>
-          <div class="workPrice">${badgeText}</div>
+          <div class="workTitle">${work.title}</div>
+          <div class="workPrice">${work.badge}</div>
         </div>
       </div>
     `;
@@ -748,119 +697,9 @@ function renderGallery(gridEl, files, prefix) {
   });
 }
 
- // Individuelle Namen pro Bild (optional)
-const customTitles = {
-  leinwand: {
-    "01": "Quit Place 20x20cm",
-    "02": "Horizont 30x40cm",
-    "03": "Zeit 30x40",
-    "04": "Weite 40x50cm",
-    "05": "Lines 20x20cm",
-    "06": "Ein Atemzug Blau 20x20cm",
-    "07": "Sanftes Treiben",
-    "08": "Nach dem letzten Licht",
-    "09": "Verloren im Licht 40x40cm (Verkauft)",
-    "10": "Stille Weite 40x40xm",
-    "11": "Die Ruhe dahinter",
-    "12": "Goldene Stille 20x20cm",
-    "13": "Licht im letztem Atemzug",
-    "14": "Dämmerung",
-    "15": "Deep blue Horizon",
-    "16": "Stille Weite",
-    "17": "Offenes Meer",
-    "18": "Tiefe Ruhe 20x20cm",
-    "19": "Stilles Leuchten",
-    "20": "Blauer Atem",
-    "21": "Getragene Weite"
-  },
-  magnet: {
-    "01": "Abendruhe 7,5x7,5cm",
-    "02": "Flieder 7,5x7,5cm",
-    "03": "Rosé Wasser 7,5x7,5cm",
-    "04": "Sanfte Wellen 7,5x7,5cm",
-    "05": "Offenes Meer 7,5x7,5cm",
-    "06": "Blush 7,5x7,5cm",
-    "07": "Horizont 7,5x7,5cm",
-    "08": "Lichtspur 7,5x7,5cm",
-    "09": "Zwischen Blau 7,5x7,5cm",
-    "10": "Leiser Wind 7,5x7,5cm",
-    "11": "Morgenstille 7,5x7,5cm(Reserviert)",
-    "12": "Stillstand 7,5x7,5cm"
-  },
-  special: {
-    "01": "Wenn Wärme bleibt",
-    "02": "Zerfall der Stunden",
-    "03": "Nachklang",
-    "04": "Ziellos",
-    "05": "By night with Mountains",
-    "06": "Vor der Nacht",
-    "07": "Roter Atem A6",
-    "08": "Tiefe Ruhe A6",
-    "09": "Sanfte Schwere A4",
-    "10": "Wo was bleibt",
-    "11": "Ort ohne Stimme A6",
-    "12": "Nacht, die hält",
-    "13": "Grüner Atem A6",
-    "14": "Stiller Spiegel A6",
-    "15": "Unter dem weiten Himmel",
-    "16": "Ruhe",
-    "17": "Am Rande der Küste",
-    "18": "Zeit im Grünen A6",
-    "19": "Schweres Wasser A6",
-    "20": "Blauer Abgrund",
-    "21": "Rosa Stille A6",
-    "22": "Verlorene Blüten A6",
-    "23": "Langsames Jetzt A4",
-    "24": "Blaue Blüten A6",
-    "25": "Blaue Gerberas A6",
-    "26": "Wo nichts drängt A5",
-    "27": "Ein später Moment A6",
-    "28": "Ohne Richtung A6",
-    "29": "Tunnel A6",
-    "30": "leichtes Vergehen A5",
-    "31": "Licht im Hintergrund A5",
-    "32": "Keine Eile A5",
-    "33": "Grünes Blatt A6",
-    "34": "Licht und Wärme A6",
-    "35": "Graue Weite A6",
-    "36": "Wolkenweg A5",
-    "37": "Stiller Weg A6",
-    "38": "Sanfter Übergang A6",
-    "39": "Farbenweg A6",
-    "40": "Ort ohne Namen A6",
-    "41": "Stille Hoffnung",
-    "42": "Zerrissene Gedanken",
-    "43": "Die Blume hinter dem Blick",
-    "44": "Erwachen A6",
-    "45": "Regen der Erinnerung A5",
-    "46": "Die Nacht trägt Wasser A5",
-    "47": "Zwischen fallenden Blättern A6",
-    "48": "Dissonanz A6",
-    "49": "Ungehaltene Linien A6",
-    "50": "Stilles System A5",
-    "51": "Innenlast A6",
-    "52": "Durchlässiges Licht A5",
-    "53": "Strömung A5",
-    "54": "Gegenlauf A5",
-    "55": "Gedämpft A6",
-    "56": "Verdichtete Zeit A5",
-    "57": "Übergang(Reserviert)",
-    "58": "Viermal Abendlicht",
-    "59": "Stille am Teich A6",
-    "60": "Sommerwiese A6",
-    "61": "Morgen im Nebelwald A6",
-    "62": "Weiße Blumen im Grau A6",
-    "63": "Formen in Violett A6",
-    "64": "Bruchstücke von Erinnerung A6",
-    "65": "Blauer Dialog A6",
-    "66": "25",
-    "67": "26",
-    "68": "27",
-    "69": "28",
-    "70": "29",
-    "71": "30"
-  }
-};
+renderGallery(document.getElementById("canvasGrid"), canvasWorks);
+renderGallery(document.getElementById("magnetGrid"), magnetWorks);
+renderGallery(document.getElementById("specialGrid"), specialWorks);
 
 
 // WICHTIG: diese Aufrufe müssen NACH der Funktion kommen:
